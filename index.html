@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marché AUBEDE — Boutique en ligne</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14314E">
+<meta name="description" content="Boutique en ligne — formations, pièces informatiques, accessoires et services de maintenance. Paiement via MTN Mobile Money et Moov Money.">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AUBEDE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
@@ -19,6 +27,14 @@
     --whatsapp:#25D366;
     --receipt-shadow: 0 18px 40px rgba(20,49,78,0.18);
   }
+  html.dark{
+    --paper:#0F1720;
+    --paper-2:#1B2530;
+    --line:#2B3540;
+    --text:#E7EDF1;
+    --text-soft:#93A4B0;
+    --receipt-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
@@ -26,11 +42,16 @@
     background:var(--paper);
     color:var(--text);
     -webkit-font-smoothing:antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  body, .card, .drawer, .nav, .cat-card, .review-card, .about-section, input, textarea, select{
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
   }
   h1,h2,h3,.display{font-family:'Sora',Arial,sans-serif;}
   .mono{font-family:'IBM Plex Mono',monospace;}
   a{color:inherit;}
-  button{font-family:inherit;cursor:pointer;}
+  button{font-family:inherit;cursor:pointer; transition:transform .12s ease, filter .12s ease, background .2s ease, opacity .2s ease;}
+  button:active{ transform:scale(0.95); filter:brightness(0.96); }
 
   /* ===== NAV ===== */
   .nav{
@@ -57,6 +78,10 @@
   .nav-cats a:hover, .nav-cats a.active{color:var(--ink); border-bottom-color:var(--orange);}
   .hamburger-btn{
     display:none; background:none; border:none; font-size:22px; color:var(--ink); margin-right:6px; padding:4px 8px;
+  }
+  .theme-toggle{
+    background:var(--paper); border:1.5px solid var(--line); border-radius:50%; width:38px; height:38px;
+    font-size:16px; display:flex; align-items:center; justify-content:center; margin-right:10px;
   }
   .mobile-menu-link{
     display:block; padding:12px 6px; font-size:14.5px; font-weight:600; color:var(--ink);
@@ -104,7 +129,7 @@
   .pay-badges{ display:flex; gap:10px; margin-top:28px; }
   .pay-badge{
     display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700;
-    padding:7px 12px; border-radius:20px; border:1px solid var(--line); background:white;
+    padding:7px 12px; border-radius:20px; border:1px solid var(--line); background:var(--paper-2);
   }
   .dot{width:8px;height:8px;border-radius:50%;}
   .dot.mtn{background:#FFCB05;}
@@ -125,7 +150,7 @@
     background-position: 0 0, 0 0;
     -webkit-mask: radial-gradient(circle 8px at 8px 0, transparent 98%, black 100%) 0 -8px/16px 16px repeat-x;
     mask: radial-gradient(circle 8px at 8px 0, transparent 98%, black 100%) 0 -8px/16px 16px repeat-x;
-    background:white;
+    background:var(--paper-2);
   }
   .receipt-head{ text-align:center; border-bottom:1.5px dashed var(--line); padding-bottom:12px; margin-bottom:12px;}
   .receipt-head .rtitle{ font-family:'Sora',sans-serif; font-weight:800; font-size:15px; color:var(--ink);}
@@ -143,13 +168,13 @@
   }
   .search-wrap input{
     width:100%; padding:13px 18px; border:1.5px solid var(--line); border-radius:30px;
-    font-size:14px; font-family:inherit; background:white;
+    font-size:14px; font-family:inherit; background:var(--paper-2);
   }
   .search-wrap input:focus{ outline:none; border-color:var(--ink-2); }
   .cat-cards-section{ max-width:1280px; margin:10px auto 0 auto; padding:0 5vw; }
   .cat-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px; margin-top:14px;}
   .cat-card{
-    background:white; border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;
     cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
   }
   .cat-card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,49,78,0.10); }
@@ -164,7 +189,7 @@
   }
   .chip{
     flex:0 0 auto; padding:9px 18px; border-radius:30px; border:1.5px solid var(--line);
-    background:white; font-size:13.5px; font-weight:600; color:var(--text-soft); white-space:nowrap;
+    background:var(--paper-2); font-size:13.5px; font-weight:600; color:var(--text-soft); white-space:nowrap;
   }
   .chip.active{ background:var(--ink); border-color:var(--ink); color:white;}
 
@@ -179,16 +204,49 @@
     max-width:1280px; margin:0 auto; padding:0 5vw 30px 5vw;
     display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:20px;
   }
+  #pageLoader{
+    position:fixed; inset:0; z-index:999;
+    background:linear-gradient(160deg,#0F2A44,#1B3A5C 45%,#1F7A8C 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    transition:opacity .4s ease, visibility .4s ease;
+  }
+  #pageLoader.loader-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loader-mark{
+    width:56px; height:56px; border-radius:16px; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center;
+    animation: loaderPulse 1.1s ease-in-out infinite;
+  }
+  @keyframes loaderPulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.1); }
+  }
+  .loader-word{ color:white; font-family:'Sora',sans-serif; font-weight:800; font-size:15px; letter-spacing:1.5px; }
+  .loader-bar{ width:140px; height:3px; background:rgba(255,255,255,0.2); border-radius:3px; overflow:hidden; }
+  .loader-bar-fill{
+    width:40%; height:100%; background:var(--orange); border-radius:3px;
+    animation: loaderSlide 1s ease-in-out infinite;
+  }
+  @keyframes loaderSlide{
+    0%{ transform:translateX(-120%); }
+    100%{ transform:translateX(350%); }
+  }
+
+  @keyframes fadeInUp{
+    from{ opacity:0; transform:translateY(16px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
   .card{
-    background:white; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:14px; overflow:hidden;
     display:flex; flex-direction:column; transition:transform .15s ease, box-shadow .15s ease;
+    animation: fadeInUp .5s ease both;
   }
   .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,49,78,0.10);}
   .card-img{
-    height:170px; background:#F7F9FA; display:flex; align-items:center; justify-content:center; overflow:hidden;
+    height:170px; background:var(--paper); display:flex; align-items:center; justify-content:center; overflow:hidden;
     border-bottom:1px solid var(--line);
   }
-  .card-img img{ width:100%; height:100%; object-fit:cover; }
+  .card-img img{ width:100%; height:100%; object-fit:cover; transition:transform .35s ease; }
+  .card:hover .card-img img{ transform:scale(1.07); }
   .card-body{ padding:14px 16px 16px 16px; display:flex; flex-direction:column; gap:8px; flex:1;}
   .card-cat{ font-size:10.5px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:0.5px;}
   .card-name{ font-size:15px; font-weight:700; color:var(--ink); line-height:1.3;}
@@ -214,7 +272,7 @@
   .card-rating.muted{ color:var(--text-soft); font-style:italic; }
 
   /* ===== FICHE PRODUIT DETAILLEE ===== */
-  .detail-main-img{ width:100%; height:260px; border-radius:12px; overflow:hidden; background:#F7F9FA; border:1px solid var(--line); margin-bottom:10px;}
+  .detail-main-img{ width:100%; height:260px; border-radius:12px; overflow:hidden; background:var(--paper); border:1px solid var(--line); margin-bottom:10px;}
   .detail-main-img img{ width:100%; height:100%; object-fit:cover; }
   .detail-thumbs{ display:flex; gap:8px; margin-bottom:14px; overflow-x:auto; }
   .detail-thumb{ width:56px; height:56px; object-fit:cover; border-radius:8px; border:2px solid transparent; cursor:pointer; flex:0 0 56px;}
@@ -250,7 +308,7 @@
   .overlay.show{ opacity:1; pointer-events:auto; }
   .drawer{
     position:fixed; top:0; right:0; height:100%; width:min(420px,92vw);
-    background:white; z-index:60; box-shadow:-20px 0 50px rgba(0,0,0,0.15);
+    background:var(--paper-2); z-index:60; box-shadow:-20px 0 50px rgba(0,0,0,0.15);
     transform:translateX(100%); transition:transform .25s ease;
     display:flex; flex-direction:column;
   }
@@ -280,6 +338,7 @@
   .field label{ font-size:12.5px; font-weight:700; color:var(--ink); display:block; margin-bottom:5px;}
   .field input, .field select{
     width:100%; padding:10px 12px; border:1.5px solid var(--line); border-radius:8px; font-size:13.5px; font-family:inherit;
+    background:var(--paper-2); color:var(--text);
   }
   .pay-options{ display:flex; gap:10px; }
   .pay-option{
@@ -315,14 +374,14 @@
   .dash-card{ background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:14px;}
   .dash-card .dnum{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:700; color:var(--ink);}
   .dash-card .dlabel{ font-size:11px; color:var(--text-soft); margin-top:2px;}
-  .status-select{ padding:5px 8px; border:1px solid var(--line); border-radius:6px; font-size:11px; background:white;}
+  .status-select{ padding:5px 8px; border:1px solid var(--line); border-radius:6px; font-size:11px; background:var(--paper-2);}
   .status-badge{ font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:20px; }
   .status-badge.paid{ background:#EAF6EE; color:#3F8F5B; }
   .status-badge.pending{ background:#FBEDEA; color:#C0392B; }
   .backup-row{ display:flex; gap:8px; margin-top:10px; }
   .backup-row .btn-secondary{ margin-top:0; }
   .table-note{ font-size:10.5px; color:var(--text-soft); margin:6px 0 14px 0; }
-  .admin-tab{ flex:1; padding:9px; border-radius:8px; border:1.5px solid var(--line); background:white; font-size:12.5px; font-weight:700; color:var(--text-soft);}
+  .admin-tab{ flex:1; padding:9px; border-radius:8px; border:1.5px solid var(--line); background:var(--paper-2); font-size:12.5px; font-weight:700; color:var(--text-soft);}
   .admin-tab.active{ background:var(--ink); color:white; border-color:var(--ink);}
   .admin-product-row{
     display:flex; align-items:center; gap:10px; padding:10px; border:1px solid var(--line); border-radius:10px; margin-bottom:8px;
@@ -335,6 +394,7 @@
   .icon-btn.danger{ color:#C0392B;}
   .field textarea{
     width:100%; padding:10px 12px; border:1.5px solid var(--line); border-radius:8px; font-size:13.5px; font-family:inherit; resize:vertical; min-height:60px;
+    background:var(--paper-2); color:var(--text);
   }
   .img-preview{ width:70px; height:70px; object-fit:cover; border-radius:8px; border:1px solid var(--line); margin-top:8px; display:none;}
   .gallery-thumbs{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
@@ -346,14 +406,25 @@
   }
   .spec-row{ display:flex; gap:6px; margin-bottom:6px; }
   .spec-row input{ flex:1; padding:8px 10px; border:1.5px solid var(--line); border-radius:6px; font-size:12.5px; }
-  .btn-secondary{ background:white; color:var(--ink); border:1.5px solid var(--line); border-radius:10px; padding:12px; font-weight:700; font-size:13.5px; width:100%; margin-top:8px;}
+  .btn-secondary{ background:var(--paper-2); color:var(--ink); border:1.5px solid var(--line); border-radius:10px; padding:12px; font-weight:700; font-size:13.5px; width:100%; margin-top:8px;}
   .export-note{ background:#FFF4EC; border:1.5px solid var(--orange); border-radius:8px; padding:10px 12px; font-size:11.5px; color:#8a4a13; margin-top:14px;}
+  .legal-content{ font-size:12.5px; color:var(--text); line-height:1.6; }
+  .legal-content h4{ font-size:14px; color:var(--ink); margin:18px 0 6px 0; }
+  .legal-content h4:first-child{ margin-top:6px; }
+  .legal-content p{ margin:0 0 10px 0; color:var(--text-soft); }
+  .legal-content ul{ margin:0 0 10px 18px; padding:0; color:var(--text-soft); }
+  .legal-content li{ margin-bottom:4px; }
+  .legal-content strong{ color:var(--ink); }
+  .legal-updated{ font-size:10.5px; color:var(--text-soft); font-style:italic; margin-bottom:14px; display:block; }
+  .consent-row{ display:flex; align-items:flex-start; gap:8px; font-size:11.5px; color:var(--text-soft); margin:14px 0; }
+  .consent-row input{ margin-top:2px; width:auto; flex:0 0 auto; }
+  .consent-row a{ color:var(--ink-2); font-weight:600; text-decoration:underline; cursor:pointer; }
 
 
   /* ===== AVIS / A PROPOS ===== */
   .reviews-section{ max-width:1280px; margin:20px auto 0 auto; padding:0 5vw 10px 5vw; }
   .reviews-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:18px; margin-top:14px;}
-  .review-card{ background:white; border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
+  .review-card{ background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:18px 20px;}
   .review-stars{ color:var(--orange); font-size:14px; letter-spacing:2px; margin-bottom:8px;}
   .review-text{ font-size:13px; color:var(--text); line-height:1.5; margin-bottom:12px; font-style:italic;}
   .review-name{ font-size:12.5px; font-weight:700; color:var(--ink);}
@@ -388,8 +459,20 @@
     .about-photo-badge{ margin:0 auto; }
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+
+<div id="pageLoader">
+  <div class="loader-mark">
+    <svg viewBox="0 0 40 40" width="34" height="34" fill="none">
+      <path d="M20 6 L32 32 H25.5 L20 19 L14.5 32 H8 Z" fill="white"/>
+      <circle cx="20" cy="26" r="2.4" fill="#E8833A"/>
+    </svg>
+  </div>
+  <div class="loader-word">MARCHÉ AUBEDE</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
 
 <nav class="nav">
   <button class="hamburger-btn" id="openMobileMenu" aria-label="Menu">☰</button>
@@ -410,6 +493,7 @@
     <a href="#avis">Avis</a>
   </div>
 
+  <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">🌙</button>
   <button class="cart-btn" id="openCart">
     Panier <span id="cartTotalNav" class="mono">0 FCFA</span>
     <span class="cart-count" id="cartCount">0</span>
@@ -429,6 +513,7 @@
     <a class="mobile-menu-link" href="#catalogue" onclick="closeDrawers()">🛍️ Catalogue</a>
     <a class="mobile-menu-link" href="#avis" onclick="closeDrawers()">⭐ Avis clients</a>
     <a class="mobile-menu-link" href="#apropos" onclick="closeDrawers()">ℹ️ À propos</a>
+    <button class="mobile-menu-link" id="installAppBtn" style="width:100%; text-align:left; background:none; border:none; display:none; color:var(--orange);">📲 Installer l'application</button>
     <div id="mobileMenuCats" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--line);"></div>
   </div>
 </div>
@@ -530,8 +615,17 @@
         <a href="https://wa.me/2290164638429" target="_blank">WhatsApp Moov : +229 01 64 63 84 29</a>
       </p>
     </div>
+    <div>
+      <h4>Informations légales</h4>
+      <p>
+        <a href="#" onclick="openLegal('mentions'); return false;">Mentions légales</a><br>
+        <a href="#" onclick="openLegal('cgu'); return false;">Conditions d'utilisation (CGU)</a><br>
+        <a href="#" onclick="openLegal('cgv'); return false;">Conditions de vente (CGV)</a><br>
+        <a href="#" onclick="openLegal('confidentialite'); return false;">Politique de confidentialité</a>
+      </p>
+    </div>
   </div>
-  <div class="footer-bottom">© 2026 <span id="footerSiteTitle2">Marché AUBEDE</span> — Tous droits réservés. &nbsp;·&nbsp; <a href="#" id="openAdmin" style="text-decoration:underline;">Administration</a></div>
+  <div class="footer-bottom">© 2026 <span id="footerSiteTitle2">Marché AUBEDE</span> — Tous droits réservés. &nbsp;·&nbsp; <a href="#" id="openAdmin" style="text-decoration:underline;">Administration</a> &nbsp;·&nbsp; <a href="#" id="installAppLink" style="text-decoration:underline; display:none;">📲 Installer l'application</a></div>
 </footer>
 
 <div class="overlay" id="overlay"></div>
@@ -576,8 +670,33 @@
   <div class="checkout-body" id="detailBody"></div>
 </div>
 
+<!-- MENTIONS LEGALES / CGU / CGV / CONFIDENTIALITE -->
+<div class="drawer" id="legalDrawer" style="width:min(560px,96vw);">
+  <div class="drawer-head">
+    <h3>Informations légales</h3>
+    <button class="close-btn" id="closeLegal">✕</button>
+  </div>
+  <div class="checkout-body">
+    <div class="admin-tabs" id="legalNav">
+      <button class="admin-tab" data-legal="mentions" onclick="showLegal('mentions')">Mentions légales</button>
+      <button class="admin-tab" data-legal="cgu" onclick="showLegal('cgu')">CGU</button>
+      <button class="admin-tab" data-legal="cgv" onclick="showLegal('cgv')">CGV</button>
+      <button class="admin-tab" data-legal="confidentialite" onclick="showLegal('confidentialite')">Confidentialité</button>
+    </div>
+    <div id="legalContent" class="legal-content"></div>
+  </div>
+</div>
+
 
 <script>
+/* ========================= THEME (mode sombre / clair) ========================= */
+(function initTheme(){
+  const saved = localStorage.getItem("aubede_theme");
+  if(saved === "dark"){
+    document.documentElement.classList.add("dark");
+  }
+})();
+
 /* =========================================================
    DONNÉES PRODUITS — modifiez / ajoutez vos produits ici
    ========================================================= */
@@ -965,12 +1084,13 @@ function switchDetailImage(el, src){
   el.classList.add("active");
 }
 
-function productCardHtml(p){
+function productCardHtml(p, index){
   const rating = getProductRating(p.id);
   const hasPromo = p.promoPrice && p.promoPrice < p.price;
   const outOfStock = p.stock <= 0;
+  const delay = Math.min(index || 0, 12) * 0.05;
   return `
-    <div class="card">
+    <div class="card" style="animation-delay:${delay}s;">
       <div class="card-img" onclick="openProductDetail('${p.id}')" style="cursor:pointer; position:relative;">
         <img src="${p.images[0]}" alt="${p.name}">
         ${p.featured ? `<div class="featured-badge">🌟 Vedette</div>` : ''}
@@ -1008,7 +1128,7 @@ function renderProducts(){
     grid.innerHTML = `<div class="empty-cart" style="grid-column:1/-1;">Aucun produit ne correspond à votre recherche.</div>`;
     return;
   }
-  grid.innerHTML = items.map(p => productCardHtml(p)).join("");
+  grid.innerHTML = items.map((p,i) => productCardHtml(p,i)).join("");
 }
 
 document.getElementById("searchInput").addEventListener("input", (e)=>{
@@ -1108,6 +1228,106 @@ document.getElementById("openCart2").onclick = ()=>openDrawer("cartDrawer");
 document.getElementById("closeCart").onclick = closeDrawers;
 document.getElementById("closeCheckout").onclick = closeDrawers;
 document.getElementById("closeDetail").onclick = closeDrawers;
+document.getElementById("closeLegal").onclick = closeDrawers;
+
+/* ========================= MENTIONS LEGALES / CGU / CGV / CONFIDENTIALITE ========================= */
+const LEGAL_TEXTS = {
+  mentions: `
+    <span class="legal-updated">Dernière mise à jour : Juillet 2026</span>
+    <h4>Éditeur du site</h4>
+    <p>Le présent site « Marché AUBEDE » est édité par <strong>ZOUNTCHEGBE AUBEDE</strong>, entrepreneur individuel, agissant en son nom propre dans le cadre d'une activité de vente de produits informatiques, de formations et de services de maintenance informatique.</p>
+    <ul>
+      <li><strong>Ville d'exploitation :</strong> Cotonou, République du Bénin</li>
+      <li><strong>Numéro d'Identifiant Fiscal Unique (IFU) / RCCM :</strong> en cours d'immatriculation — à jour dès obtention</li>
+      <li><strong>Contact :</strong> WhatsApp MTN +229 01 67 92 92 69, WhatsApp Moov +229 01 64 63 84 29</li>
+    </ul>
+    <h4>Hébergement du site</h4>
+    <p>Ce site est hébergé par GitHub Pages, service fourni par GitHub Inc., dont l'infrastructure peut être localisée hors du territoire béninois.</p>
+    <h4>Propriété intellectuelle</h4>
+    <p>L'ensemble des éléments du site (textes, visuels, logo, structure) est la propriété de ZOUNTCHEGBE AUBEDE, sauf mention contraire. Toute reproduction non autorisée est interdite.</p>
+    <h4>Responsabilité</h4>
+    <p>L'éditeur s'efforce d'assurer l'exactitude des informations diffusées sur ce site, sans garantie absolue. L'éditeur ne saurait être tenu responsable des erreurs, omissions, ou de l'indisponibilité temporaire du site.</p>
+  `,
+  cgu: `
+    <span class="legal-updated">Dernière mise à jour : Juillet 2026</span>
+    <h4>1. Objet</h4>
+    <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site Marché AUBEDE par toute personne (« l'Utilisateur ») le consultant.</p>
+    <h4>2. Acceptation</h4>
+    <p>En naviguant sur ce site, l'Utilisateur reconnaît avoir pris connaissance des présentes CGU et les accepter sans réserve. En cas de désaccord, l'Utilisateur est invité à ne pas utiliser le site.</p>
+    <h4>3. Accès au site</h4>
+    <p>Le site est accessible gratuitement à tout Utilisateur disposant d'un accès à Internet. L'éditeur ne garantit pas une disponibilité continue et peut interrompre temporairement le site pour maintenance, sans préavis ni indemnité.</p>
+    <h4>4. Utilisation autorisée</h4>
+    <ul>
+      <li>L'Utilisateur s'engage à utiliser le site conformément à sa destination : consultation de produits, formations et services, et passation de commandes.</li>
+      <li>Toute utilisation frauduleuse, abusive, ou visant à nuire au bon fonctionnement du site est strictement interdite.</li>
+      <li>Les informations transmises par l'Utilisateur (nom, téléphone, adresse) doivent être exactes.</li>
+    </ul>
+    <h4>5. Compte et données</h4>
+    <p>Le site ne nécessite pas de création de compte permanent. Certaines informations sont conservées localement dans le navigateur de l'Utilisateur (panier), conformément à la Politique de confidentialité.</p>
+    <h4>6. Modification des CGU</h4>
+    <p>L'éditeur se réserve le droit de modifier les présentes CGU à tout moment. Les CGU applicables sont celles en vigueur au moment de la consultation du site.</p>
+    <h4>7. Droit applicable</h4>
+    <p>Les présentes CGU sont soumises au droit béninois. Tout litige relève, à défaut de résolution amiable, des juridictions compétentes de la République du Bénin.</p>
+  `,
+  cgv: `
+    <span class="legal-updated">Dernière mise à jour : Juillet 2026</span>
+    <h4>1. Objet</h4>
+    <p>Les présentes Conditions Générales de Vente (CGV) régissent les ventes de produits (physiques, numériques) et de services de maintenance informatique proposés par ZOUNTCHEGBE AUBEDE via le site Marché AUBEDE, à destination de tout client (« le Client »).</p>
+    <h4>2. Prix</h4>
+    <p>Les prix sont indiqués en Francs CFA (FCFA), toutes taxes comprises le cas échéant. L'éditeur se réserve le droit de modifier ses prix à tout moment ; le prix applicable est celui affiché au moment de la commande.</p>
+    <h4>3. Commande</h4>
+    <p>Le Client sélectionne les produits souhaités, les ajoute au panier, puis finalise sa commande en renseignant ses coordonnées. La commande est ensuite transmise à l'éditeur via WhatsApp pour confirmation. La commande n'est définitivement validée qu'après réception du paiement.</p>
+    <h4>4. Paiement</h4>
+    <p>Le paiement s'effectue exclusivement par Mobile Money (MTN Mobile Money ou Moov Money), aux numéros indiqués sur le site. Le site ne collecte ni ne conserve aucune donnée bancaire ou de paiement : la transaction s'effectue directement via les plateformes Mobile Money du Client.</p>
+    <h4>5. Livraison</h4>
+    <ul>
+      <li><strong>Produits physiques :</strong> livraison à Cotonou et Abomey-Calavi sous 24h en moyenne, autres villes du Bénin sous 48 à 72h, sauf indication contraire sur la fiche produit.</li>
+      <li><strong>Produits numériques</strong> (formations, fichiers) : envoi immédiat par WhatsApp après confirmation du paiement.</li>
+      <li><strong>Services</strong> (interventions, formations individuelles) : réalisés sur rendez-vous convenu avec le Client.</li>
+    </ul>
+    <h4>6. Droit de rétractation</h4>
+    <p>Conformément aux usages applicables à la vente à distance, le Client dispose d'un délai raisonnable pour signaler toute non-conformité d'un produit physique reçu. Pour les produits numériques livrés et consultés immédiatement, ainsi que pour les services déjà réalisés, le droit de rétractation ne peut s'appliquer une fois la prestation exécutée ou le contenu délivré, conformément à la nature de ces prestations.</p>
+    <h4>7. Garanties</h4>
+    <p>Chaque produit physique bénéficie d'une garantie contre les défauts de fabrication, dont la durée est précisée sur sa fiche produit. Cette garantie ne couvre pas une mauvaise utilisation, un choc, ou une usure normale.</p>
+    <h4>8. Réclamations</h4>
+    <p>Toute réclamation relative à une commande peut être adressée par WhatsApp aux numéros de contact indiqués sur le site, en précisant le code de commande reçu lors de la validation.</p>
+    <h4>9. Droit applicable</h4>
+    <p>Les présentes CGV sont soumises au droit béninois.</p>
+  `,
+  confidentialite: `
+    <span class="legal-updated">Dernière mise à jour : Juillet 2026</span>
+    <h4>1. Responsable du traitement</h4>
+    <p>ZOUNTCHEGBE AUBEDE, exploitant du site Marché AUBEDE, est responsable du traitement des données personnelles collectées via ce site.</p>
+    <h4>2. Données collectées</h4>
+    <p>Lors d'une commande, les données suivantes peuvent être collectées : nom complet, numéro de téléphone, adresse e-mail (facultative), adresse de livraison ou d'intervention, produits commandés et moyen de paiement choisi.</p>
+    <h4>3. Finalité du traitement</h4>
+    <ul>
+      <li>Traiter et livrer la commande du Client</li>
+      <li>Le recontacter en cas de besoin concernant sa commande</li>
+      <li>Assurer le suivi après-vente et la garantie</li>
+    </ul>
+    <h4>4. Transmission et conservation</h4>
+    <p>Les données de commande sont transmises à l'éditeur via WhatsApp et conservées par ses soins, sur son propre appareil, dans le cadre strict de la gestion de son activité. Ces données ne sont ni vendues, ni cédées, ni communiquées à des tiers à des fins commerciales.</p>
+    <p>Le site utilise le stockage local du navigateur (« localStorage ») uniquement pour mémoriser le contenu du panier d'achat sur l'appareil du Client ; aucune donnée de navigation n'est transmise à des régies publicitaires tierces.</p>
+    <h4>5. Droits de la personne concernée</h4>
+    <p>Conformément à la loi n°2017-20 du 20 avril 2018 portant Code du numérique en République du Bénin et aux prérogatives de l'Autorité de Protection des Données à caractère Personnel (APDP), le Client dispose d'un droit d'accès, de rectification et de suppression de ses données personnelles.</p>
+    <p>Pour exercer ces droits, le Client peut contacter l'éditeur via WhatsApp aux numéros de contact indiqués sur le site.</p>
+    <h4>6. Sécurité</h4>
+    <p>L'éditeur s'engage à prendre des mesures raisonnables pour protéger les données personnelles communiquées contre tout accès non autorisé, altération ou divulgation.</p>
+  `
+};
+
+function openLegal(section){
+  showLegal(section);
+  openDrawer("legalDrawer");
+}
+function showLegal(section){
+  document.querySelectorAll("#legalNav .admin-tab").forEach(b=>{
+    b.classList.toggle("active", b.dataset.legal === section);
+  });
+  document.getElementById("legalContent").innerHTML = LEGAL_TEXTS[section] || "";
+}
+
 document.getElementById("overlay").onclick = closeDrawers;
 
 /* ========================= FILTRES CATÉGORIES (dynamiques) ========================= */
@@ -1179,7 +1399,7 @@ function renderFeatured(){
     return;
   }
   section.style.display = "block";
-  grid.innerHTML = items.map(p => productCardHtml(p)).join("");
+  grid.innerHTML = items.map((p,i) => productCardHtml(p,i)).join("");
 }
 
 function renderPromoSection(){
@@ -1192,7 +1412,7 @@ function renderPromoSection(){
     return;
   }
   section.style.display = "block";
-  grid.innerHTML = items.map(p => productCardHtml(p)).join("");
+  grid.innerHTML = items.map((p,i) => productCardHtml(p,i)).join("");
 }
 
 /* ========================= MENU MOBILE ========================= */
@@ -1244,6 +1464,10 @@ function renderCheckoutForm(){
         </label>
       </div>
     </div>
+    <div class="consent-row">
+      <input type="checkbox" id="ckConsent">
+      <label for="ckConsent">J'ai lu et j'accepte les <a onclick="openLegal('cgv')">Conditions Générales de Vente</a>, les <a onclick="openLegal('cgu')">Conditions d'Utilisation</a> et la <a onclick="openLegal('confidentialite')">Politique de confidentialité</a> du site.</label>
+    </div>
     <button class="btn-primary" style="width:100%; margin-top:8px;" onclick="submitOrder()">Valider la commande</button>
   `;
 }
@@ -1262,6 +1486,10 @@ function submitOrder(){
 
   if(!name || !phone){
     alert("Merci de renseigner votre nom et votre numéro de téléphone.");
+    return;
+  }
+  if(!document.getElementById("ckConsent").checked){
+    alert("Merci d'accepter les Conditions Générales de Vente, les Conditions d'Utilisation et la Politique de confidentialité pour valider votre commande.");
     return;
   }
 
@@ -1304,6 +1532,15 @@ function submitOrder(){
     ? `<p style="font-size:11.5px; color:var(--text-soft);">Un reçu vous sera envoyé à <strong>${email}</strong> par ZOUNTCHEGBE AUBEDE après confirmation du paiement.</p>`
     : "";
 
+  lastOrderReceipt = {
+    code, name, phone, email, address, payMethod, numero, total,
+    date: new Date().toLocaleDateString("fr-FR"),
+    items: Object.entries(cart).map(([id,qty])=>{
+      const p = PRODUCTS.find(x=>x.id===id);
+      return { name: p.name, qty, lineTotal: effectivePrice(p)*qty };
+    })
+  };
+
   document.getElementById("checkoutTitle").textContent = "Commande enregistrée";
   document.getElementById("checkoutBody").innerHTML = `
     <div class="confirm-receipt">
@@ -1319,6 +1556,7 @@ function submitOrder(){
         <div class="card-price mono">${numero}</div>
       </div>
       <a class="wa-btn" href="${waLink}" target="_blank">Confirmer la commande sur WhatsApp</a>
+      <button class="btn-secondary" onclick="downloadReceiptPDF()">📄 Télécharger le reçu (PDF)</button>
       ${emailNoteHtml}
     </div>
   `;
@@ -1326,6 +1564,91 @@ function submitOrder(){
   cart = {};
   saveCart();
   renderCart();
+}
+
+let lastOrderReceipt = null;
+
+function downloadReceiptPDF(){
+  if(!lastOrderReceipt || !window.jspdf){
+    alert("Le reçu n'est pas disponible pour le moment.");
+    return;
+  }
+  const o = lastOrderReceipt;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: "mm", format: "a5" });
+  const pageW = doc.internal.pageSize.getWidth();
+  const ink = [20, 49, 78];
+  const orange = [232, 131, 58];
+  const softText = [90, 103, 115];
+
+  // En-tête
+  doc.setFillColor(...ink);
+  doc.rect(0, 0, pageW, 28, "F");
+  doc.setTextColor(255,255,255);
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(16);
+  doc.text("MARCHÉ AUBEDE", pageW/2, 12, { align: "center" });
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(9);
+  doc.text("Reçu de commande", pageW/2, 19, { align: "center" });
+
+  let y = 38;
+  doc.setTextColor(...ink);
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(11);
+  doc.text("Code de commande : " + o.code, 12, y);
+  y += 6;
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(9.5);
+  doc.setTextColor(...softText);
+  doc.text("Date : " + o.date, 12, y); y += 5;
+  doc.text("Client : " + o.name + " (" + o.phone + ")", 12, y); y += 5;
+  if(o.email){ doc.text("E-mail : " + o.email, 12, y); y += 5; }
+  if(o.address){ doc.text("Adresse : " + o.address, 12, y); y += 5; }
+  y += 3;
+
+  doc.setDrawColor(220,227,231);
+  doc.line(12, y, pageW-12, y);
+  y += 7;
+
+  doc.setFont("helvetica","bold");
+  doc.setTextColor(...ink);
+  doc.setFontSize(10);
+  doc.text("Articles", 12, y);
+  y += 6;
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(9.5);
+  doc.setTextColor(...softText);
+  o.items.forEach(it=>{
+    doc.text(`${it.name} x${it.qty}`, 12, y);
+    doc.text(fmt(it.lineTotal), pageW-12, y, { align: "right" });
+    y += 6;
+  });
+
+  y += 2;
+  doc.setDrawColor(220,227,231);
+  doc.line(12, y, pageW-12, y);
+  y += 8;
+
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(13);
+  doc.setTextColor(...orange);
+  doc.text("Total à payer", 12, y);
+  doc.text(fmt(o.total), pageW-12, y, { align: "right" });
+  y += 10;
+
+  doc.setFont("helvetica","normal");
+  doc.setFontSize(9.5);
+  doc.setTextColor(...softText);
+  doc.text("Moyen de paiement : " + o.payMethod, 12, y); y += 5;
+  doc.text("Numéro à payer : " + o.numero, 12, y); y += 10;
+
+  doc.setFont("helvetica","italic");
+  doc.setFontSize(8.5);
+  doc.text("Ce reçu confirme votre commande. Il devient valable après réception du paiement", 12, y); y += 4;
+  doc.text("et confirmation par WhatsApp auprès de ZOUNTCHEGBE AUBEDE.", 12, y);
+
+  doc.save("Recu_" + o.code + ".pdf");
 }
 
 /* ========================= ADMINISTRATION ========================= */
@@ -2312,6 +2635,72 @@ renderFeatured();
 renderPromoSection();
 renderReviews();
 renderCart();
+
+/* ========================= TOGGLE THEME BUTTON ========================= */
+function updateThemeIcon(){
+  document.getElementById("themeToggle").textContent = document.documentElement.classList.contains("dark") ? "☀️" : "🌙";
+}
+document.getElementById("themeToggle").onclick = ()=>{
+  document.documentElement.classList.toggle("dark");
+  const isDark = document.documentElement.classList.contains("dark");
+  localStorage.setItem("aubede_theme", isDark ? "dark" : "light");
+  updateThemeIcon();
+};
+updateThemeIcon();
+
+/* ========================= MASQUER LE LOADER ========================= */
+setTimeout(()=>{
+  const loader = document.getElementById("pageLoader");
+  if(loader){
+    loader.classList.add("loader-hidden");
+    setTimeout(()=>loader.remove(), 500);
+  }
+}, 450);
+
+/* ========================= PWA : SERVICE WORKER + INSTALLATION ========================= */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", ()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{
+      // Le site fonctionne normalement même si le service worker ne peut pas s'enregistrer
+      // (par exemple lors d'un test en local sans hébergement).
+    });
+  });
+}
+
+let deferredInstallPrompt = null;
+const installMobileBtn = document.getElementById("installAppBtn");
+const installFooterLink = document.getElementById("installAppLink");
+
+window.addEventListener("beforeinstallprompt", (e)=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  installMobileBtn.style.display = "block";
+  installFooterLink.style.display = "inline";
+});
+
+function triggerInstall(){
+  if(deferredInstallPrompt){
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.finally(()=>{ deferredInstallPrompt = null; });
+  } else {
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    if(isIOS){
+      alert("Pour installer l'application sur iPhone/iPad :\n\n1. Appuyez sur le bouton Partager (carré avec une flèche) en bas de Safari\n2. Choisissez \"Sur l'écran d'accueil\"\n3. Confirmez\n\nL'icône Marché AUBEDE apparaîtra alors sur votre écran d'accueil.");
+    } else {
+      alert("Pour installer l'application, ouvrez le menu de votre navigateur et choisissez \"Installer l'application\" ou \"Ajouter à l'écran d'accueil\".");
+    }
+  }
+  closeDrawers();
+}
+installMobileBtn.onclick = triggerInstall;
+installFooterLink.onclick = (e)=>{ e.preventDefault(); triggerInstall(); };
+
+// Sur iPhone/iPad (pas d'évènement beforeinstallprompt), on affiche quand même le bouton
+// avec les instructions manuelles, car l'installation y est toujours possible via Safari.
+if(/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone){
+  installMobileBtn.style.display = "block";
+  installFooterLink.style.display = "inline";
+}
 
 </script>
 </body>
