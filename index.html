@@ -460,6 +460,7 @@
   }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
 <body>
 
@@ -514,6 +515,7 @@
     <a class="mobile-menu-link" href="#avis" onclick="closeDrawers()">⭐ Avis clients</a>
     <a class="mobile-menu-link" href="#apropos" onclick="closeDrawers()">ℹ️ À propos</a>
     <button class="mobile-menu-link" id="installAppBtn" style="width:100%; text-align:left; background:none; border:none; display:none; color:var(--orange);">📲 Installer l'application</button>
+    <button class="mobile-menu-link" id="notifBtn" style="width:100%; text-align:left; background:none; border:none; color:var(--ink-2);">🔔 Activer les notifications</button>
     <div id="mobileMenuCats" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--line);"></div>
   </div>
 </div>
@@ -1447,7 +1449,11 @@ function renderCheckoutForm(){
     </div>
     <div class="field">
       <label>Adresse / quartier (livraison ou intervention)</label>
-      <input type="text" id="ckAddress" placeholder="Ex : Abomey-Calavi, Zone...">
+      <div style="display:flex; gap:6px;">
+        <input type="text" id="ckAddress" placeholder="Ex : Abomey-Calavi, Zone..." style="flex:1;">
+        <button type="button" class="btn-secondary" style="width:auto; white-space:nowrap; margin-top:0; padding:0 12px;" onclick="useMyLocation()">📍 Ma position</button>
+      </div>
+      <div id="locationStatus" style="font-size:10.5px; color:var(--text-soft); margin-top:5px;"></div>
     </div>
     <div class="field">
       <label>Code promo (facultatif)</label>
@@ -1474,6 +1480,39 @@ function renderCheckoutForm(){
 function selectPay(id){
   document.getElementById("optMtn").classList.toggle("selected", id==="optMtn");
   document.getElementById("optMoov").classList.toggle("selected", id==="optMoov");
+}
+
+/* ========================= GÉOLOCALISATION (adresse automatique) ========================= */
+function useMyLocation(){
+  const statusEl = document.getElementById("locationStatus");
+  if(!navigator.geolocation){
+    statusEl.textContent = "La géolocalisation n'est pas disponible sur cet appareil.";
+    return;
+  }
+  statusEl.textContent = "📍 Localisation en cours...";
+  navigator.geolocation.getCurrentPosition(
+    async (pos)=>{
+      const { latitude, longitude } = pos.coords;
+      try{
+        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`);
+        const data = await res.json();
+        const addr = data.display_name || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+        document.getElementById("ckAddress").value = addr;
+        statusEl.textContent = "Adresse détectée ✓ — vous pouvez la corriger si besoin.";
+      }catch(err){
+        document.getElementById("ckAddress").value = `Position GPS : ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+        statusEl.textContent = "Adresse texte indisponible, coordonnées GPS utilisées à la place.";
+      }
+    },
+    (err)=>{
+      if(err.code === err.PERMISSION_DENIED){
+        statusEl.textContent = "Localisation refusée. Vous pouvez saisir votre adresse manuellement.";
+      } else {
+        statusEl.textContent = "Impossible d'obtenir votre position. Saisissez votre adresse manuellement.";
+      }
+    },
+    { enableHighAccuracy: true, timeout: 10000 }
+  );
 }
 
 function submitOrder(){
@@ -2667,40 +2706,85 @@ if("serviceWorker" in navigator){
   });
 }
 
+/* ========================= NOTIFICATIONS PUSH (OneSignal) ========================= */
+// 1) Créez un compte gratuit sur https://onesignal.com
+// 2) Créez une application "Web Push" et choisissez "Site web personnalisé"
+// 3) Renseignez l'URL de votre site (ex : https://zaubede-svg.github.io/Market_Plus/)
+// 4) Récupérez votre "OneSignal App ID" et remplacez la valeur ci-dessous
+const ONESIGNAL_APP_ID = "VOTRE_ONESIGNAL_APP_ID";
+
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+if(ONESIGNAL_APP_ID !== "VOTRE_ONESIGNAL_APP_ID"){
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: ONESIGNAL_APP_ID,
+      allowLocalhostAsSecureOrigin: true,
+    });
+  });
+}
+
+document.getElementById("notifBtn").onclick = async ()=>{
+  if(ONESIGNAL_APP_ID === "VOTRE_ONESIGNAL_APP_ID"){
+    alert("Les notifications ne sont pas encore configurées par le vendeur. Revenez bientôt !");
+    return;
+  }
+  if(!("Notification" in window)){
+    alert("Les notifications ne sont pas prises en charge sur cet appareil/navigateur.");
+    return;
+  }
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.Slidedown.promptPush();
+  });
+  closeDrawers();
+};
+
 let deferredInstallPrompt = null;
 const installMobileBtn = document.getElementById("installAppBtn");
 const installFooterLink = document.getElementById("installAppLink");
 
+const isStandaloneAlready = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+const ua = navigator.userAgent || "";
+const isIOS = /iphone|ipad|ipod/i.test(ua);
+const isAndroid = /android/i.test(ua);
+const isInAppBrowser = /FBAN|FBAV|Instagram|Line\/|; wv\)/i.test(ua) || (isIOS && !/safari/i.test(ua) && !/crios|fxios/i.test(ua));
+
+// On affiche le bouton d'installation par défaut sur mobile, sans attendre un
+// évènement qui ne se déclenche pas toujours (première visite, lien ouvert
+// depuis WhatsApp, navigateur différent de Chrome...).
+if(!isStandaloneAlready && (isIOS || isAndroid)){
+  installMobileBtn.style.display = "block";
+  installFooterLink.style.display = "inline";
+}
+
 window.addEventListener("beforeinstallprompt", (e)=>{
   e.preventDefault();
   deferredInstallPrompt = e;
-  installMobileBtn.style.display = "block";
-  installFooterLink.style.display = "inline";
+  if(!isStandaloneAlready){
+    installMobileBtn.style.display = "block";
+    installFooterLink.style.display = "inline";
+  }
 });
 
 function triggerInstall(){
+  if(isInAppBrowser){
+    alert("Vous consultez le site depuis WhatsApp, Facebook ou Instagram.\n\nPour installer l'application, ouvrez d'abord ce lien dans votre navigateur (Chrome ou Safari) : appuyez sur les trois points ⋮ ou le menu de cette fenêtre, puis choisissez \"Ouvrir dans le navigateur\".");
+    closeDrawers();
+    return;
+  }
   if(deferredInstallPrompt){
     deferredInstallPrompt.prompt();
     deferredInstallPrompt.userChoice.finally(()=>{ deferredInstallPrompt = null; });
+  } else if(isIOS){
+    alert("Pour installer l'application sur iPhone/iPad :\n\n1. Appuyez sur le bouton Partager (carré avec une flèche) en bas de Safari\n2. Choisissez \"Sur l'écran d'accueil\"\n3. Confirmez\n\nL'icône Marché AUBEDE apparaîtra alors sur votre écran d'accueil.");
+  } else if(isAndroid){
+    alert("Pour installer l'application sur Android :\n\n1. Appuyez sur le menu ⋮ en haut à droite de Chrome\n2. Choisissez \"Installer l'application\" ou \"Ajouter à l'écran d'accueil\"\n3. Confirmez\n\nL'icône Marché AUBEDE apparaîtra alors sur votre écran d'accueil.");
   } else {
-    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    if(isIOS){
-      alert("Pour installer l'application sur iPhone/iPad :\n\n1. Appuyez sur le bouton Partager (carré avec une flèche) en bas de Safari\n2. Choisissez \"Sur l'écran d'accueil\"\n3. Confirmez\n\nL'icône Marché AUBEDE apparaîtra alors sur votre écran d'accueil.");
-    } else {
-      alert("Pour installer l'application, ouvrez le menu de votre navigateur et choisissez \"Installer l'application\" ou \"Ajouter à l'écran d'accueil\".");
-    }
+    alert("Pour installer l'application, ouvrez le menu de votre navigateur et choisissez \"Installer l'application\" ou \"Ajouter à l'écran d'accueil\".");
   }
   closeDrawers();
 }
 installMobileBtn.onclick = triggerInstall;
 installFooterLink.onclick = (e)=>{ e.preventDefault(); triggerInstall(); };
-
-// Sur iPhone/iPad (pas d'évènement beforeinstallprompt), on affiche quand même le bouton
-// avec les instructions manuelles, car l'installation y est toujours possible via Safari.
-if(/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone){
-  installMobileBtn.style.display = "block";
-  installFooterLink.style.display = "inline";
-}
 
 </script>
 </body>
