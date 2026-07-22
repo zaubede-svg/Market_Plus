@@ -104,10 +104,10 @@
 
   /* ===== HERO ===== */
   .hero{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px;
-    align-items:center; padding:64px 5vw 56px 5vw;
-    max-width:1280px; margin:0 auto;
+    display:block; max-width:760px; margin:0 auto;
+    padding:64px 5vw 56px 5vw; text-align:left;
   }
+  .hero-search{ max-width:480px; margin-bottom:22px; }
   .hero-eyebrow{
     font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
     color:var(--ink-2); margin-bottom:14px;
@@ -172,7 +172,8 @@
   }
   .search-wrap input:focus{ outline:none; border-color:var(--ink-2); }
   .cat-cards-section{ max-width:1280px; margin:10px auto 0 auto; padding:0 5vw; }
-  .cat-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px; margin-top:14px;}
+  .cat-cards{ display:flex; overflow-x:auto; gap:14px; margin-top:14px; padding-bottom:6px; -webkit-overflow-scrolling:touch;}
+  .cat-card{ flex:0 0 150px; }
   .cat-card{
     background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;
     cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
@@ -201,8 +202,8 @@
   .section-title h2{ font-size:22px; color:var(--ink); margin:0;}
   .section-title span{ font-size:13px; color:var(--text-soft);}
   .grid{
-    max-width:1280px; margin:0 auto; padding:0 5vw 30px 5vw;
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:20px;
+    max-width:900px; margin:0 auto; padding:0 5vw 30px 5vw;
+    display:flex; flex-direction:column; gap:14px;
   }
   #pageLoader{
     position:fixed; inset:0; z-index:999;
@@ -237,37 +238,37 @@
   }
   .card{
     background:var(--paper-2); border:1px solid var(--line); border-radius:14px; overflow:hidden;
-    display:flex; flex-direction:column; transition:transform .15s ease, box-shadow .15s ease;
+    display:flex; flex-direction:row; transition:transform .15s ease, box-shadow .15s ease;
     animation: fadeInUp .5s ease both;
   }
   .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,49,78,0.10);}
   .card-img{
-    height:170px; background:var(--paper); display:flex; align-items:center; justify-content:center; overflow:hidden;
-    border-bottom:1px solid var(--line);
+    width:120px; height:120px; flex:0 0 120px; background:var(--paper); display:flex; align-items:center; justify-content:center; overflow:hidden;
+    border-right:1px solid var(--line); position:relative;
   }
   .card-img img{ width:100%; height:100%; object-fit:cover; transition:transform .35s ease; }
   .card:hover .card-img img{ transform:scale(1.07); }
-  .card-body{ padding:14px 16px 16px 16px; display:flex; flex-direction:column; gap:8px; flex:1;}
-  .card-cat{ font-size:10.5px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:0.5px;}
-  .card-name{ font-size:15px; font-weight:700; color:var(--ink); line-height:1.3;}
-  .card-desc{ font-size:12px; color:var(--text-soft); line-height:1.4; flex:1;}
-  .card-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:4px;}
+  .card-body{ padding:10px 14px; display:flex; flex-direction:column; gap:5px; flex:1; min-width:0;}
+  .card-cat{ font-size:10px; font-weight:700; color:var(--ink-2); text-transform:uppercase; letter-spacing:0.5px;}
+  .card-name{ font-size:14px; font-weight:700; color:var(--ink); line-height:1.3;}
+  .card-desc{ font-size:11.5px; color:var(--text-soft); line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+  .card-foot{ display:flex; align-items:center; justify-content:space-between; margin-top:2px; flex-wrap:wrap; gap:6px;}
   .card-price{ font-family:'IBM Plex Mono',monospace; font-weight:700; color:var(--ink); font-size:14.5px;}
   .card-price.promo{ color:var(--orange); }
   .old-price{ text-decoration:line-through; color:var(--text-soft); font-weight:400; font-size:12px; margin-right:4px;}
   .promo-badge{
-    position:absolute; top:8px; left:8px; background:var(--orange); color:white; font-size:10.5px; font-weight:700;
-    padding:4px 9px; border-radius:20px;
+    position:absolute; top:4px; left:4px; background:var(--orange); color:white; font-size:8.5px; font-weight:700;
+    padding:2px 6px; border-radius:20px;
   }
   .featured-badge{
-    position:absolute; top:8px; right:8px; background:var(--ink); color:white; font-size:10.5px; font-weight:700;
-    padding:4px 9px; border-radius:20px;
+    position:absolute; top:4px; right:4px; background:var(--ink); color:white; font-size:8.5px; font-weight:700;
+    padding:2px 6px; border-radius:20px;
   }
   .stock-badge-overlay{
-    position:absolute; inset:0; background:rgba(20,49,78,0.55); color:white; font-weight:700; font-size:12.5px;
-    display:flex; align-items:center; justify-content:center; text-align:center;
+    position:absolute; inset:0; background:rgba(20,49,78,0.55); color:white; font-weight:700; font-size:9.5px;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:4px;
   }
-  .card-rating{ color:var(--orange); font-size:11.5px; }
+  .card-rating{ color:var(--orange); font-size:10.5px; }
   .card-rating span{ color:var(--text-soft); }
   .card-rating.muted{ color:var(--text-soft); font-style:italic; }
 
@@ -524,7 +525,9 @@
   <div>
     <div class="hero-eyebrow" id="heroTagline">Boutique en ligne — Bénin</div>
     <h1>Achetez <em>vite</em>, payez en<br>Mobile Money.</h1>
-    <p>Formations, pièces informatiques, accessoires et services de dépannage — commandez en quelques clics et payez directement via MTN Mobile Money ou Moov Money.</p>
+    <div class="search-wrap hero-search">
+      <input type="text" id="searchInput" placeholder="🔍 Rechercher un produit (ex : RAM, portable, souris...)">
+    </div>
     <div class="hero-ctas">
       <button class="btn-primary" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Voir les produits</button>
       <button class="btn-ghost" id="openCart2">Mon panier</button>
@@ -532,19 +535,6 @@
     <div class="pay-badges">
       <div class="pay-badge"><span class="dot mtn"></span> MTN Mobile Money</div>
       <div class="pay-badge"><span class="dot moov"></span> Moov Money</div>
-    </div>
-  </div>
-  <div class="receipt-wrap">
-    <div class="receipt">
-      <div class="receipt-head">
-        <div class="rtitle">MARCHÉ AUBEDE</div>
-        <div class="rsub">Reçu de commande</div>
-      </div>
-      <div class="receipt-line"><span>Cours Maintenance Info.</span><span>1 500</span></div>
-      <div class="receipt-line"><span>Barrette RAM 16 Go</span><span>28 000</span></div>
-      <div class="receipt-line"><span>Souris USB</span><span>3 000</span></div>
-      <div class="receipt-line total"><span>Total</span><span>32 500 FCFA</span></div>
-      <div class="receipt-tag">Payé via MTN Mobile Money ✓</div>
     </div>
   </div>
 </section>
@@ -567,9 +557,6 @@
   <div class="grid" id="promoGrid"></div>
 </section>
 
-<div class="search-wrap">
-  <input type="text" id="searchInput" placeholder="🔍 Rechercher un produit (ex : RAM, portable, souris...)">
-</div>
 <div class="catbar" id="catbar"></div>
 
 
@@ -1489,30 +1476,50 @@ function useMyLocation(){
     statusEl.textContent = "La géolocalisation n'est pas disponible sur cet appareil.";
     return;
   }
-  statusEl.textContent = "📍 Localisation en cours...";
-  navigator.geolocation.getCurrentPosition(
-    async (pos)=>{
-      const { latitude, longitude } = pos.coords;
-      try{
-        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`);
-        const data = await res.json();
-        const addr = data.display_name || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
+
+  const consent = confirm(
+    "Marché AUBEDE souhaite utiliser votre position actuelle uniquement pour pré-remplir votre adresse de livraison.\n\n" +
+    "Elle n'est ni enregistrée, ni partagée, ni utilisée à d'autres fins.\n\n" +
+    "Autorisez-vous l'accès à votre position ?"
+  );
+  if(!consent){
+    statusEl.textContent = "Localisation non utilisée. Vous pouvez saisir votre adresse manuellement.";
+    return;
+  }
+
+  statusEl.textContent = "📍 Localisation en cours... (votre navigateur va vous demander la permission)";
+
+  function handleSuccess(pos){
+    const { latitude, longitude } = pos.coords;
+    statusEl.textContent = "📍 Position obtenue, recherche de l'adresse...";
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`)
+      .then(res => res.json())
+      .then(data => {
+        const addr = (data && data.display_name) ? data.display_name : `Position GPS : ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
         document.getElementById("ckAddress").value = addr;
         statusEl.textContent = "Adresse détectée ✓ — vous pouvez la corriger si besoin.";
-      }catch(err){
+      })
+      .catch(() => {
         document.getElementById("ckAddress").value = `Position GPS : ${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
         statusEl.textContent = "Adresse texte indisponible, coordonnées GPS utilisées à la place.";
-      }
-    },
-    (err)=>{
-      if(err.code === err.PERMISSION_DENIED){
-        statusEl.textContent = "Localisation refusée. Vous pouvez saisir votre adresse manuellement.";
-      } else {
-        statusEl.textContent = "Impossible d'obtenir votre position. Saisissez votre adresse manuellement.";
-      }
-    },
-    { enableHighAccuracy: true, timeout: 10000 }
-  );
+      });
+  }
+
+  function handleError(err){
+    if(err.code === err.PERMISSION_DENIED){
+      statusEl.textContent = "❌ Localisation refusée par votre navigateur/téléphone. Vérifiez les autorisations de localisation dans les paramètres, ou saisissez votre adresse manuellement.";
+    } else if(err.code === err.TIMEOUT){
+      // Nouvel essai avec des critères plus souples (moins précis mais plus rapide)
+      statusEl.textContent = "Signal GPS lent, nouvel essai...";
+      navigator.geolocation.getCurrentPosition(handleSuccess, ()=>{
+        statusEl.textContent = "❌ Impossible d'obtenir votre position (signal faible). Saisissez votre adresse manuellement.";
+      }, { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 });
+    } else {
+      statusEl.textContent = "❌ Position indisponible sur cet appareil. Saisissez votre adresse manuellement.";
+    }
+  }
+
+  navigator.geolocation.getCurrentPosition(handleSuccess, handleError, { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 });
 }
 
 function submitOrder(){
