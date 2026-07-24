@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marché AUBEDE — Boutique en ligne</title>
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#14314E">
+<meta name="theme-color" content="#1E2A4A">
 <meta name="description" content="Boutique en ligne — formations, pièces informatiques, accessoires et services de maintenance. Paiement via MTN Mobile Money et Moov Money.">
 <link rel="icon" href="icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -16,23 +16,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#14314E;
-    --ink-2:#1F7A8C;
-    --orange:#E8833A;
-    --paper:#F3F6F7;
+    --ink:#1E2A4A;
+    --ink-2:#146356;
+    --orange:#D97D3D;
+    --paper:#F7F3EC;
     --paper-2:#FFFFFF;
-    --line:#DCE3E7;
-    --text:#222831;
-    --text-soft:#5A6773;
+    --line:#E4DCD0;
+    --text:#23262B;
+    --text-soft:#6B675F;
     --whatsapp:#25D366;
-    --receipt-shadow: 0 18px 40px rgba(20,49,78,0.18);
+    --receipt-shadow: 0 18px 40px rgba(30,42,74,0.18);
   }
   html.dark{
-    --paper:#0F1720;
-    --paper-2:#1B2530;
-    --line:#2B3540;
-    --text:#E7EDF1;
-    --text-soft:#93A4B0;
+    --paper:#171512;
+    --paper-2:#221F1B;
+    --line:#34302A;
+    --text:#F0ECE4;
+    --text-soft:#A79E90;
     --receipt-shadow: 0 18px 40px rgba(0,0,0,0.45);
   }
   *{box-sizing:border-box;}
@@ -51,6 +51,8 @@
   .mono{font-family:'IBM Plex Mono',monospace;}
   a{color:inherit;}
   button{font-family:inherit;cursor:pointer; transition:transform .12s ease, filter .12s ease, background .2s ease, opacity .2s ease;}
+  .icon{ display:inline-block; vertical-align:-3px; flex-shrink:0; }
+  .icon-lg{ width:26px; height:26px; vertical-align:-6px; }
   button:active{ transform:scale(0.95); filter:brightness(0.96); }
 
   /* ===== NAV ===== */
@@ -107,7 +109,6 @@
     display:block; max-width:760px; margin:0 auto;
     padding:64px 5vw 56px 5vw; text-align:left;
   }
-  .hero-search{ max-width:480px; margin-bottom:22px; }
   .hero-eyebrow{
     font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
     color:var(--ink-2); margin-bottom:14px;
@@ -164,13 +165,23 @@
 
   /* ===== CATEGORY BAR ===== */
   .search-wrap{
-    max-width:1280px; margin:0 auto; padding:0 5vw 14px 5vw;
+    max-width:1280px; margin:0 auto; padding:0 5vw 14px 5vw; position:relative;
   }
   .search-wrap input{
-    width:100%; padding:13px 18px; border:1.5px solid var(--line); border-radius:30px;
+    width:100%; padding:13px 18px 13px 42px; border:1.5px solid var(--line); border-radius:30px;
     font-size:14px; font-family:inherit; background:var(--paper-2);
   }
   .search-wrap input:focus{ outline:none; border-color:var(--ink-2); }
+  .search-wrap .icon{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-soft); pointer-events:none;}
+  .hero-search{ padding:0; max-width:480px; margin-bottom:22px; }
+  .trust-row{
+    max-width:1000px; margin:0 auto; padding:0 5vw 30px 5vw;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:28px;
+  }
+  .trust-item{
+    display:flex; align-items:center; gap:9px; font-size:12.5px; font-weight:600; color:var(--text-soft);
+  }
+  .trust-item .trust-icon{ color:var(--ink-2); display:flex; }
   .cat-cards-section{ max-width:1280px; margin:10px auto 0 auto; padding:0 5vw; }
   .cat-cards{ display:flex; overflow-x:auto; gap:14px; margin-top:14px; padding-bottom:6px; -webkit-overflow-scrolling:touch;}
   .cat-card{ flex:0 0 150px; }
@@ -178,7 +189,7 @@
     background:var(--paper-2); border:1px solid var(--line); border-radius:14px; padding:20px 14px; text-align:center;
     cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
   }
-  .cat-card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,49,78,0.10); }
+  .cat-card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(30,42,74,0.10); }
   .cat-card .cicon{ font-size:26px; margin-bottom:8px; }
   .cat-card .cname{ font-size:13px; font-weight:700; color:var(--ink); }
   .cat-card .ccount{ font-size:11px; color:var(--text-soft); margin-top:2px;}
@@ -207,7 +218,7 @@
   }
   #pageLoader{
     position:fixed; inset:0; z-index:999;
-    background:linear-gradient(160deg,#0F2A44,#1B3A5C 45%,#1F7A8C 100%);
+    background:linear-gradient(160deg,#14203A,#1E2A4A 45%,#146356 100%);
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
     transition:opacity .4s ease, visibility .4s ease;
   }
@@ -240,8 +251,9 @@
     background:var(--paper-2); border:1px solid var(--line); border-radius:14px; overflow:hidden;
     display:flex; flex-direction:row; transition:transform .15s ease, box-shadow .15s ease;
     animation: fadeInUp .5s ease both;
+    box-shadow:0 2px 8px rgba(30,42,74,0.05);
   }
-  .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(20,49,78,0.10);}
+  .card:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(30,42,74,0.12);}
   .card-img{
     width:120px; height:120px; flex:0 0 120px; background:var(--paper); display:flex; align-items:center; justify-content:center; overflow:hidden;
     border-right:1px solid var(--line); position:relative;
@@ -265,7 +277,7 @@
     padding:2px 6px; border-radius:20px;
   }
   .stock-badge-overlay{
-    position:absolute; inset:0; background:rgba(20,49,78,0.55); color:white; font-weight:700; font-size:9.5px;
+    position:absolute; inset:0; background:rgba(30,42,74,0.55); color:white; font-weight:700; font-size:9.5px;
     display:flex; align-items:center; justify-content:center; text-align:center; padding:4px;
   }
   .card-rating{ color:var(--orange); font-size:10.5px; }
@@ -304,9 +316,50 @@
 
   /* ===== CART DRAWER ===== */
   .overlay{
-    position:fixed; inset:0; background:rgba(20,49,78,0.35); z-index:50; opacity:0; pointer-events:none; transition:opacity .2s ease;
+    position:fixed; inset:0; background:rgba(30,42,74,0.35); z-index:50; opacity:0; pointer-events:none; transition:opacity .2s ease;
   }
   .overlay.show{ opacity:1; pointer-events:auto; }
+
+  /* ===== TOASTS ===== */
+  #toastContainer{
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%); z-index:200;
+    display:flex; flex-direction:column; gap:10px; align-items:center; width:min(420px,92vw);
+    pointer-events:none;
+  }
+  .toast{
+    display:flex; align-items:center; gap:10px; background:var(--paper-2); color:var(--text);
+    border-left:4px solid var(--ink-2); border-radius:10px; padding:12px 16px; font-size:13px;
+    box-shadow:0 10px 30px rgba(30,42,74,0.18); width:100%;
+    opacity:0; transform:translateY(14px); transition:opacity .25s ease, transform .25s ease;
+    pointer-events:auto;
+  }
+  .toast.show{ opacity:1; transform:translateY(0); }
+  .toast.success{ border-left-color:#3F8F5B; }
+  .toast.error{ border-left-color:#C0392B; }
+  .toast.warning{ border-left-color:var(--orange); }
+  .toast .toast-icon{ flex:0 0 auto; }
+  .toast.success .toast-icon{ color:#3F8F5B; }
+  .toast.error .toast-icon{ color:#C0392B; }
+  .toast.warning .toast-icon{ color:var(--orange); }
+  .toast.info .toast-icon{ color:var(--ink-2); }
+  .toast-close{ margin-left:auto; background:none; border:none; color:var(--text-soft); font-size:13px; padding:2px; }
+
+  /* ===== CONFIRM MODAL ===== */
+  .confirm-overlay{
+    position:fixed; inset:0; background:rgba(30,42,74,0.45); z-index:210;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .confirm-overlay.show{ opacity:1; pointer-events:auto; }
+  .confirm-modal{
+    background:var(--paper-2); border-radius:16px; padding:24px 22px; width:min(360px,100%);
+    box-shadow:0 20px 50px rgba(30,42,74,0.25);
+    transform:scale(0.95); transition:transform .2s ease;
+  }
+  .confirm-overlay.show .confirm-modal{ transform:scale(1); }
+  .confirm-message{ font-size:14px; color:var(--text); line-height:1.5; margin-bottom:18px; text-align:center; }
+  .confirm-actions{ display:flex; gap:10px; }
+
   .drawer{
     position:fixed; top:0; right:0; height:100%; width:min(420px,92vw);
     background:var(--paper-2); z-index:60; box-shadow:-20px 0 50px rgba(0,0,0,0.15);
@@ -442,12 +495,12 @@
 
   /* ===== FOOTER ===== */
   footer{
-    background:var(--ink); color:#CFE4EC; padding:40px 5vw 26px 5vw; margin-top:40px;
+    background:var(--ink); color:#E3D9C8; padding:40px 5vw 26px 5vw; margin-top:40px;
   }
   .footer-grid{ max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;}
   footer h4{ color:white; font-size:14px; margin-bottom:10px;}
-  footer p, footer a{ font-size:12.5px; color:#AFCBDA; line-height:1.8; text-decoration:none;}
-  .footer-bottom{ max-width:1280px; margin:26px auto 0 auto; border-top:1px solid rgba(255,255,255,0.12); padding-top:16px; font-size:11.5px; color:#8FB2C4;}
+  footer p, footer a{ font-size:12.5px; color:#C9BBA4; line-height:1.8; text-decoration:none;}
+  .footer-bottom{ max-width:1280px; margin:26px auto 0 auto; border-top:1px solid rgba(255,255,255,0.12); padding-top:16px; font-size:11.5px; color:#A99A81;}
 
   @media (max-width:860px){
     .hero{ grid-template-columns:1fr; padding-top:36px;}
@@ -469,7 +522,7 @@
   <div class="loader-mark">
     <svg viewBox="0 0 40 40" width="34" height="34" fill="none">
       <path d="M20 6 L32 32 H25.5 L20 19 L14.5 32 H8 Z" fill="white"/>
-      <circle cx="20" cy="26" r="2.4" fill="#E8833A"/>
+      <circle cx="20" cy="26" r="2.4" fill="#D97D3D"/>
     </svg>
   </div>
   <div class="loader-word">MARCHÉ AUBEDE</div>
@@ -482,7 +535,7 @@
     <div class="logo-mark">
       <svg viewBox="0 0 40 40" width="22" height="22" fill="none">
         <path d="M20 6 L32 32 H25.5 L20 19 L14.5 32 H8 Z" fill="white"/>
-        <circle cx="20" cy="26" r="2.4" fill="#E8833A"/>
+        <circle cx="20" cy="26" r="2.4" fill="#D97D3D"/>
       </svg>
     </div>
     <div class="logo-word">MARCHÉ <span>AUBEDE</span></div>
@@ -495,9 +548,9 @@
     <a href="#avis">Avis</a>
   </div>
 
-  <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">🌙</button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"></button>
   <button class="cart-btn" id="openCart">
-    Panier <span id="cartTotalNav" class="mono">0 FCFA</span>
+    <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 5h11M9 20a1 1 0 100-2 1 1 0 000 2zM17 20a1 1 0 100-2 1 1 0 000 2z"/></svg> Panier <span id="cartTotalNav" class="mono">0 FCFA</span>
     <span class="cart-count" id="cartCount">0</span>
   </button>
 </nav>
@@ -509,14 +562,14 @@
     <button class="close-btn" id="closeMobileMenu">✕</button>
   </div>
   <div class="checkout-body">
-    <a class="mobile-menu-link" href="#accueil" onclick="closeDrawers()">🏠 Accueil</a>
-    <a class="mobile-menu-link" href="#vedettes" onclick="closeDrawers()">🌟 Produits vedettes</a>
-    <a class="mobile-menu-link" href="#promotions" onclick="closeDrawers()">🔥 Promotions</a>
-    <a class="mobile-menu-link" href="#catalogue" onclick="closeDrawers()">🛍️ Catalogue</a>
-    <a class="mobile-menu-link" href="#avis" onclick="closeDrawers()">⭐ Avis clients</a>
-    <a class="mobile-menu-link" href="#apropos" onclick="closeDrawers()">ℹ️ À propos</a>
-    <button class="mobile-menu-link" id="installAppBtn" style="width:100%; text-align:left; background:none; border:none; display:none; color:var(--orange);">📲 Installer l'application</button>
-    <button class="mobile-menu-link" id="notifBtn" style="width:100%; text-align:left; background:none; border:none; color:var(--ink-2);">🔔 Activer les notifications</button>
+    <a class="mobile-menu-link" href="#accueil" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5L12 4l8 7.5M6 10v9a1 1 0 001 1h4v-6h2v6h4a1 1 0 001-1v-9"/></svg> Accueil</a>
+    <a class="mobile-menu-link" href="#vedettes" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.2 6.1-.6z"/></svg> Produits vedettes</a>
+    <a class="mobile-menu-link" href="#promotions" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s-4 3.6-4 7.4A4 4 0 0012 18a4 4 0 004-4.6C16.6 12.5 15 12 15 12s.6 2-1 3c.4-2-1-3.3-1-5 0 0-3 2-3 5a3 3 0 006 0c0-4.5-3-7.5-4-9z"/></svg> Promotions</a>
+    <a class="mobile-menu-link" href="#catalogue" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg> Catalogue</a>
+    <a class="mobile-menu-link" href="#avis" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.2 6.1-.6z"/></svg> Avis clients</a>
+    <a class="mobile-menu-link" href="#apropos" onclick="closeDrawers()"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg> À propos</a>
+    <button class="mobile-menu-link" id="installAppBtn" style="width:100%; text-align:left; background:none; border:none; display:none; color:var(--orange);"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg> Installer l'application</button>
+    <button class="mobile-menu-link" id="notifBtn" style="width:100%; text-align:left; background:none; border:none; color:var(--ink-2);"><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 1112 0c0 4 1.5 5.5 1.5 5.5H4.5S6 14 6 10z"/><path d="M10 19a2 2 0 004 0"/></svg> Activer les notifications</button>
     <div id="mobileMenuCats" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--line);"></div>
   </div>
 </div>
@@ -526,16 +579,36 @@
     <div class="hero-eyebrow" id="heroTagline">Boutique en ligne — Bénin</div>
     <h1>Achetez <em>vite</em>, payez en<br>Mobile Money.</h1>
     <div class="search-wrap hero-search">
-      <input type="text" id="searchInput" placeholder="🔍 Rechercher un produit (ex : RAM, portable, souris...)">
+      <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Rechercher un produit (ex : RAM, portable, souris...)">
     </div>
     <div class="hero-ctas">
       <button class="btn-primary" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Voir les produits</button>
-      <button class="btn-ghost" id="openCart2">Mon panier</button>
+      <button class="btn-ghost" id="openCart2"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 5h11M9 20a1 1 0 100-2 1 1 0 000 2zM17 20a1 1 0 100-2 1 1 0 000 2z"/></svg> Mon panier</button>
     </div>
     <div class="pay-badges">
       <div class="pay-badge"><span class="dot mtn"></span> MTN Mobile Money</div>
       <div class="pay-badge"><span class="dot moov"></span> Moov Money</div>
     </div>
+  </div>
+</section>
+
+<section class="trust-row">
+  <div class="trust-item">
+    <span class="trust-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3z"/></svg></span>
+    <span>Paiement 100% sécurisé</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+    <span>Livraison rapide au Bénin</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.2 6.1-.6z"/></svg></span>
+    <span>Produits garantis</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg></span>
+    <span>Support WhatsApp réactif</span>
   </div>
 </section>
 
@@ -547,13 +620,13 @@
 
 <!-- PRODUITS VEDETTES -->
 <section class="featured-section" id="vedettes">
-  <div class="section-title"><h2>🌟 Produits vedettes</h2><span></span></div>
+  <div class="section-title"><h2><svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.2 6.1-.6z"/></svg> Produits vedettes</h2><span></span></div>
   <div class="grid" id="featuredGrid"></div>
 </section>
 
 <!-- PROMOTIONS -->
 <section class="promo-section" id="promotions">
-  <div class="section-title"><h2>🔥 En promotion</h2><span></span></div>
+  <div class="section-title"><h2><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s-4 3.6-4 7.4A4 4 0 0012 18a4 4 0 004-4.6C16.6 12.5 15 12 15 12s.6 2-1 3c.4-2-1-3.3-1-5 0 0-3 2-3 5a3 3 0 006 0c0-4.5-3-7.5-4-9z"/></svg> En promotion</h2><span></span></div>
   <div class="grid" id="promoGrid"></div>
 </section>
 
@@ -614,15 +687,27 @@
       </p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 <span id="footerSiteTitle2">Marché AUBEDE</span> — Tous droits réservés. &nbsp;·&nbsp; <a href="#" id="openAdmin" style="text-decoration:underline;">Administration</a> &nbsp;·&nbsp; <a href="#" id="installAppLink" style="text-decoration:underline; display:none;">📲 Installer l'application</a></div>
+  <div class="footer-bottom">© 2026 <span id="footerSiteTitle2">Marché AUBEDE</span> — Tous droits réservés. &nbsp;·&nbsp; <a href="#" id="openAdmin" style="text-decoration:underline;">Administration</a> &nbsp;·&nbsp; <a href="#" id="installAppLink" style="text-decoration:underline; display:none;"><svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg> Installer l'application</a></div>
 </footer>
 
 <div class="overlay" id="overlay"></div>
 
+<div id="toastContainer"></div>
+
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-modal">
+    <div id="confirmMessage" class="confirm-message"></div>
+    <div class="confirm-actions">
+      <button class="btn-secondary" id="confirmCancelBtn" style="margin-top:0;">Annuler</button>
+      <button class="btn-primary" id="confirmOkBtn" style="width:auto; flex:1;">Confirmer</button>
+    </div>
+  </div>
+</div>
+
 <!-- CART DRAWER -->
 <div class="drawer" id="cartDrawer">
   <div class="drawer-head">
-    <h3>Mon panier</h3>
+    <h3><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 5h11M9 20a1 1 0 100-2 1 1 0 000 2zM17 20a1 1 0 100-2 1 1 0 000 2z"/></svg> Mon panier</h3>
     <button class="close-btn" id="closeCart">✕</button>
   </div>
   <div class="drawer-body" id="cartBody"></div>
@@ -678,6 +763,86 @@
 
 
 <script>
+/* ========================= ICÔNES SVG (remplace les émojis) ========================= */
+const ICONS = {
+  cart: '<path d="M3 3h2l.4 2M7 13h10l3-8H5.4M7 13L5.4 5M7 13l-1.5 5h11M9 20a1 1 0 100-2 1 1 0 000 2zM17 20a1 1 0 100-2 1 1 0 000 2z"/>',
+  home: '<path d="M4 11.5L12 4l8 7.5M6 10v9a1 1 0 001 1h4v-6h2v6h4a1 1 0 001-1v-9"/>',
+  star: '<path d="M12 3l2.6 5.6 6.1.6-4.6 4.2 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.2 6.1-.6z"/>',
+  fire: '<path d="M12 3s-4 3.6-4 7.4A4 4 0 0012 18a4 4 0 004-4.6C16.6 12.5 15 12 15 12s.6 2-1 3c.4-2-1-3.3-1-5 0 0-3 2-3 5a3 3 0 006 0c0-4.5-3-7.5-4-9z"/>',
+  bag: '<path d="M6 8h12l1 12H5L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>',
+  chat: '<path d="M4 5h16v11H8l-4 4V5z"/>',
+  bell: '<path d="M6 10a6 6 0 1112 0c0 4 1.5 5.5 1.5 5.5H4.5S6 14 6 10z"/><path d="M10 19a2 2 0 004 0"/>',
+  download: '<path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/>',
+  book: '<path d="M5 5.5A2.5 2.5 0 017.5 3H19v15.5H7.5A2.5 2.5 0 005 21V5.5z"/><path d="M19 18.5H7.5A2.5 2.5 0 005 21"/>',
+  package: '<path d="M3.5 7.5L12 3l8.5 4.5V16.5L12 21l-8.5-4.5V7.5z"/><path d="M3.5 7.5L12 12m0 0l8.5-4.5M12 12v9"/>',
+  pin: '<path d="M12 21s7-6.3 7-11.5A7 7 0 105 9.5C5 14.7 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/>',
+  moon: '<path d="M20 14.5A8.5 8.5 0 119.5 4a7 7 0 0010.5 10.5z"/>',
+  sun: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.5 1.5M18.3 18.3l1.5 1.5M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.5-1.5M18.3 5.7l1.5-1.5"/>',
+  edit: '<path d="M4 20h4L18.5 9.5a2 2 0 000-2.8l-1.2-1.2a2 2 0 00-2.8 0L4 15.5V20z"/>',
+  clipboard: '<rect x="6" y="4" width="12" height="17" rx="1.5"/><path d="M9 4V3a1 1 0 011-1h4a1 1 0 011 1v1M9 10h6M9 14h6"/>',
+  shield: '<path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3z"/>',
+  users: '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.3c2.5.3 4.5 2.2 4.5 5.2"/>',
+  wallet: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16.5" cy="14" r="1.2"/>',
+  truck: '<path d="M2 7h11v9H2z"/><path d="M13 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/>',
+  megaphone: '<path d="M4 10v4h3l6 4V6l-6 4H4z"/><path d="M17 9.5a3 3 0 010 5"/>',
+  barchart: '<path d="M5 20V10M11 20V4M17 20v-7"/><path d="M3 20h18"/>',
+  gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a1.8 1.8 0 000-3l1.2-1.9-1.7-1.7-1.9 1.2a1.8 1.8 0 00-3 0L12 5.5l-1.9 1.2a1.8 1.8 0 00-3 0L5.4 8.6l1.2 1.9a1.8 1.8 0 000 3L5.4 15.4l1.7 1.7 1.9-1.2a1.8 1.8 0 003 0l1.9 1.2 1.9-1.2a1.8 1.8 0 003 0l1.9 1.2 1.7-1.7z"/>',
+  search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.3-4.3"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 005.4-5.4l-2.6 2.6-2-2z"/>',
+  mouse: '<rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 3v6"/>',
+  tool: '<path d="M4 20l7-7M14 4l1.5 1.5L18 3l3 3-2.5 2.5L20 10l-6 6-2-2-3 3-3-3 3-3-2-2z"/>',
+  laptop: '<rect x="4" y="5" width="16" height="10" rx="1"/><path d="M2 19h20"/>',
+  camera: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2.5h5L16 7"/><circle cx="12" cy="13.5" r="3.3"/>',
+  video: '<rect x="3" y="6" width="12" height="12" rx="1.5"/><path d="M15 10l6-3v10l-6-3z"/>',
+  lock: '<rect x="5" y="10.5" width="14" height="9" rx="1.5"/><path d="M8 10.5V7a4 4 0 018 0v3.5"/>',
+  close: '<path d="M6 6l12 12M18 6L6 18"/>'
+};
+function icon(name, size){
+  size = size || 16;
+  const paths = ICONS[name] || "";
+  return `<svg class="icon" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths}</svg>`;
+}
+
+/* ========================= NOTIFICATIONS (remplace alert()) ========================= */
+const TOAST_ICONS = { success:"cart", error:"close", warning:"fire", info:"info" };
+function showToast(message, type){
+  type = type || "info";
+  const container = document.getElementById("toastContainer");
+  const el = document.createElement("div");
+  el.className = "toast " + type;
+  const iconName = type === "success" ? "download" : type === "error" ? "close" : type === "warning" ? "fire" : "info";
+  el.innerHTML = `<span class="toast-icon">${icon(iconName,18)}</span><span>${message}</span><button class="toast-close">${icon("close",13)}</button>`;
+  container.appendChild(el);
+  requestAnimationFrame(()=> el.classList.add("show"));
+  const remove = ()=>{
+    el.classList.remove("show");
+    setTimeout(()=> el.remove(), 300);
+  };
+  el.querySelector(".toast-close").onclick = remove;
+  setTimeout(remove, 4200);
+}
+function alert(message){ showToast(message, "info"); }
+
+/* ========================= CONFIRMATION (remplace confirm()) ========================= */
+function showConfirm(message){
+  return new Promise((resolve)=>{
+    const overlay = document.getElementById("confirmOverlay");
+    document.getElementById("confirmMessage").textContent = message;
+    overlay.classList.add("show");
+    const okBtn = document.getElementById("confirmOkBtn");
+    const cancelBtn = document.getElementById("confirmCancelBtn");
+    function cleanup(result){
+      overlay.classList.remove("show");
+      okBtn.onclick = null;
+      cancelBtn.onclick = null;
+      resolve(result);
+    }
+    okBtn.onclick = ()=>cleanup(true);
+    cancelBtn.onclick = ()=>cleanup(false);
+  });
+}
+
 /* ========================= THEME (mode sombre / clair) ========================= */
 (function initTheme(){
   const saved = localStorage.getItem("aubede_theme");
@@ -1026,36 +1191,36 @@ function openProductDetail(id){
         : `<span class="detail-price">${fmt(p.price)}</span>`}
     </div>
 
-    <div class="detail-stock ${outOfStock ? 'out' : ''}">${outOfStock ? '❌ Rupture de stock' : '📦 En stock (' + p.stock + ' disponible' + (p.stock>1?'s':'') + ')'}</div>
+    <div class="detail-stock ${outOfStock ? 'out' : ''}">${outOfStock ? icon("close",13)+' Rupture de stock' : icon("package",13)+' En stock (' + p.stock + ' disponible' + (p.stock>1?'s':'') + ')'}</div>
 
     <button class="btn-primary" style="width:100%; margin:12px 0;" ${outOfStock ? 'disabled style="opacity:0.5;"' : ''} onclick="addToCart('${p.id}')">${outOfStock ? 'Indisponible' : 'Ajouter au panier'}</button>
 
     <div class="detail-section">
-      <h4>📝 Description</h4>
+      <h4>${icon("edit",15)} Description</h4>
       <p>${p.fullDesc || p.desc}</p>
     </div>
 
     ${p.specs && p.specs.length ? `
     <div class="detail-section">
-      <h4>📋 Caractéristiques techniques</h4>
+      <h4>${icon("clipboard",15)} Caractéristiques techniques</h4>
       <table class="detail-specs">
         ${p.specs.map(s => `<tr><td>${s.label}</td><td>${s.value}</td></tr>`).join("")}
       </table>
     </div>` : ''}
 
     <div class="detail-section">
-      <h4>🚚 Livraison</h4>
+      <h4>${icon("truck",15)} Livraison</h4>
       <p>${p.delivery}</p>
     </div>
 
     <div class="detail-section">
-      <h4>🛡️ Garantie</h4>
+      <h4>${icon("shield",15)} Garantie</h4>
       <p>${p.warranty}</p>
     </div>
 
     ${linkedReviews.length ? `
     <div class="detail-section">
-      <h4>💬 Avis sur ce produit</h4>
+      <h4>${icon("chat",15)} Avis sur ce produit</h4>
       ${linkedReviews.map(r => `
         <div class="review-card" style="margin-bottom:8px;">
           <div class="review-stars">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</div>
@@ -1082,8 +1247,8 @@ function productCardHtml(p, index){
     <div class="card" style="animation-delay:${delay}s;">
       <div class="card-img" onclick="openProductDetail('${p.id}')" style="cursor:pointer; position:relative;">
         <img src="${p.images[0]}" alt="${p.name}">
-        ${p.featured ? `<div class="featured-badge">🌟 Vedette</div>` : ''}
-        ${hasPromo ? `<div class="promo-badge">🔥 Promo</div>` : ''}
+        ${p.featured ? `<div class="featured-badge">${icon("star",11)} Vedette</div>` : ''}
+        ${hasPromo ? `<div class="promo-badge">${icon("fire",11)} Promo</div>` : ''}
         ${outOfStock ? `<div class="stock-badge-overlay">Rupture de stock</div>` : ''}
       </div>
       <div class="card-body">
@@ -1324,14 +1489,14 @@ function getCategories(){
   return [...new Set(PRODUCTS.map(p=>p.category))];
 }
 const CATEGORY_ICONS = {
-  "Formations": "📚",
-  "Pièces & Composants": "🔧",
-  "Accessoires": "🖱️",
-  "Services": "🛠️",
-  "Ordinateurs portables": "💻",
+  "Formations": "book",
+  "Pièces & Composants": "wrench",
+  "Accessoires": "mouse",
+  "Services": "tool",
+  "Ordinateurs portables": "laptop",
 };
 function getCategoryIcon(cat){
-  return CATEGORY_ICONS[cat] || "🛍️";
+  return icon(CATEGORY_ICONS[cat] || "bag", 22);
 }
 function renderCategories(){
   const cats = getCategories();
@@ -1438,7 +1603,7 @@ function renderCheckoutForm(){
       <label>Adresse / quartier (livraison ou intervention)</label>
       <div style="display:flex; gap:6px;">
         <input type="text" id="ckAddress" placeholder="Ex : Abomey-Calavi, Zone..." style="flex:1;">
-        <button type="button" class="btn-secondary" style="width:auto; white-space:nowrap; margin-top:0; padding:0 12px;" onclick="useMyLocation()">📍 Ma position</button>
+        <button type="button" class="btn-secondary" style="width:auto; white-space:nowrap; margin-top:0; padding:0 12px;" onclick="useMyLocation()">${icon("pin",14)} Ma position</button>
       </div>
       <div id="locationStatus" style="font-size:10.5px; color:var(--text-soft); margin-top:5px;"></div>
     </div>
@@ -1470,28 +1635,26 @@ function selectPay(id){
 }
 
 /* ========================= GÉOLOCALISATION (adresse automatique) ========================= */
-function useMyLocation(){
+async function useMyLocation(){
   const statusEl = document.getElementById("locationStatus");
   if(!navigator.geolocation){
     statusEl.textContent = "La géolocalisation n'est pas disponible sur cet appareil.";
     return;
   }
 
-  const consent = confirm(
-    "Marché AUBEDE souhaite utiliser votre position actuelle uniquement pour pré-remplir votre adresse de livraison.\n\n" +
-    "Elle n'est ni enregistrée, ni partagée, ni utilisée à d'autres fins.\n\n" +
-    "Autorisez-vous l'accès à votre position ?"
+  const consent = await showConfirm(
+    "Marché AUBEDE souhaite utiliser votre position actuelle uniquement pour pré-remplir votre adresse de livraison. Elle n'est ni enregistrée, ni partagée, ni utilisée à d'autres fins. Autorisez-vous l'accès à votre position ?"
   );
   if(!consent){
     statusEl.textContent = "Localisation non utilisée. Vous pouvez saisir votre adresse manuellement.";
     return;
   }
 
-  statusEl.textContent = "📍 Localisation en cours... (votre navigateur va vous demander la permission)";
+  statusEl.textContent = "Localisation en cours... (votre navigateur va vous demander la permission)";
 
   function handleSuccess(pos){
     const { latitude, longitude } = pos.coords;
-    statusEl.textContent = "📍 Position obtenue, recherche de l'adresse...";
+    statusEl.textContent = "Position obtenue, recherche de l'adresse...";
     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`)
       .then(res => res.json())
       .then(data => {
@@ -1602,7 +1765,7 @@ function submitOrder(){
         <div class="card-price mono">${numero}</div>
       </div>
       <a class="wa-btn" href="${waLink}" target="_blank">Confirmer la commande sur WhatsApp</a>
-      <button class="btn-secondary" onclick="downloadReceiptPDF()">📄 Télécharger le reçu (PDF)</button>
+      <button class="btn-secondary" onclick="downloadReceiptPDF()">${icon("clipboard",15)} Télécharger le reçu (PDF)</button>
       ${emailNoteHtml}
     </div>
   `;
@@ -1747,17 +1910,17 @@ function persistReviewsOverride(){
 }
 
 const ADMIN_SECTIONS = [
-  { id: "dashboard",  label: "🏠 Tableau de bord" },
-  { id: "products",   label: "📦 Produits" },
-  { id: "orders",     label: "🛒 Commandes" },
-  { id: "clients",    label: "👥 Clients" },
-  { id: "payments",   label: "💰 Paiements" },
-  { id: "deliveries", label: "🚚 Livraisons" },
-  { id: "digital",    label: "📚 Produits numériques" },
-  { id: "promos",     label: "📢 Promotions" },
-  { id: "reviews",    label: "💬 Avis clients" },
-  { id: "reports",    label: "📊 Rapports" },
-  { id: "settings",   label: "⚙️ Paramètres" },
+  { id: "dashboard",  label: icon("home",15) + " Tableau de bord" },
+  { id: "products",   label: icon("package",15) + " Produits" },
+  { id: "orders",     label: icon("cart",15) + " Commandes" },
+  { id: "clients",    label: icon("users",15) + " Clients" },
+  { id: "payments",   label: icon("wallet",15) + " Paiements" },
+  { id: "deliveries", label: icon("truck",15) + " Livraisons" },
+  { id: "digital",    label: icon("book",15) + " Produits numériques" },
+  { id: "promos",     label: icon("megaphone",15) + " Promotions" },
+  { id: "reviews",    label: icon("chat",15) + " Avis clients" },
+  { id: "reports",    label: icon("barchart",15) + " Rapports" },
+  { id: "settings",   label: icon("gear",15) + " Paramètres" },
 ];
 let currentAdminSection = "dashboard";
 
@@ -1867,8 +2030,8 @@ function renderAdminOrders(){
 
 let editingOrderId = null;
 function editOrder(id){ editingOrderId = id; renderOrderForm(); }
-function deleteOrder(id){
-  if(!confirm("Supprimer cette commande de votre historique ?")) return;
+async function deleteOrder(id){
+  if(!(await showConfirm("Supprimer cette commande de votre historique ?"))) return;
   const idx = ORDERS.findIndex(o=>o.id===id);
   if(idx>-1) ORDERS.splice(idx,1);
   persistOrders();
@@ -2092,8 +2255,8 @@ function renderAdminPromos(){
   `;
 }
 function editPromo(code){ editingPromoCode = code; renderPromoForm(); }
-function deletePromo(code){
-  if(!confirm("Supprimer ce code promo ?")) return;
+async function deletePromo(code){
+  if(!(await showConfirm("Supprimer ce code promo ?"))) return;
   const idx = PROMOS.findIndex(p=>p.code===code);
   if(idx>-1) PROMOS.splice(idx,1);
   persistOverride();
@@ -2238,7 +2401,7 @@ document.getElementById("closeAdmin").onclick = closeDrawers;
 function renderAdminLock(){
   document.getElementById("adminBody").innerHTML = `
     <div class="admin-lock">
-      <div style="font-size:34px;">🔒</div>
+      <div style="font-size:34px;">${icon("lock",34)}</div>
       <p>Cette section est réservée à ZOUNTCHEGBE AUBEDE.<br>Entrez le mot de passe administrateur.</p>
       <input type="password" id="adminPass" placeholder="Mot de passe">
       <div class="admin-error" id="adminErr">Mot de passe incorrect.</div>
@@ -2267,7 +2430,7 @@ function renderAdminList(){
     <div class="admin-product-row">
       <img src="${p.images[0]}" alt="">
       <div>
-        <div class="apname">${p.name} ${p.type==='numerique' ? '📚' : ''}</div>
+        <div class="apname">${p.name} ${p.type==='numerique' ? icon("book",13) : ''}</div>
         <div class="apmeta">${p.category} · ${fmt(p.price)}</div>
       </div>
       <div class="apactions">
@@ -2289,8 +2452,8 @@ function editProduct(id){
   renderAdminForm();
 }
 
-function deleteProduct(id){
-  if(!confirm("Supprimer ce produit du catalogue ?")) return;
+async function deleteProduct(id){
+  if(!(await showConfirm("Supprimer ce produit du catalogue ?"))) return;
   const idx = PRODUCTS.findIndex(p=>p.id===id);
   if(idx > -1) PRODUCTS.splice(idx,1);
   persistOverride();
@@ -2331,8 +2494,8 @@ function editReview(id){
   renderReviewForm();
 }
 
-function deleteReview(id){
-  if(!confirm("Supprimer cet avis ?")) return;
+async function deleteReview(id){
+  if(!(await showConfirm("Supprimer cet avis ?"))) return;
   const idx = REVIEWS.findIndex(r=>r.id===id);
   if(idx > -1) REVIEWS.splice(idx,1);
   persistReviewsOverride();
@@ -2416,11 +2579,11 @@ function renderAdminForm(){
       <input type="number" id="fPrice" value="${p ? p.price : ''}">
     </div>
     <div class="field">
-      <label>🔥 Prix promotionnel (FCFA — laisser vide si aucune promo)</label>
+      <label>${icon("fire",13)} Prix promotionnel (FCFA — laisser vide si aucune promo)</label>
       <input type="number" id="fPromoPrice" value="${p && p.promoPrice ? p.promoPrice : ''}">
     </div>
     <div class="field">
-      <label>📦 Stock disponible</label>
+      <label>${icon("package",13)} Stock disponible</label>
       <input type="number" id="fStock" value="${p ? p.stock : 10}">
     </div>
     <div class="field">
@@ -2431,37 +2594,37 @@ function renderAdminForm(){
       </select>
     </div>
     <div class="field">
-      <label><input type="checkbox" id="fFeatured" ${p && p.featured ? 'checked' : ''} style="width:auto; margin-right:6px;"> 🌟 Mettre en produit vedette (page d'accueil)</label>
+      <label><input type="checkbox" id="fFeatured" ${p && p.featured ? 'checked' : ''} style="width:auto; margin-right:6px;"> ${icon('star',13)} Mettre en produit vedette (page d'accueil)</label>
     </div>
     <div class="field">
       <label>Description courte (affichée sur la fiche produit dans le catalogue)</label>
       <textarea id="fDesc">${p ? p.desc : ''}</textarea>
     </div>
     <div class="field">
-      <label>📝 Description complète (affichée sur la fiche détaillée)</label>
+      <label>${icon("edit",13)} Description complète (affichée sur la fiche détaillée)</label>
       <textarea id="fFullDesc" style="min-height:90px;">${p ? p.fullDesc : ''}</textarea>
     </div>
     <div class="field">
-      <label>📷 Photos du produit</label>
+      <label>${icon("camera",13)} Photos du produit</label>
       <div id="fGallery" class="gallery-thumbs"></div>
       <input type="file" id="fImage" accept="image/*">
       <div id="fImageStatus" style="font-size:10.5px; color:var(--text-soft); margin-top:5px;"></div>
     </div>
     <div class="field">
-      <label>🎬 Vidéo courte (lien YouTube ou lien direct vers un fichier vidéo, facultatif)</label>
+      <label>${icon("video",13)} Vidéo courte (lien YouTube ou lien direct vers un fichier vidéo, facultatif)</label>
       <input type="text" id="fVideo" value="${p ? p.video : ''}" placeholder="https://youtube.com/watch?v=...">
     </div>
     <div class="field">
-      <label>📋 Caractéristiques techniques</label>
+      <label>${icon("clipboard",13)} Caractéristiques techniques</label>
       <div id="fSpecsList"></div>
       <button type="button" class="btn-secondary" onclick="addSpecRow()">+ Ajouter une caractéristique</button>
     </div>
     <div class="field">
-      <label>🚚 Informations de livraison</label>
+      <label>${icon("truck",13)} Informations de livraison</label>
       <textarea id="fDelivery">${p ? p.delivery : 'Livraison à Abomey-Calavi sous 24h, autres villes du Bénin sous 48-72h.'}</textarea>
     </div>
     <div class="field">
-      <label>🛡️ Garantie</label>
+      <label>${icon("shield",13)} Garantie</label>
       <textarea id="fWarranty">${p ? p.warranty : 'Garantie 6 mois contre tout défaut de fabrication.'}</textarea>
     </div>
     <button class="btn-primary" style="width:100%;" onclick="saveProduct()">${p ? 'Enregistrer les modifications' : 'Ajouter le produit'}</button>
@@ -2684,7 +2847,8 @@ renderCart();
 
 /* ========================= TOGGLE THEME BUTTON ========================= */
 function updateThemeIcon(){
-  document.getElementById("themeToggle").textContent = document.documentElement.classList.contains("dark") ? "☀️" : "🌙";
+  const isDark = document.documentElement.classList.contains("dark");
+  document.getElementById("themeToggle").innerHTML = icon(isDark ? "sun" : "moon", 17);
 }
 document.getElementById("themeToggle").onclick = ()=>{
   document.documentElement.classList.toggle("dark");
