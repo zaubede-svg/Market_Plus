@@ -360,6 +360,22 @@
   .confirm-message{ font-size:14px; color:var(--text); line-height:1.5; margin-bottom:18px; text-align:center; }
   .confirm-actions{ display:flex; gap:10px; }
 
+  /* ===== CONTACT FLOTTANT ===== */
+  .float-contact{ position:fixed; bottom:22px; right:22px; z-index:150; display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+  .float-toggle{
+    width:56px; height:56px; border-radius:50%; background:var(--ink); color:white; border:none;
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(30,42,74,0.35);
+  }
+  .float-options{ display:flex; flex-direction:column; gap:10px; opacity:0; transform:translateY(10px) scale(0.9); pointer-events:none; transition:opacity .2s ease, transform .2s ease; }
+  .float-options.show{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+  .float-option{
+    display:flex; align-items:center; gap:8px; background:var(--paper-2); color:var(--text); text-decoration:none;
+    padding:10px 16px; border-radius:30px; font-size:13px; font-weight:700; box-shadow:0 8px 20px rgba(30,42,74,0.18);
+    border:1px solid var(--line);
+  }
+  .float-option.whatsapp{ color:#25D366; }
+  .float-option.call{ color:var(--ink-2); }
+
   .drawer{
     position:fixed; top:0; right:0; height:100%; width:min(420px,92vw);
     background:var(--paper-2); z-index:60; box-shadow:-20px 0 50px rgba(0,0,0,0.15);
@@ -394,6 +410,12 @@
     width:100%; padding:10px 12px; border:1.5px solid var(--line); border-radius:8px; font-size:13.5px; font-family:inherit;
     background:var(--paper-2); color:var(--text);
   }
+  .phone-input-group{ display:flex; align-items:stretch; }
+  .phone-prefix{
+    display:flex; align-items:center; gap:6px; padding:0 10px; border:1.5px solid var(--line); border-right:none;
+    border-radius:8px 0 0 8px; background:var(--paper); font-size:13px; font-weight:700; color:var(--text); white-space:nowrap;
+  }
+  .phone-input-group input{ border-radius:0 8px 8px 0; }
   .pay-options{ display:flex; gap:10px; }
   .pay-option{
     flex:1; border:1.5px solid var(--line); border-radius:10px; padding:12px; text-align:center; font-size:12.5px; font-weight:700;
@@ -702,6 +724,23 @@
       <button class="btn-primary" id="confirmOkBtn" style="width:auto; flex:1;">Confirmer</button>
     </div>
   </div>
+</div>
+
+<!-- CONTACT FLOTTANT (appel + whatsapp) -->
+<div class="float-contact" id="floatContact">
+  <div class="float-options" id="floatOptions">
+    <a class="float-option whatsapp" href="https://wa.me/2290167929269" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a class="float-option call" href="tel:+22901679292">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l1.5 5-2.5 1.5a11 11 0 006 6L15.5 14l5 1.5V19a2 2 0 01-2 2C10.5 21 3 13.5 3 6a2 2 0 012-2z"/></svg>
+      <span>Appeler</span>
+    </a>
+  </div>
+  <button class="float-toggle" id="floatToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l1.5 5-2.5 1.5a11 11 0 006 6L15.5 14l5 1.5V19a2 2 0 01-2 2C10.5 21 3 13.5 3 6a2 2 0 012-2z"/></svg>
+  </button>
 </div>
 
 <!-- CART DRAWER -->
@@ -1290,6 +1329,11 @@ document.getElementById("searchInput").addEventListener("input", (e)=>{
   renderProducts();
 });
 
+/* ========================= CONTACT FLOTTANT ========================= */
+document.getElementById("floatToggle").onclick = ()=>{
+  document.getElementById("floatOptions").classList.toggle("show");
+};
+
 function effectivePrice(p){
   return (p.promoPrice && p.promoPrice < p.price) ? p.promoPrice : p.price;
 }
@@ -1593,7 +1637,17 @@ function renderCheckoutForm(){
     </div>
     <div class="field">
       <label>Numéro de téléphone</label>
-      <input type="text" id="ckPhone" placeholder="+229 ...">
+      <div class="phone-input-group">
+        <span class="phone-prefix">
+          <svg width="20" height="14" viewBox="0 0 30 20" style="border-radius:2px; flex:0 0 auto;">
+            <rect width="30" height="20" fill="#E8112D"/>
+            <rect width="30" height="10" fill="#FCD116"/>
+            <rect width="12" height="20" fill="#008751"/>
+          </svg>
+          +229
+        </span>
+        <input type="tel" id="ckPhone" placeholder="XX XX XX XX" maxlength="12" inputmode="numeric">
+      </div>
     </div>
     <div class="field">
       <label>Adresse e-mail (pour recevoir votre reçu)</label>
@@ -1687,13 +1741,14 @@ async function useMyLocation(){
 
 function submitOrder(){
   const name = document.getElementById("ckName").value.trim();
-  const phone = document.getElementById("ckPhone").value.trim();
+  const phoneLocal = document.getElementById("ckPhone").value.trim();
+  const phone = phoneLocal ? "+229 " + phoneLocal : "";
   const email = document.getElementById("ckEmail").value.trim();
   const address = document.getElementById("ckAddress").value.trim();
   const promoCode = document.getElementById("ckPromo").value.trim().toUpperCase();
   const payMethod = document.querySelector('input[name="pay"]:checked').value;
 
-  if(!name || !phone){
+  if(!name || !phoneLocal){
     alert("Merci de renseigner votre nom et votre numéro de téléphone.");
     return;
   }
