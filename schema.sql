@@ -1,116 +1,55 @@
--- ============================================================
--- MARCHÉ AUBEDE — Schéma de base de données Supabase
--- À coller entièrement dans SQL Editor > New query > Run
--- ============================================================
+CREATE DATABASE IF NOT EXISTS aubede CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE aubede;
 
--- ---------- TABLE PRODUITS ----------
-create table if not exists products (
-  id text primary key,
-  name text not null,
-  category text not null,
-  price integer not null,
-  promo_price integer,
-  stock integer default 0,
-  type text default 'physique',
-  featured boolean default false,
-  description text,
-  full_description text,
-  specs jsonb default '[]',
-  delivery text,
-  warranty text,
-  video text,
-  images jsonb default '[]',
-  created_at timestamptz default now()
-);
+CREATE TABLE IF NOT EXISTS admins (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(80) NOT NULL UNIQUE,
+    name VARCHAR(160) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
 
--- ---------- TABLE AVIS CLIENTS ----------
-create table if not exists reviews (
-  id text primary key,
-  name text not null,
-  rating integer not null,
-  product_id text,
-  review_text text not null,
-  created_at timestamptz default now()
-);
+CREATE TABLE IF NOT EXISTS products (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(180) NOT NULL,
+    category VARCHAR(80) NOT NULL,
+    price DECIMAL(12,2) NOT NULL DEFAULT 0,
+    old_price DECIMAL(12,2) NULL,
+    image VARCHAR(500) NULL,
+    rating DECIMAL(2,1) NOT NULL DEFAULT 5.0,
+    reviews INT UNSIGNED NOT NULL DEFAULT 0,
+    description TEXT NOT NULL,
+    tag VARCHAR(50) NULL,
+    stock INT UNSIGNED NOT NULL DEFAULT 0,
+    active TINYINT(1) NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX(category),
+    INDEX(active)
+) ENGINE=InnoDB;
 
--- ---------- TABLE CODES PROMO ----------
-create table if not exists promos (
-  code text primary key,
-  type text not null,
-  value integer not null,
-  active boolean default true
-);
+CREATE TABLE IF NOT EXISTS orders (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_number VARCHAR(50) NOT NULL UNIQUE,
+    customer_name VARCHAR(160) NOT NULL,
+    phone VARCHAR(50) NOT NULL,
+    location VARCHAR(180) NOT NULL,
+    address TEXT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    total DECIMAL(12,2) NOT NULL DEFAULT 0,
+    status ENUM('Nouvelle','En préparation','Expédiée','Livrée','Annulée') NOT NULL DEFAULT 'Nouvelle',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX(status),
+    INDEX(created_at)
+) ENGINE=InnoDB;
 
--- ---------- TABLE COMMANDES (privée, admin uniquement) ----------
-create table if not exists orders (
-  id text primary key,
-  order_date text,
-  name text not null,
-  phone text not null,
-  items text,
-  total integer default 0,
-  payment_status text default 'En attente',
-  delivery_status text default 'En attente',
-  created_at timestamptz default now()
-);
-
--- ---------- TABLE PARAMÈTRES (une seule ligne) ----------
-create table if not exists settings (
-  id integer primary key default 1,
-  site_title text,
-  tagline text,
-  mtn_number text,
-  moov_number text,
-  celtiis_number text,
-  wa_mtn text,
-  wa_moov text,
-  wa_celtiis text
-);
-
--- ============================================================
--- SÉCURITÉ (Row Level Security)
--- Lecture publique pour le catalogue / avis / promos / paramètres.
--- Écriture réservée à l'administrateur connecté (vous).
--- Les commandes restent entièrement privées (lecture + écriture admin uniquement).
--- ============================================================
-
-alter table products enable row level security;
-alter table reviews  enable row level security;
-alter table promos   enable row level security;
-alter table orders   enable row level security;
-alter table settings enable row level security;
-
--- Produits : lecture publique, écriture admin
-create policy "products_select_public" on products for select using (true);
-create policy "products_insert_auth"   on products for insert with check (auth.role() = 'authenticated');
-create policy "products_update_auth"   on products for update using (auth.role() = 'authenticated');
-create policy "products_delete_auth"   on products for delete using (auth.role() = 'authenticated');
-
--- Avis : lecture publique, écriture admin
-create policy "reviews_select_public" on reviews for select using (true);
-create policy "reviews_insert_auth"   on reviews for insert with check (auth.role() = 'authenticated');
-create policy "reviews_update_auth"   on reviews for update using (auth.role() = 'authenticated');
-create policy "reviews_delete_auth"   on reviews for delete using (auth.role() = 'authenticated');
-
--- Promotions : lecture publique (nécessaire pour vérifier un code au paiement), écriture admin
-create policy "promos_select_public" on promos for select using (true);
-create policy "promos_insert_auth"   on promos for insert with check (auth.role() = 'authenticated');
-create policy "promos_update_auth"   on promos for update using (auth.role() = 'authenticated');
-create policy "promos_delete_auth"   on promos for delete using (auth.role() = 'authenticated');
-
--- Paramètres : lecture publique (numéros affichés en pied de page), écriture admin
-create policy "settings_select_public" on settings for select using (true);
-create policy "settings_insert_auth"   on settings for insert with check (auth.role() = 'authenticated');
-create policy "settings_update_auth"   on settings for update using (auth.role() = 'authenticated');
-
--- Commandes : entièrement privées, admin uniquement (lecture ET écriture)
-create policy "orders_all_auth" on orders for all
-  using (auth.role() = 'authenticated')
-  with check (auth.role() = 'authenticated');
-
--- Ligne de paramètres par défaut (vous la modifierez depuis l'administration)
-insert into settings (id, site_title, tagline, mtn_number, moov_number, celtiis_number, wa_mtn, wa_moov, wa_celtiis)
-values (1, 'MARCHÉ AUBEDE', 'Votre boutique en ligne qui vous facilite la vie — Bénin',
-        '+229 01 67 92 92 69', '+229 01 64 63 84 29', '+229 01 49 09 82 89',
-        '2290167929269', '2290164638429', '2290149098289')
-on conflict (id) do nothing;
+CREATE TABLE IF NOT EXISTS order_items (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT UNSIGNED NOT NULL,
+    product_id INT UNSIGNED NULL,
+    product_name VARCHAR(180) NOT NULL,
+    quantity INT UNSIGNED NOT NULL,
+    unit_price DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY(order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
