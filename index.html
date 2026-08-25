@@ -146,6 +146,26 @@ body.dark header,body.dark .search input,body.dark .hbtn,body.dark .cat,body.dar
 body.dark .hero-side{background:#172033;border-color:#2d384c}body.dark .section-head h2,body.dark .hero-side h2,body.dark .product .price,body.dark .pm-title{color:#eef3fb}
 body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.dark .service p,body.dark .review p{color:#aeb9c9}
 
+
+/* ================= ADMINISTRATION AUBEDE ================= */
+.admin-launch{border:0;background:#10213F;color:#fff;border-radius:10px;padding:10px 13px;font-size:11px;font-weight:800}
+.admin-modal{position:fixed;inset:0;background:rgba(6,14,28,.72);z-index:900;display:none;align-items:center;justify-content:center;padding:14px}
+.admin-modal.show{display:flex}
+.admin-shell{width:min(1180px,100%);height:min(92vh,900px);background:#f6f8fb;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:245px 1fr;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.admin-side{background:#10213F;color:#fff;padding:22px 15px;display:flex;flex-direction:column}
+.admin-brand{font-family:Sora;font-size:17px;margin-bottom:25px;padding:0 8px}.admin-brand span{color:#FFB16F}
+.admin-user{font-size:11px;color:#cbd5e1;padding:10px 8px 18px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:12px}
+.admin-nav{display:grid;gap:6px}.admin-nav button{border:0;background:transparent;color:#dce6f5;text-align:left;padding:11px 12px;border-radius:9px;font-size:12px;font-weight:700}.admin-nav button.active,.admin-nav button:hover{background:#19335D;color:#fff}
+.admin-logout{margin-top:auto;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:10px;border-radius:9px;font-weight:700}
+.admin-main{overflow:auto}.admin-top{background:#fff;border-bottom:1px solid #e5e7eb;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;z-index:3}.admin-top h2{font-family:Sora;color:#10213F;font-size:20px}.admin-close{border:0;background:#eef2f6;border-radius:9px;padding:9px 12px;font-weight:800}
+.admin-page{padding:22px}.admin-page h3{font-family:Sora;color:#10213F;margin-bottom:14px}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}.admin-stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:17px}.admin-stat strong{display:block;font-family:Sora;font-size:23px;color:#10213F}.admin-stat span{font-size:11px;color:#697386}
+.admin-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:17px;margin-bottom:15px}.admin-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}.admin-btn{border:0;border-radius:9px;padding:10px 13px;font-size:11px;font-weight:800}.admin-primary{background:#10213F;color:#fff}.admin-orange{background:#E9823B;color:#fff}.admin-danger{background:#D94A4A;color:#fff}.admin-light{background:#eef2f6;color:#10213F}
+.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:11px 8px;border-bottom:1px solid #edf0f3;text-align:left;vertical-align:middle}.admin-table th{color:#697386;font-size:10px;text-transform:uppercase}.admin-thumb{width:45px;height:40px;object-fit:cover;border-radius:7px;background:#eef1f5}.admin-actions{display:flex;gap:5px;flex-wrap:wrap}.status{display:inline-block;padding:5px 8px;border-radius:20px;font-size:9px;font-weight:800}.status.new{background:#fff1dc;color:#a85d0b}.status.processing{background:#e7f0ff;color:#245a9c}.status.shipped{background:#e9f8f1;color:#147653}.status.done{background:#e8f5eb;color:#28733b}.status.cancel{background:#fdeaea;color:#a93636}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-field label{display:block;font-size:10px;font-weight:800;margin-bottom:5px}.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:10px;border:1px solid #dfe4ea;border-radius:9px;outline:0;background:#fff}.admin-field textarea{min-height:85px}.admin-field.full{grid-column:1/-1}.admin-image-preview{width:100%;height:160px;object-fit:cover;border-radius:10px;background:#eef1f5;margin-top:7px}.admin-login{width:min(430px,100%);background:#fff;border-radius:20px;padding:28px}.admin-login h2{font-family:Sora;color:#10213F;margin-bottom:7px}.admin-login p{font-size:12px;color:#697386;margin-bottom:18px}.admin-login .admin-field{margin-bottom:12px}.admin-login button{width:100%;margin-top:4px}
+.admin-empty{padding:30px;text-align:center;color:#697386;font-size:12px}.admin-note{font-size:10px;color:#697386;background:#f5f7fa;padding:10px;border-radius:9px;margin-top:12px}
+.admin-chart{height:230px;display:flex;align-items:flex-end;gap:10px;padding:20px 5px 5px;border-bottom:1px solid #dfe4ea}.bar{flex:1;min-width:12px;background:#19335D;border-radius:7px 7px 0 0;position:relative}.bar span{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:9px;color:#697386}.bar b{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:9px;color:#10213F}
+@media(max-width:850px){.admin-shell{grid-template-columns:1fr;height:96vh}.admin-side{display:none}.admin-grid{grid-template-columns:repeat(2,1fr)}.admin-form{grid-template-columns:1fr}.admin-table{min-width:720px}.admin-card{overflow:auto}.admin-top{padding:14px}.admin-page{padding:14px}}
+
 /* RESPONSIVE */
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.cat-grid{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}}
 @media(max-width:700px){
@@ -173,7 +193,7 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <div class="header-actions">
 <button class="hbtn" onclick="toggleDark()" title="Mode sombre">🌙</button>
 <button class="hbtn" onclick="showFavorites()">♡</button>
-<button class="hbtn cart" onclick="openCart()">🛒 Panier <span class="badge" id="cartCount">0</span></button>
+<button class="hbtn cart" onclick="openCart()">🛒 Panier <span class="badge" id="cartCount">0</span></button><button class="admin-launch" onclick="openAdmin()">ADMIN</button>
 </div>
 </div>
 <div class="navlinks">
@@ -361,9 +381,43 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <button class="top" id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div class="toast" id="toast"></div>
 
+<!-- ADMINISTRATION -->
+<div class="admin-modal" id="adminModal">
+  <div class="admin-shell" id="adminShell">
+    <aside class="admin-side">
+      <div class="admin-brand">Marché <span>AUBEDE</span></div>
+      <div class="admin-user">Administrateur<br><strong>ZOUNTCHEGBE AUBEDE</strong></div>
+      <div class="admin-nav">
+        <button data-page="dashboard" onclick="adminPage('dashboard')">📊 Tableau de bord</button>
+        <button data-page="products" onclick="adminPage('products')">📦 Produits</button>
+        <button data-page="orders" onclick="adminPage('orders')">🛒 Commandes</button>
+        <button data-page="stats" onclick="adminPage('stats')">📈 Statistiques</button>
+        <button data-page="settings" onclick="adminPage('settings')">⚙️ Paramètres</button>
+      </div>
+      <button class="admin-logout" onclick="adminLogout()">Se déconnecter</button>
+    </aside>
+    <section class="admin-main">
+      <div class="admin-top"><h2 id="adminTitle">Tableau de bord</h2><button class="admin-close" onclick="closeAdmin()">✕ Fermer</button></div>
+      <div id="adminContent"></div>
+    </section>
+  </div>
+</div>
+
+<div class="admin-modal" id="adminLoginModal">
+  <div class="admin-login">
+    <div style="font-size:28px">🔐</div>
+    <h2>Espace administrateur</h2>
+    <p>ZOUNTCHEGBE AUBEDE • Gestion de Marché AUBEDE</p>
+    <div class="admin-field"><label>Mot de passe</label><input id="adminPassword" type="password" placeholder="Entrez votre mot de passe" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+    <button class="admin-btn admin-primary" onclick="adminLogin()">Accéder au tableau de bord</button>
+    <div class="admin-note">Le mot de passe de cette version HTML est stocké dans le navigateur. Pour une vraie sécurité professionnelle, il faudra connecter cet espace à un serveur avec authentification.</div>
+  </div>
+</div>
+
+
 <script>
 const WA=["2290164638429","2290167929269"];
-const products=[
+const defaultProducts=[
 {id:1,name:"Service de Maintenance Pro",category:"Maintenance",price:5000,old:null,image:"produit.jpg",rating:5,reviews:12,desc:"Diagnostic, nettoyage et maintenance informatique.",tag:"Service"},
 {id:2,name:"Installation Windows",category:"Maintenance",price:5000,old:null,image:"windows.jpg",rating:5,reviews:8,desc:"Installation et configuration de Windows.",tag:"Service"},
 {id:3,name:"Formation Informatique",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:15,desc:"Formation pratique en informatique.",tag:"Formation"},
@@ -377,6 +431,8 @@ const products=[
 {id:11,name:"Formation Excel",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:4,desc:"Apprentissage pratique d'Excel.",tag:"Formation"},
 {id:12,name:"Clé USB 64 Go",category:"Stockage",price:6000,old:null,image:"ssd.jpg",rating:4.8,reviews:3,desc:"Stockage portable pour vos fichiers.",tag:"Top"}
 ];
+let products=JSON.parse(localStorage.getItem("aubedeProducts")||"null")||defaultProducts;
+localStorage.setItem("aubedeProducts",JSON.stringify(products));
 let cart=JSON.parse(localStorage.getItem("aubedeCart")||"[]");
 let category="Tous",pay="MTN",toastTimer;
 
@@ -433,12 +489,15 @@ function openCheckout(){if(!cart.length){toast("Votre panier est vide.");return}
 function closeCheckout(){document.getElementById("checkoutModal").classList.remove("show")}
 function selectPay(x,e){pay=x;document.querySelectorAll(".pay").forEach(a=>a.classList.remove("selected"));e.classList.add("selected")}
 function confirmOrder(){
-let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),loc=document.getElementById("location").value.trim(),adr=document.getElementById("address").value.trim(),target=document.getElementById("target").value;
-if(!n||!ph||!loc){toast("Veuillez remplir les champs obligatoires.");return}
-let total=0,lines=["🛍️ *COMMANDE — MARCHÉ AUBEDE*","","*Client :* "+n,"*Téléphone :* "+ph,"*Zone :* "+loc,"*Adresse :* "+(adr||"Non précisée"),"*Paiement :* "+pay,"","*ARTICLES :*"];
-cart.forEach(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;lines.push("• "+p.name+" × "+i.qty+" = "+money(p.price*i.qty))});
-lines.push("","*TOTAL : "+money(total)+"*");
-window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("\n")),"_blank");
+ let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),loc=document.getElementById("location").value.trim(),adr=document.getElementById("address").value.trim(),target=document.getElementById("target").value;
+ if(!n||!ph||!loc){toast("Veuillez remplir les champs obligatoires.");return}
+ let total=0,lines=["🛍️ *COMMANDE — MARCHÉ AUBEDE*","","*Client :* "+n,"*Téléphone :* "+ph,"*Zone :* "+loc,"*Adresse :* "+(adr||"Non précisée"),"*Paiement :* "+pay,"","*ARTICLES :*"];
+ const items=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;lines.push("• "+p.name+" × "+i.qty+" = "+money(p.price*i.qty));return {id:p.id,name:p.name,qty:i.qty,price:p.price}});
+ lines.push("","*TOTAL : "+money(total)+"*");
+ const orders=getOrders();orders.push({id:"CMD-"+Date.now().toString().slice(-8),name:n,phone:ph,location:loc,address:adr,payment:pay,target,total,items,status:"Nouvelle",date:new Date().toISOString()});saveOrders(orders);
+ window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("
+")),"_blank");
+ toast("Commande enregistrée et prête sur WhatsApp.");
 }
 function serviceRequest(service){
 let text=encodeURIComponent("Bonjour Marché AUBEDE 👋\nJe souhaite demander le service suivant : "+service+"\n\nMerci de me renseigner.");
@@ -462,6 +521,149 @@ document.getElementById("resultCount").textContent=filtered.length+" favori(s)";
 document.getElementById("products").innerHTML=filtered.map(p=>`<article class="product"><div class="pimg"><img src="${p.image}" onerror="imgFallback(event)"><span class="tag">Favori</span></div><div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div class="desc">${p.desc}</div><div class="pbottom"><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div></div></article>`).join("");
 document.getElementById("boutique").scrollIntoView({behavior:"smooth"});
 }
+
+/* ================= ADMIN JS ================= */
+const ADMIN_NAME="ZOUNTCHEGBE AUBEDE";
+const ADMIN_DEFAULT_PASSWORD="Marina2026";
+let adminAuthed=sessionStorage.getItem("aubedeAdminAuth")==="1";
+let editingProductId=null;
+let adminCurrentPage="dashboard";
+
+function adminOpenModal(id){document.getElementById(id).classList.add("show")}
+function adminCloseModal(id){document.getElementById(id).classList.remove("show")}
+function openAdmin(){
+  if(adminAuthed){adminOpenModal("adminModal");adminPage("dashboard")}
+  else {document.getElementById("adminPassword").value="";adminOpenModal("adminLoginModal");setTimeout(()=>document.getElementById("adminPassword").focus(),100)}
+}
+function closeAdmin(){adminCloseModal("adminModal")}
+function adminLogin(){
+  const pass=document.getElementById("adminPassword").value;
+  const saved=localStorage.getItem("aubedeAdminPassword")||ADMIN_DEFAULT_PASSWORD;
+  if(pass===saved){
+    adminAuthed=true;sessionStorage.setItem("aubedeAdminAuth","1");adminCloseModal("adminLoginModal");adminOpenModal("adminModal");adminPage("dashboard");toast("Connexion administrateur réussie.");
+  }else toast("Mot de passe incorrect.");
+}
+function adminLogout(){adminAuthed=false;sessionStorage.removeItem("aubedeAdminAuth");closeAdmin();toast("Session administrateur fermée.")}
+function saveProducts(){localStorage.setItem("aubedeProducts",JSON.stringify(products))}
+function getOrders(){return JSON.parse(localStorage.getItem("aubedeOrders")||"[]")}
+function saveOrders(a){localStorage.setItem("aubedeOrders",JSON.stringify(a))}
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function adminPage(page){
+  if(!adminAuthed)return openAdmin();
+  adminCurrentPage=page;
+  document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  const titles={dashboard:"Tableau de bord",products:"Gestion des produits",orders:"Suivi des commandes",stats:"Statistiques",settings:"Paramètres"};
+  document.getElementById("adminTitle").textContent=titles[page]||"Administration";
+  const box=document.getElementById("adminContent");
+  if(page==="dashboard") renderAdminDashboard(box);
+  if(page==="products") renderAdminProducts(box);
+  if(page==="orders") renderAdminOrders(box);
+  if(page==="stats") renderAdminStats(box);
+  if(page==="settings") renderAdminSettings(box);
+}
+function renderAdminDashboard(box){
+  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
+  box.innerHTML=`<div class="admin-page">
+    <div class="admin-grid">
+      <div class="admin-stat"><strong>${products.length}</strong><span>Produits</span></div>
+      <div class="admin-stat"><strong>${orders.length}</strong><span>Commandes enregistrées</span></div>
+      <div class="admin-stat"><strong>${money(revenue)}</strong><span>Chiffre d'affaires suivi</span></div>
+      <div class="admin-stat"><strong>${orders.filter(o=>o.status==="Nouvelle").length}</strong><span>Nouvelles commandes</span></div>
+    </div>
+    <div class="admin-card"><h3>Bienvenue, ${ADMIN_NAME}</h3><p style="font-size:12px;color:#697386">Depuis cet espace, vous pouvez gérer votre catalogue, ajouter des images, modifier ou supprimer des produits, suivre les commandes et consulter les statistiques.</p></div>
+    <div class="admin-card"><h3>Dernières commandes</h3>${adminOrderRows(orders.slice(-5).reverse())}</div>
+  </div>`;
+}
+function adminOrderRows(orders){
+  if(!orders.length)return '<div class="admin-empty">Aucune commande enregistrée pour le moment.</div>';
+  return `<div style="overflow:auto"><table class="admin-table"><thead><tr><th>Commande</th><th>Client</th><th>Total</th><th>Date</th><th>Statut</th></tr></thead><tbody>${
+    orders.map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br><small>${esc(o.phone)}</small></td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td>${adminStatus(o.status)}</td></tr>`).join("")
+  }</tbody></table></div>`;
+}
+function adminStatus(status){
+  const cls={"Nouvelle":"new","En préparation":"processing","Expédiée":"shipped","Livrée":"done","Annulée":"cancel"}[status]||"new";
+  return `<span class="status ${cls}">${esc(status)}</span>`;
+}
+function renderAdminProducts(box){
+  box.innerHTML=`<div class="admin-page">
+    <div class="admin-toolbar"><button class="admin-btn admin-orange" onclick="adminProductForm()">＋ Ajouter un produit</button><button class="admin-btn admin-light" onclick="exportProducts()">Exporter le catalogue</button></div>
+    <div class="admin-card"><div style="overflow:auto"><table class="admin-table"><thead><tr><th>Image</th><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Tag</th><th>Actions</th></tr></thead><tbody>${
+      products.map(p=>`<tr><td><img class="admin-thumb" src="${esc(p.image)}" onerror="imgFallback(event)"></td><td><strong>${esc(p.name)}</strong><br><small>${esc(p.desc)}</small></td><td>${esc(p.category)}</td><td>${money(p.price)}</td><td>${esc(p.tag||"")}</td><td><div class="admin-actions"><button class="admin-btn admin-light" onclick="adminProductForm(${p.id})">Modifier</button><button class="admin-btn admin-danger" onclick="deleteProduct(${p.id})">Supprimer</button></div></td></tr>`).join("")
+    }</tbody></table></div></div>
+  </div>`;
+}
+function adminProductForm(id){
+  editingProductId=id||null;
+  const p=id?products.find(x=>x.id===id):{name:"",category:"Informatique",price:"",old:"",image:"",rating:5,reviews:0,desc:"",tag:"Nouveau"};
+  const box=document.getElementById("adminContent");
+  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('products')">← Retour au catalogue</button></div>
+  <div class="admin-card"><h3>${id?"Modifier le produit":"Ajouter un produit"}</h3>
+  <div class="admin-form">
+    <div class="admin-field"><label>Nom du produit *</label><input id="apName" value="${esc(p.name)}"></div>
+    <div class="admin-field"><label>Catégorie *</label><select id="apCat">${["Informatique","Accessoires","Stockage","Maintenance","Formation","Logiciels"].map(c=>`<option ${p.category===c?"selected":""}>${c}</option>`).join("")}</select></div>
+    <div class="admin-field"><label>Prix (FCFA) *</label><input id="apPrice" type="number" min="0" value="${p.price??""}"></div>
+    <div class="admin-field"><label>Ancien prix (optionnel)</label><input id="apOld" type="number" min="0" value="${p.old??""}"></div>
+    <div class="admin-field"><label>Tag</label><input id="apTag" value="${esc(p.tag||"Nouveau")}"></div>
+    <div class="admin-field"><label>Note / 5</label><input id="apRating" type="number" min="0" max="5" step="0.1" value="${p.rating??5}"></div>
+    <div class="admin-field"><label>Nombre d'avis</label><input id="apReviews" type="number" min="0" value="${p.reviews??0}"></div>
+    <div class="admin-field"><label>Image du produit</label><input id="apImageFile" type="file" accept="image/*" onchange="previewAdminImage(event)"><input id="apImage" value="${esc(p.image||"")}" placeholder="ou URL / chemin de l'image" style="margin-top:7px"><img id="apPreview" class="admin-image-preview" src="${esc(p.image||"https://placehold.co/800x600/e9edf2/10213F?text=Produit")}" onerror="imgFallback(event)"></div>
+    <div class="admin-field full"><label>Description *</label><textarea id="apDesc">${esc(p.desc||"")}</textarea></div>
+  </div>
+  <button class="admin-btn admin-primary" style="margin-top:14px" onclick="saveAdminProduct()">💾 Enregistrer le produit</button>
+  </div></div>`;
+}
+function previewAdminImage(e){
+  const f=e.target.files[0]; if(!f)return;
+  const reader=new FileReader(); reader.onload=()=>{document.getElementById("apImage").value=reader.result;document.getElementById("apPreview").src=reader.result}; reader.readAsDataURL(f);
+}
+function saveAdminProduct(){
+  const name=document.getElementById("apName").value.trim(), price=Number(document.getElementById("apPrice").value), desc=document.getElementById("apDesc").value.trim();
+  if(!name||!price||!desc){toast("Nom, prix et description sont obligatoires.");return}
+  let p={id:editingProductId||Date.now(),name,category:document.getElementById("apCat").value,price,old:Number(document.getElementById("apOld").value)||null,image:document.getElementById("apImage").value.trim()||"https://placehold.co/800x600/e9edf2/10213F?text=Produit",rating:Number(document.getElementById("apRating").value)||5,reviews:Number(document.getElementById("apReviews").value)||0,desc,tag:document.getElementById("apTag").value.trim()||"Nouveau"};
+  if(editingProductId){const i=products.findIndex(x=>x.id===editingProductId);products[i]=p}else products.push(p);
+  saveProducts();renderProducts();adminPage("products");toast(editingProductId?"Produit modifié.":"Produit ajouté.");
+}
+function deleteProduct(id){
+  const p=products.find(x=>x.id===id); if(!p)return;
+  if(!confirm(`Supprimer « ${p.name} » ?`))return;
+  products=products.filter(x=>x.id!==id);saveProducts();renderProducts();adminPage("products");toast("Produit supprimé.");
+}
+function exportProducts(){
+  const blob=new Blob([JSON.stringify(products,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="catalogue-aubede.json";a.click();URL.revokeObjectURL(url);
+}
+function renderAdminOrders(box){
+  const orders=getOrders();
+  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('dashboard')">Actualiser</button><button class="admin-btn admin-danger" onclick="clearOrders()">Effacer les commandes</button></div>
+  <div class="admin-card">${!orders.length?'<div class="admin-empty">Aucune commande enregistrée.</div>':`<div style="overflow:auto"><table class="admin-table"><thead><tr><th>N°</th><th>Client</th><th>Articles</th><th>Total</th><th>Date</th><th>Statut</th><th>Action</th></tr></thead><tbody>${
+  orders.slice().reverse().map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br>${esc(o.phone)}<br>${esc(o.location)}</td><td>${o.items.map(i=>`${esc(i.name)} × ${i.qty}`).join("<br>")}</td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td><select onchange="updateOrderStatus('${esc(o.id)}',this.value)">${["Nouvelle","En préparation","Expédiée","Livrée","Annulée"].map(st=>`<option ${o.status===st?"selected":""}>${st}</option>`).join("")}</select></td><td><button class="admin-btn admin-danger" onclick="deleteOrder('${esc(o.id)}')">Supprimer</button></td></tr>`).join("")
+  }</tbody></table></div>`}</div></div>`;
+}
+function updateOrderStatus(id,status){const o=getOrders();const x=o.find(a=>a.id===id);if(x){x.status=status;saveOrders(o);toast("Statut mis à jour.")}}
+function deleteOrder(id){if(!confirm("Supprimer cette commande ?"))return;saveOrders(getOrders().filter(o=>o.id!==id));adminPage("orders");toast("Commande supprimée.")}
+function clearOrders(){if(!getOrders().length)return;if(confirm("Effacer toutes les commandes enregistrées dans ce navigateur ?")){saveOrders([]);adminPage("orders");toast("Historique effacé.")}}
+function renderAdminStats(box){
+  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
+  const counts={};orders.forEach(o=>{const d=o.date.slice(0,10);counts[d]=(counts[d]||0)+o.total});
+  const days=Object.keys(counts).sort().slice(-10);const max=Math.max(1,...days.map(d=>counts[d]));
+  box.innerHTML=`<div class="admin-page"><div class="admin-grid"><div class="admin-stat"><strong>${orders.length}</strong><span>Total commandes</span></div><div class="admin-stat"><strong>${money(revenue)}</strong><span>CA suivi</span></div><div class="admin-stat"><strong>${orders.filter(o=>o.status==="Livrée").length}</strong><span>Commandes livrées</span></div><div class="admin-stat"><strong>${products.length}</strong><span>Produits actifs</span></div></div>
+  <div class="admin-card"><h3>Évolution du chiffre d'affaires</h3><div class="admin-chart">${days.length?days.map(d=>`<div class="bar" style="height:${Math.max(5,(counts[d]/max)*175)}px"><b>${Math.round(counts[d]/1000)}k</b><span>${d.slice(5)}</span></div>`).join(""):'<div class="admin-empty" style="width:100%">Pas encore assez de données.</div>'}</div></div></div>`;
+}
+function renderAdminSettings(box){
+  box.innerHTML=`<div class="admin-page"><div class="admin-card"><h3>Compte administrateur</h3><p style="font-size:12px;color:#697386;margin-bottom:15px"><strong>${ADMIN_NAME}</strong></p>
+  <div class="admin-field" style="max-width:480px"><label>Nouveau mot de passe</label><input id="newAdminPass" type="password" placeholder="Minimum conseillé : 10 caractères"></div>
+  <button class="admin-btn admin-primary" style="margin-top:9px" onclick="changeAdminPassword()">Modifier le mot de passe</button>
+  <div class="admin-note">Le nouveau mot de passe sera mémorisé dans le navigateur actuel. Cette solution est adaptée à une démo/site statique, mais pas à une protection serveur contre un utilisateur technique.</div></div>
+  <div class="admin-card"><h3>Outils de données</h3><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="exportProducts()">Exporter les produits</button><button class="admin-btn admin-light" onclick="exportOrders()">Exporter les commandes</button></div></div></div>`;
+}
+function changeAdminPassword(){
+  const p=document.getElementById("newAdminPass").value;
+  if(p.length<6){toast("Choisissez au moins 6 caractères.");return}
+  localStorage.setItem("aubedeAdminPassword",p);document.getElementById("newAdminPass").value="";toast("Mot de passe administrateur modifié.");
+}
+function exportOrders(){
+  const blob=new Blob([JSON.stringify(getOrders(),null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="commandes-aubede.json";a.click();URL.revokeObjectURL(url);
+}
+
 function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("aubedeDark",document.body.classList.contains("dark"))}
 function toast(m){let t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2400)}
 window.addEventListener("scroll",()=>document.getElementById("top").style.display=scrollY>500?"block":"none");
