@@ -3,672 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marché AUBEDE — Boutique & Services numériques</title>
-<meta name="description" content="Marché AUBEDE : informatique, accessoires, formations, maintenance et services numériques au Bénin.">
-<meta name="theme-color" content="#10213F">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-
+<title>Marché AUBEDE</title>
 <style>
-:root{
---navy:#10213F;--navy2:#19335D;--orange:#E9823B;--orange2:#FFB16F;
---cream:#F7F4EE;--white:#fff;--ink:#18202D;--muted:#697386;--line:#E5E7EB;
---green:#14946B;--red:#D94A4A;--shadow:0 18px 50px rgba(16,33,63,.11);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.container{max-width:1240px;margin:auto;padding:0 24px}
-
-/* TOP BAR */
-.topbar{background:var(--navy);color:#dfe7f4;font-size:12px;padding:8px 0}
-.topbar .container{display:flex;justify-content:space-between;gap:15px}
-
-/* HEADER */
-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.header-main{height:76px;display:flex;align-items:center;gap:25px}
-.logo{font-family:Sora;font-size:22px;font-weight:800;color:var(--navy);white-space:nowrap}
-.logo span{color:var(--orange)}
-.search{flex:1;max-width:600px;position:relative}
-.search input{width:100%;height:46px;border:1px solid var(--line);border-radius:13px;padding:0 48px 0 16px;outline:none;background:#f9fafb}
-.search input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(233,130,59,.12)}
-.search button{position:absolute;right:5px;top:5px;width:36px;height:36px;border:0;border-radius:10px;background:var(--navy);color:#fff}
-.header-actions{display:flex;gap:8px;margin-left:auto}
-.hbtn{border:1px solid var(--line);background:#fff;border-radius:12px;height:44px;padding:0 13px;font-weight:700;position:relative}
-.hbtn.cart{background:var(--orange);color:#fff;border-color:var(--orange)}
-.badge{position:absolute;right:-5px;top:-7px;background:var(--navy);color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;display:grid;place-items:center}
-.navlinks{border-top:1px solid #f0f1f3}
-.navlinks .container{height:46px;display:flex;align-items:center;gap:28px;overflow:auto}
-.navlinks a{font-size:13px;font-weight:700;white-space:nowrap}
-.navlinks a:hover{color:var(--orange)}
-
-/* HERO */
-.hero{padding:34px 0 15px}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
-.hero-card{border-radius:28px;overflow:hidden;position:relative;min-height:420px}
-.hero-main{background:linear-gradient(135deg,var(--navy),#284C83);padding:55px;color:#fff}
-.hero-main:before,.hero-main:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
-.hero-main:before{width:360px;height:360px;right:-130px;top:-100px}
-.hero-main:after{width:190px;height:190px;right:100px;bottom:-100px}
-.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:30px;font-size:12px;font-weight:700;margin-bottom:20px}
-.hero h1{font-family:Sora;font-size:clamp(34px,5vw,62px);line-height:1.04;max-width:720px;position:relative;z-index:2}
-.hero h1 span{color:var(--orange2)}
-.hero-main p{color:#dbe5f4;max-width:620px;margin:22px 0;position:relative;z-index:2}
-.hero-buttons{display:flex;gap:11px;flex-wrap:wrap;position:relative;z-index:2}
-.btn{border:0;border-radius:12px;padding:13px 18px;font-weight:800;transition:.2s}
-.btn:hover{transform:translateY(-2px)}
-.btn-orange{background:var(--orange);color:#fff}.btn-white{background:#fff;color:var(--navy)}
-.hero-side{background:#fff;border:1px solid var(--line);padding:27px;display:flex;flex-direction:column;justify-content:space-between}
-.hero-side h2{font-family:Sora;font-size:25px;color:var(--navy)}
-.hero-side p{color:var(--muted);font-size:14px;margin:9px 0 18px}
-.hero-stat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{border:1px solid var(--line);border-radius:15px;padding:17px}
-.stat strong{display:block;font-family:Sora;font-size:24px;color:var(--navy)}
-.stat small{color:var(--muted);font-size:12px}
-
-/* SECTIONS */
-.section{padding:52px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
-.section-head h2{font-family:Sora;font-size:28px;color:var(--navy)}
-.section-head p{color:var(--muted);font-size:14px}
-
-/* CATEGORIES */
-.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.cat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 12px;text-align:center;transition:.2s}
-.cat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d9dce2}
-.cat-icon{font-size:29px;margin-bottom:9px}.cat strong{display:block;font-size:13px}.cat span{font-size:11px;color:var(--muted)}
-
-/* FILTERS */
-.shopbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:30px;padding:9px 14px;font-size:12px;font-weight:700}
-.chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;font-size:13px;margin-left:auto}
-
-/* PRODUCTS */
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.product{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;position:relative}
-.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.pimg{height:205px;background:#eef1f5;position:relative;overflow:hidden}
-.pimg img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.product:hover .pimg img{transform:scale(1.04)}
-.tag{position:absolute;left:10px;top:10px;background:var(--orange);color:#fff;padding:6px 9px;border-radius:8px;font-size:10px;font-weight:800}
-.heart{position:absolute;right:10px;top:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:18px}
-.pbody{padding:15px}.pcat{color:var(--green);font-size:10px;text-transform:uppercase;font-weight:800}.pname{font-family:Sora;font-size:14px;margin:6px 0}.stars{font-size:11px;color:#F0A23C}.reviews{color:var(--muted);font-size:10px}.desc{font-size:12px;color:var(--muted);min-height:38px;margin-top:5px}
-.pbottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}.price{font-family:Sora;font-size:15px;color:var(--navy)}.old{font-size:10px;color:#9CA3AF;text-decoration:line-through;margin-left:4px}
-.add{border:0;background:var(--navy);color:#fff;border-radius:10px;padding:9px 11px;font-size:11px;font-weight:800}
-
-/* PROMO */
-.promo{background:linear-gradient(120deg,#FFF2E8,#fff);border:1px solid #f4d8c2;border-radius:24px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-.promo h2{font-family:Sora;color:var(--navy);font-size:25px}.promo p{color:var(--muted);font-size:14px;margin-top:6px}.promo strong{color:var(--orange)}
-
-/* SERVICES */
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.service{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
-.service .icon{font-size:30px}.service h3{font-family:Sora;font-size:15px;margin:12px 0 6px}.service p{font-size:12px;color:var(--muted);min-height:54px}.service button{margin-top:15px;border:0;background:#eef3f9;color:var(--navy);padding:9px 12px;border-radius:9px;font-size:11px;font-weight:800}
-
-/* BENEFITS */
-.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.benefit{background:var(--navy);color:#fff;border-radius:17px;padding:21px}.benefit b{font-size:25px}.benefit h3{font-family:Sora;font-size:14px;margin:8px 0}.benefit p{font-size:11px;color:#cdd7e7}
-
-/* TESTIMONIALS */
-.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.review{background:#fff;border:1px solid var(--line);border-radius:18px;padding:21px}.review .stars{font-size:14px}.review p{font-size:13px;margin:12px 0;color:#4b5563}.review strong{font-size:12px}.review small{display:block;color:var(--muted);font-size:10px}
-
-/* FAQ */
-.faq{max-width:900px;margin:auto}.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px;margin-bottom:10px}.faq summary{font-weight:800;font-size:14px;cursor:pointer}.faq p{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.7}
-
-/* FOOTER */
-footer{background:var(--navy);color:#fff;padding:50px 0 20px;margin-top:20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footer-logo{font-family:Sora;font-size:21px}.footer-logo span{color:var(--orange2)}footer p,footer a{color:#cbd5e1;font-size:12px;line-height:1.8}.footer-title{font-weight:800;margin-bottom:12px}.copyright{border-top:1px solid rgba(255,255,255,.12);margin-top:35px;padding-top:18px;color:#9fb0c6;font-size:11px}
-
-/* CART */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:none}.overlay.show{display:block}
-.cart{position:fixed;right:-480px;top:0;width:min(460px,94%);height:100vh;background:#fff;z-index:400;transition:.35s;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.18)}.cart.open{right:0}
-.cart-head{padding:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:Sora;color:var(--navy)}.close{border:0;background:0;font-size:27px}
-.cart-items{flex:1;overflow:auto;padding:18px}.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-item img{width:70px;height:70px;border-radius:11px;object-fit:cover}.ci{flex:1}.ci strong{font-size:13px}.ci .price{font-size:12px;margin-top:4px}.qty{display:flex;align-items:center;gap:7px;margin-top:9px}.qty button{width:27px;height:27px;border:1px solid var(--line);background:#fff;border-radius:7px}.remove{border:0;background:0;color:var(--red);font-size:11px}
-.cart-foot{border-top:1px solid var(--line);padding:18px}.row{display:flex;justify-content:space-between;font-size:13px;margin:6px 0}.grand{font-family:Sora;font-size:18px;margin:12px 0}.checkout{width:100%;border:0;background:var(--orange);color:#fff;padding:14px;border-radius:11px;font-weight:800}
-
-/* MODAL */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:20px;width:min(650px,100%);max-height:92vh;overflow:auto;padding:25px}.modal-head{display:flex;justify-content:space-between;margin-bottom:20px}.modal-head h2{font-family:Sora;color:var(--navy)}.field{margin-bottom:14px}.field label{font-size:12px;font-weight:800;display:block;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;outline:0}.field textarea{min-height:75px}.paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pay{border:1px solid var(--line);border-radius:11px;padding:13px;text-align:center;font-size:12px;font-weight:800}.pay.selected{border:2px solid var(--orange);background:#fff6ee}.confirm{width:100%;border:0;background:var(--navy);color:#fff;border-radius:11px;padding:14px;font-weight:800;margin-top:4px}
-.product-modal{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.product-modal img{width:100%;height:280px;object-fit:cover;border-radius:15px}.pm-cat{color:var(--green);font-size:11px;font-weight:800}.pm-title{font-family:Sora;font-size:25px;color:var(--navy);margin:6px 0}.pm-desc{font-size:13px;color:var(--muted);margin:10px 0}.specs{margin:15px 0;padding-left:18px;font-size:12px;color:#4b5563}.buy-now{width:100%;background:var(--orange);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800}
-
-/* TOAST / WHATSAPP / TOP */
-.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,120px);background:var(--navy);color:#fff;padding:12px 18px;border-radius:11px;z-index:1000;opacity:0;transition:.3s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
-.whatsapp{position:fixed;right:22px;bottom:82px;width:52px;height:52px;border-radius:50%;background:#18B96F;color:#fff;display:grid;place-items:center;font-size:25px;z-index:120;box-shadow:0 10px 25px rgba(24,185,111,.35)}
-.top{position:fixed;right:23px;bottom:22px;width:43px;height:43px;border:0;border-radius:50%;background:var(--navy);color:#fff;display:none;z-index:120}
-.empty{text-align:center;padding:55px 10px;color:var(--muted);grid-column:1/-1}
-
-/* DARK */
-body.dark{--cream:#0d1422;--white:#172033;--ink:#eef3fb;--muted:#aeb9c9;--line:#2d384c;background:#0d1422;color:#eef3fb}
-body.dark header,body.dark .search input,body.dark .hbtn,body.dark .cat,body.dark .chip,body.dark .select,body.dark .product,body.dark .promo,body.dark .service,body.dark .review,body.dark .faq details,body.dark .cart,body.dark .modal-box,body.dark .pay{background:#172033;color:#eef3fb}
-body.dark .hero-side{background:#172033;border-color:#2d384c}body.dark .section-head h2,body.dark .hero-side h2,body.dark .product .price,body.dark .pm-title{color:#eef3fb}
-body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.dark .service p,body.dark .review p{color:#aeb9c9}
-
-
-/* ================= ADMINISTRATION AUBEDE ================= */
-.admin-launch{border:0;background:#10213F;color:#fff;border-radius:10px;padding:10px 13px;font-size:11px;font-weight:800}
-.admin-modal{position:fixed;inset:0;background:rgba(6,14,28,.72);z-index:900;display:none;align-items:center;justify-content:center;padding:14px}
-.admin-modal.show{display:flex}
-.admin-shell{width:min(1180px,100%);height:min(92vh,900px);background:#f6f8fb;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:245px 1fr;box-shadow:0 25px 80px rgba(0,0,0,.3)}
-.admin-side{background:#10213F;color:#fff;padding:22px 15px;display:flex;flex-direction:column}
-.admin-brand{font-family:Sora;font-size:17px;margin-bottom:25px;padding:0 8px}.admin-brand span{color:#FFB16F}
-.admin-user{font-size:11px;color:#cbd5e1;padding:10px 8px 18px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:12px}
-.admin-nav{display:grid;gap:6px}.admin-nav button{border:0;background:transparent;color:#dce6f5;text-align:left;padding:11px 12px;border-radius:9px;font-size:12px;font-weight:700}.admin-nav button.active,.admin-nav button:hover{background:#19335D;color:#fff}
-.admin-logout{margin-top:auto;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:10px;border-radius:9px;font-weight:700}
-.admin-main{overflow:auto}.admin-top{background:#fff;border-bottom:1px solid #e5e7eb;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;z-index:3}.admin-top h2{font-family:Sora;color:#10213F;font-size:20px}.admin-close{border:0;background:#eef2f6;border-radius:9px;padding:9px 12px;font-weight:800}
-.admin-page{padding:22px}.admin-page h3{font-family:Sora;color:#10213F;margin-bottom:14px}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}.admin-stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:17px}.admin-stat strong{display:block;font-family:Sora;font-size:23px;color:#10213F}.admin-stat span{font-size:11px;color:#697386}
-.admin-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:17px;margin-bottom:15px}.admin-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}.admin-btn{border:0;border-radius:9px;padding:10px 13px;font-size:11px;font-weight:800}.admin-primary{background:#10213F;color:#fff}.admin-orange{background:#E9823B;color:#fff}.admin-danger{background:#D94A4A;color:#fff}.admin-light{background:#eef2f6;color:#10213F}
-.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:11px 8px;border-bottom:1px solid #edf0f3;text-align:left;vertical-align:middle}.admin-table th{color:#697386;font-size:10px;text-transform:uppercase}.admin-thumb{width:45px;height:40px;object-fit:cover;border-radius:7px;background:#eef1f5}.admin-actions{display:flex;gap:5px;flex-wrap:wrap}.status{display:inline-block;padding:5px 8px;border-radius:20px;font-size:9px;font-weight:800}.status.new{background:#fff1dc;color:#a85d0b}.status.processing{background:#e7f0ff;color:#245a9c}.status.shipped{background:#e9f8f1;color:#147653}.status.done{background:#e8f5eb;color:#28733b}.status.cancel{background:#fdeaea;color:#a93636}
-.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-field label{display:block;font-size:10px;font-weight:800;margin-bottom:5px}.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:10px;border:1px solid #dfe4ea;border-radius:9px;outline:0;background:#fff}.admin-field textarea{min-height:85px}.admin-field.full{grid-column:1/-1}.admin-image-preview{width:100%;height:160px;object-fit:cover;border-radius:10px;background:#eef1f5;margin-top:7px}.admin-login{width:min(430px,100%);background:#fff;border-radius:20px;padding:28px}.admin-login h2{font-family:Sora;color:#10213F;margin-bottom:7px}.admin-login p{font-size:12px;color:#697386;margin-bottom:18px}.admin-login .admin-field{margin-bottom:12px}.admin-login button{width:100%;margin-top:4px}
-.admin-empty{padding:30px;text-align:center;color:#697386;font-size:12px}.admin-note{font-size:10px;color:#697386;background:#f5f7fa;padding:10px;border-radius:9px;margin-top:12px}
-.admin-chart{height:230px;display:flex;align-items:flex-end;gap:10px;padding:20px 5px 5px;border-bottom:1px solid #dfe4ea}.bar{flex:1;min-width:12px;background:#19335D;border-radius:7px 7px 0 0;position:relative}.bar span{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:9px;color:#697386}.bar b{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:9px;color:#10213F}
-@media(max-width:850px){.admin-shell{grid-template-columns:1fr;height:96vh}.admin-side{display:none}.admin-grid{grid-template-columns:repeat(2,1fr)}.admin-form{grid-template-columns:1fr}.admin-table{min-width:720px}.admin-card{overflow:auto}.admin-top{padding:14px}.admin-page{padding:14px}}
-
-/* RESPONSIVE */
-@media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.cat-grid{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}}
-@media(max-width:700px){
-.container{padding:0 15px}.topbar .container{display:none}.header-main{height:auto;padding:12px 0;flex-wrap:wrap;gap:10px}.logo{font-size:19px}.search{order:3;flex-basis:100%;max-width:none}.navlinks .container{gap:19px}.hero{padding-top:18px}.hero-main{padding:38px 25px;min-height:430px}.hero-side{min-height:330px}.hero h1{font-size:38px}.cat-grid{grid-template-columns:repeat(3,1fr);gap:8px}.cat{padding:15px 7px}.products{grid-template-columns:repeat(2,1fr);gap:10px}.pimg{height:145px}.pbody{padding:12px}.pname{font-size:12px}.desc{font-size:11px}.pbottom{align-items:flex-start;flex-direction:column}.add{width:100%}.promo{display:block}.promo .btn{margin-top:15px}.testimonials{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.product-modal{grid-template-columns:1fr}.product-modal img{height:220px}}
-@media(max-width:430px){.header-actions .hbtn:not(.cart){display:none}.cat-grid{grid-template-columns:repeat(2,1fr)}.service-grid,.benefits{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f7fb;color:#182033}
+button,a{font:inherit}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e8ebf0}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:22px;font-weight:900;color:#10213f;text-decoration:none}.logo span{color:#e9823b}
+.navlinks{display:flex;gap:8px;align-items:center}.navlinks a{padding:10px 12px;color:#182033;text-decoration:none;border-radius:9px}.navlinks a:hover{background:#f0f3f8}
+.iconbtn,.primary,.secondary,.danger{border:0;border-radius:10px;padding:11px 14px;cursor:pointer;font-weight:800}
+.iconbtn{background:#f0f3f8;color:#182033}.primary{background:#e9823b;color:white}.secondary{background:#10213f;color:white}.danger{background:#d94a4a;color:white}
+.hero{padding:55px 0;background:linear-gradient(135deg,#10213f,#19365f);color:white}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 12px}.hero p{font-size:18px;opacity:.9;max-width:650px}
+.searchbox{display:flex;gap:10px;margin-top:24px}.searchbox input{flex:1;padding:15px;border:0;border-radius:11px;outline:0}
+.section{padding:45px 0}.section h2{margin-top:0}.categories{display:flex;gap:10px;overflow:auto;padding-bottom:8px}.cat{white-space:nowrap;border:1px solid #dfe4ec;background:#fff;padding:10px 14px;border-radius:999px;cursor:pointer}.cat.active{background:#10213f;color:white}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #e5e9ef;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.04)}.card img{width:100%;height:190px;object-fit:cover;background:#e9edf2}.cardbody{padding:15px}.tag{display:inline-block;background:#fff0e6;color:#c55d17;padding:5px 8px;border-radius:6px;font-size:11px;font-weight:800}.card h3{margin:10px 0 6px}.muted{color:#687386;font-size:13px}.price{font-size:20px;font-weight:900;margin:10px 0}.actions{display:flex;gap:8px}.actions button{flex:1}
+.empty{text-align:center;padding:45px;background:white;border-radius:16px;color:#687386}
+footer{background:#10213f;color:white;padding:35px 0;margin-top:30px}.footergrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}.footer a{color:#dbe5f4;text-decoration:none;display:block;margin:8px 0}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:50;padding:20px;overflow:auto}.modal.open{display:flex;align-items:center;justify-content:center}.modalbox{background:white;width:min(700px,100%);max-height:90vh;overflow:auto;border-radius:18px;padding:22px;position:relative}.close{position:absolute;right:15px;top:12px;border:0;background:#eef1f5;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:20px}.cartrow{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:13px 0}.qty button{width:30px;height:30px;border:0;border-radius:6px;background:#edf1f5;cursor:pointer}.form input,.form textarea,.form select{width:100%;padding:12px;margin:6px 0 12px;border:1px solid #dce2ea;border-radius:9px}.detail{display:grid;grid-template-columns:1fr 1fr;gap:20px}.detail img{width:100%;border-radius:12px}.notice{padding:12px;border-radius:9px;background:#eef7ff;color:#18527b;margin:10px 0}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.footergrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.detail{grid-template-columns:1fr}.hero{padding:38px 0}.searchbox{flex-direction:column}.footergrid{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
 
-<div class="topbar">
-<div class="container">
-<span>🇧🇯 Boutique & services numériques au Bénin</span>
-<span>WhatsApp : 01 64 63 84 29 • 01 67 92 92 69</span>
-</div>
-</div>
-
 <header>
-<div class="container header-main">
-<a class="logo" href="#">Marché <span>AUBEDE</span></a>
-<div class="search">
-<input id="search" type="search" placeholder="Rechercher un produit, service..." oninput="renderProducts()">
-<button onclick="renderProducts()">⌕</button>
-</div>
-<div class="header-actions">
-<button class="hbtn" onclick="toggleDark()" title="Mode sombre">🌙</button>
-<button class="hbtn" onclick="showFavorites()">♡</button>
-<button class="hbtn cart" onclick="openCart()">🛒 Panier <span class="badge" id="cartCount">0</span></button><button class="admin-launch" onclick="openAdmin()">ADMIN</button>
-</div>
-</div>
-<div class="navlinks">
-<div class="container">
-<a href="#accueil">Accueil</a><a href="#boutique">Boutique</a><a href="#services">Services</a><a href="#formations">Formations</a><a href="#avis">Avis clients</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-</div>
-</div>
+  <div class="container nav">
+    <a class="logo" href="#accueil">Marché <span>AUBEDE</span></a>
+    <nav class="navlinks">
+      <a href="#accueil">Accueil</a>
+      <a href="#produits">Produits</a>
+      <a href="#categories">Catégories</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="iconbtn" onclick="openCart()">🛒 Panier (<span id="cartCount">0</span>)</button>
+  </div>
 </header>
 
-<main id="accueil">
-
-<section class="hero">
-<div class="container hero-grid">
-<div class="hero-card hero-main">
-<div class="eyebrow">⚡ MARCHÉ AUBEDE • TECHNOLOGIE & SERVICES</div>
-<h1>Votre technologie.<br><span>Votre solution.</span><br>Votre marché.</h1>
-<p>Ordinateurs, accessoires, logiciels, formations et maintenance informatique : découvrez une expérience simple et moderne pour acheter ou demander un service.</p>
-<div class="hero-buttons">
-<button class="btn btn-orange" onclick="document.getElementById('boutique').scrollIntoView()">Acheter maintenant →</button>
-<button class="btn btn-white" onclick="document.getElementById('services').scrollIntoView()">Nos services</button>
-</div>
-</div>
-<div class="hero-card hero-side">
-<div>
-<div class="eyebrow" style="color:var(--navy);background:#f1f5f9;border:0">MARCHÉ AUBEDE</div>
-<h2>Une boutique pensée pour vous.</h2>
-<p>Commandez en ligne et recevez votre confirmation directement sur WhatsApp.</p>
-</div>
-<div class="hero-stat">
-<div class="stat"><strong>24–48h</strong><small>Délai indicatif de livraison</small></div>
-<div class="stat"><strong>2</strong><small>Contacts WhatsApp disponibles</small></div>
-<div class="stat"><strong>+100</strong><small>Possibilités de produits/services</small></div>
-<div class="stat"><strong>🇧🇯</strong><small>Service au Bénin</small></div>
-</div>
-</div>
-</div>
+<main>
+<section class="hero" id="accueil">
+  <div class="container">
+    <h1>Bienvenue chez Marché AUBEDE</h1>
+    <p>Découvrez nos produits et ajoutez-les directement à votre panier.</p>
+    <div class="searchbox">
+      <input id="search" type="search" placeholder="Rechercher un produit..." oninput="renderProducts()">
+      <button class="primary" onclick="document.getElementById('produits').scrollIntoView()">Voir les produits</button>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<div class="section-head"><div><h2>Explorez par catégorie</h2><p>Trouvez rapidement ce dont vous avez besoin.</p></div></div>
-<div class="cat-grid">
-<a class="cat" href="#boutique" onclick="setCategory('Informatique')"><div class="cat-icon">💻</div><strong>Informatique</strong><span>PC & composants</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Accessoires')"><div class="cat-icon">⌨️</div><strong>Accessoires</strong><span>Claviers, souris...</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Stockage')"><div class="cat-icon">💾</div><strong>Stockage</strong><span>SSD, HDD, USB</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Maintenance')"><div class="cat-icon">🛠️</div><strong>Maintenance</strong><span>Installation & dépannage</span></a>
-<a class="cat" href="#formations" onclick="return false"><div class="cat-icon">🎓</div><strong>Formations</strong><span>Apprendre en pratique</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Logiciels')"><div class="cat-icon">⚙️</div><strong>Logiciels</strong><span>Solutions numériques</span></a>
-</div>
-</div>
+<section class="section" id="categories">
+  <div class="container">
+    <h2>Catégories</h2>
+    <div class="categories" id="categoryList"></div>
+  </div>
 </section>
 
-<section class="section" id="boutique" style="padding-top:15px">
-<div class="container">
-<div class="section-head"><div><h2>Boutique</h2><p>Produits et prestations sélectionnés par Marché AUBEDE.</p></div><strong id="resultCount"></strong></div>
-<div class="shopbar">
-<button class="chip active" data-cat="Tous" onclick="setCategory('Tous')">Tout</button>
-<button class="chip" data-cat="Informatique" onclick="setCategory('Informatique')">Informatique</button>
-<button class="chip" data-cat="Accessoires" onclick="setCategory('Accessoires')">Accessoires</button>
-<button class="chip" data-cat="Stockage" onclick="setCategory('Stockage')">Stockage</button>
-<button class="chip" data-cat="Maintenance" onclick="setCategory('Maintenance')">Maintenance</button>
-<button class="chip" data-cat="Formation" onclick="setCategory('Formation')">Formation</button>
-<button class="chip" data-cat="Logiciels" onclick="setCategory('Logiciels')">Logiciels</button>
-<select class="select" id="sort" onchange="renderProducts()">
-<option value="featured">Trier : Recommandés</option>
-<option value="priceAsc">Prix croissant</option>
-<option value="priceDesc">Prix décroissant</option>
-<option value="name">Nom A–Z</option>
-</select>
-</div>
-<div class="products" id="products"></div>
-</div>
-</section>
-
-<section class="section">
-<div class="container">
-<div class="promo">
-<div><h2>🔥 Offre spéciale <strong>Marché AUBEDE</strong></h2><p>Profitez de nos prestations et accessoires à prix attractifs. <strong>Demandez le prix actuel sur WhatsApp.</strong></p></div>
-<button class="btn btn-orange" onclick="openWhatsApp()">Parler à un conseiller</button>
-</div>
-</div>
-</section>
-
-<section class="section" id="services">
-<div class="container">
-<div class="section-head"><div><h2>Nos services</h2><p>Des solutions informatiques adaptées à vos besoins.</p></div></div>
-<div class="service-grid">
-<div class="service"><div class="icon">🛠️</div><h3>Maintenance informatique</h3><p>Diagnostic, nettoyage, optimisation et dépannage de votre ordinateur.</p><button onclick="serviceRequest('Maintenance informatique')">Demander →</button></div>
-<div class="service"><div class="icon">💿</div><h3>Installation Windows</h3><p>Installation et configuration de Windows et des pilotes essentiels.</p><button onclick="serviceRequest('Installation Windows')">Demander →</button></div>
-<div class="service"><div class="icon">⚙️</div><h3>Installation logiciels</h3><p>Configuration des logiciels nécessaires à votre activité ou vos études.</p><button onclick="serviceRequest('Installation logiciels')">Demander →</button></div>
-<div class="service"><div class="icon">🚀</div><h3>Optimisation PC</h3><p>Amélioration des performances, démarrage, stockage et réglages système.</p><button onclick="serviceRequest('Optimisation PC')">Demander →</button></div>
-</div>
-</div>
-</section>
-
-<section class="section" id="formations">
-<div class="container">
-<div class="section-head"><div><h2>Formations pratiques</h2><p>Développez vos compétences numériques.</p></div></div>
-<div class="promo">
-<div><h2>🎓 Formation informatique</h2><p>Programme pratique : Windows, Word, Excel, internet, maintenance de base et installation de logiciels.</p><p><strong>À partir de 10 000 FCFA</strong> • Durée selon le programme choisi.</p></div>
-<button class="btn btn-orange" onclick="serviceRequest('Formation informatique')">S'inscrire →</button>
-</div>
-</div>
-</section>
-
-<section class="section">
-<div class="container">
-<div class="benefits">
-<div class="benefit"><b>⚡</b><h3>Réponse rapide</h3><p>Contact direct avec Marché AUBEDE via WhatsApp.</p></div>
-<div class="benefit"><b>💳</b><h3>Paiement local</h3><p>Préparation pour MTN Mobile Money et Moov Money.</p></div>
-<div class="benefit"><b>🛡️</b><h3>Accompagnement</h3><p>Conseils avant et après l'achat ou la prestation.</p></div>
-<div class="benefit"><b>🇧🇯</b><h3>Service au Bénin</h3><p>Une solution pensée pour les besoins locaux.</p></div>
-</div>
-</div>
-</section>
-
-<section class="section" id="avis">
-<div class="container">
-<div class="section-head"><div><h2>Avis clients</h2><p>Quelques exemples de témoignages à remplacer par vos vrais avis.</p></div></div>
-<div class="testimonials">
-<div class="review"><div class="stars">★★★★★</div><p>« Service rapide et explications très claires. »</p><strong>Client Marché AUBEDE</strong><small>Service informatique</small></div>
-<div class="review"><div class="stars">★★★★★</div><p>« Commande simple et communication efficace sur WhatsApp. »</p><strong>Client Marché AUBEDE</strong><small>Commande en ligne</small></div>
-<div class="review"><div class="stars">★★★★★</div><p>« Très bon accompagnement pour l'installation de mon ordinateur. »</p><strong>Client Marché AUBEDE</strong><small>Maintenance</small></div>
-</div>
-</div>
-</section>
-
-<section class="section" id="faq">
-<div class="container faq">
-<div class="section-head"><div><h2>Questions fréquentes</h2></div></div>
-<details><summary>Comment passer une commande ?</summary><p>Ajoutez un produit au panier, ouvrez le panier, complétez vos informations puis choisissez le numéro WhatsApp auquel envoyer la commande.</p></details>
-<details><summary>Quels sont les moyens de paiement ?</summary><p>La boutique est préparée pour MTN Mobile Money et Moov Money. Le paiement réel en ligne pourra être connecté ultérieurement à une passerelle comme FedaPay ou Kkiapay.</p></details>
-<details><summary>Quel est le délai de livraison ?</summary><p>Le délai dépend de la zone et de la disponibilité. Une estimation de 24 à 48 heures peut être communiquée pour les commandes éligibles.</p></details>
-<details><summary>Puis-je demander un service informatique ?</summary><p>Oui. Utilisez le bouton « Demander » dans la section Services pour préparer directement votre demande sur WhatsApp.</p></details>
-</div>
+<section class="section" id="produits">
+  <div class="container">
+    <h2>Nos produits</h2>
+    <div id="productGrid" class="grid"></div>
+  </div>
 </section>
 </main>
 
 <footer id="contact">
-<div class="container">
-<div class="footer-grid">
-<div><div class="footer-logo">Marché <span>AUBEDE</span></div><p style="margin-top:12px;max-width:330px">Informatique, accessoires, formations, maintenance et services numériques. Une boutique pensée pour vous.</p></div>
-<div><div class="footer-title">Boutique</div><a href="#boutique">Informatique</a><br><a href="#boutique">Accessoires</a><br><a href="#boutique">Stockage</a><br><a href="#boutique">Logiciels</a></div>
-<div><div class="footer-title">Services</div><a href="#services">Maintenance</a><br><a href="#services">Installation Windows</a><br><a href="#services">Optimisation</a><br><a href="#formations">Formations</a></div>
-<div><div class="footer-title">Contact</div><p>WhatsApp 1 : 01 64 63 84 29</p><p>WhatsApp 2 : 01 67 92 92 69</p><p>🇧🇯 Bénin</p></div>
-</div>
-<div class="copyright">© 2026 Marché AUBEDE — Tous droits réservés.</div>
-</div>
+  <div class="container footergrid">
+    <div><h3>Marché AUBEDE</h3><p>Une boutique moderne et simple à utiliser.</p></div>
+    <div><h4>Navigation</h4><a href="#accueil">Accueil</a><a href="#produits">Produits</a><a href="#categories">Catégories</a></div>
+    <div><h4>Contact</h4><p>Service client AUBEDE</p><button class="primary" onclick="openContact()">Nous contacter</button></div>
+  </div>
 </footer>
 
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-
-<aside class="cart" id="cart">
-<div class="cart-head"><h2>Votre panier</h2><button class="close" onclick="closeCart()">×</button></div>
-<div class="cart-items" id="cartItems"></div>
-<div class="cart-foot">
-<div class="row"><span>Sous-total</span><strong id="subtotal">0 FCFA</strong></div>
-<div class="row"><span>Livraison</span><span>À confirmer</span></div>
-<div class="row grand"><span>Total</span><strong id="total">0 FCFA</strong></div>
-<button class="checkout" onclick="openCheckout()">Passer la commande →</button>
-</div>
-</aside>
-
-<div class="modal" id="productModal">
-<div class="modal-box">
-<div class="modal-head"><h2>Détails du produit</h2><button class="close" onclick="closeProduct()">×</button></div>
-<div id="productDetail"></div>
-</div>
-</div>
-
-<div class="modal" id="checkoutModal">
-<div class="modal-box">
-<div class="modal-head"><h2>Finaliser la commande</h2><button class="close" onclick="closeCheckout()">×</button></div>
-<div class="field"><label>Nom complet *</label><input id="name" placeholder="Votre nom"></div>
-<div class="field"><label>Téléphone *</label><input id="phone" placeholder="Ex : 97 XX XX XX"></div>
-<div class="field"><label>Ville / zone *</label><input id="location" placeholder="Ex : Abomey-Calavi"></div>
-<div class="field"><label>Adresse / indication</label><textarea id="address" placeholder="Point de repère, quartier..."></textarea></div>
-<div class="field"><label>Mode de paiement</label><div class="paygrid"><div class="pay selected" onclick="selectPay('MTN',this)">🟡 MTN Mobile Money</div><div class="pay" onclick="selectPay('Moov',this)">🟢 Moov Money</div></div></div>
-<div class="field"><label>Envoyer la commande à</label><select id="target"><option value="2290164638429">WhatsApp 1 — 01 64 63 84 29</option><option value="2290167929269">WhatsApp 2 — 01 67 92 92 69</option></select></div>
-<button class="confirm" onclick="confirmOrder()">📱 Confirmer sur WhatsApp</button>
-</div>
-</div>
-
-<a class="whatsapp" href="javascript:openWhatsApp()" title="Contacter Marché AUBEDE">◉</a>
-<button class="top" id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
-<div class="toast" id="toast"></div>
-
-<!-- ADMINISTRATION -->
-<div class="admin-modal" id="adminModal">
-  <div class="admin-shell" id="adminShell">
-    <aside class="admin-side">
-      <div class="admin-brand">Marché <span>AUBEDE</span></div>
-      <div class="admin-user">Administrateur<br><strong>ZOUNTCHEGBE AUBEDE</strong></div>
-      <div class="admin-nav">
-        <button data-page="dashboard" onclick="adminPage('dashboard')">📊 Tableau de bord</button>
-        <button data-page="products" onclick="adminPage('products')">📦 Produits</button>
-        <button data-page="orders" onclick="adminPage('orders')">🛒 Commandes</button>
-        <button data-page="stats" onclick="adminPage('stats')">📈 Statistiques</button>
-        <button data-page="settings" onclick="adminPage('settings')">⚙️ Paramètres</button>
-      </div>
-      <button class="admin-logout" onclick="adminLogout()">Se déconnecter</button>
-    </aside>
-    <section class="admin-main">
-      <div class="admin-top"><h2 id="adminTitle">Tableau de bord</h2><button class="admin-close" onclick="closeAdmin()">✕ Fermer</button></div>
-      <div id="adminContent"></div>
-    </section>
+<!-- Détail produit -->
+<div class="modal" id="productModal" onclick="outsideClose(event,'productModal')">
+  <div class="modalbox">
+    <button class="close" onclick="closeModal('productModal')">×</button>
+    <div id="productDetail"></div>
   </div>
 </div>
 
-<div class="admin-modal" id="adminLoginModal">
-  <div class="admin-login">
-    <div style="font-size:28px">🔐</div>
-    <h2>Espace administrateur</h2>
-    <p>ZOUNTCHEGBE AUBEDE • Gestion de Marché AUBEDE</p>
-    <div class="admin-field"><label>Mot de passe</label><input id="adminPassword" type="password" placeholder="Entrez votre mot de passe" onkeydown="if(event.key==='Enter')adminLogin()"></div>
-    <button class="admin-btn admin-primary" onclick="adminLogin()">Accéder au tableau de bord</button>
-    <div class="admin-note">Le mot de passe de cette version HTML est stocké dans le navigateur. Pour une vraie sécurité professionnelle, il faudra connecter cet espace à un serveur avec authentification.</div>
+<!-- Panier -->
+<div class="modal" id="cartModal" onclick="outsideClose(event,'cartModal')">
+  <div class="modalbox">
+    <button class="close" onclick="closeModal('cartModal')">×</button>
+    <h2>Mon panier</h2>
+    <div id="cartContent"></div>
   </div>
 </div>
 
+<!-- Commande -->
+<div class="modal" id="checkoutModal" onclick="outsideClose(event,'checkoutModal')">
+  <div class="modalbox">
+    <button class="close" onclick="closeModal('checkoutModal')">×</button>
+    <h2>Finaliser la commande</h2>
+    <div class="notice">Remplissez vos informations. Votre commande sera enregistrée localement dans cette version HTML.</div>
+    <form class="form" onsubmit="submitOrder(event)">
+      <label>Nom complet</label>
+      <input id="customerName" required>
+      <label>Téléphone</label>
+      <input id="customerPhone" required>
+      <label>Ville / Localisation</label>
+      <input id="customerLocation" required>
+      <label>Mode de paiement</label>
+      <select id="payment"><option>À la livraison</option><option>Mobile Money</option></select>
+      <button class="primary" style="width:100%">Confirmer la commande</button>
+    </form>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="modal" id="contactModal" onclick="outsideClose(event,'contactModal')">
+  <div class="modalbox">
+    <button class="close" onclick="closeModal('contactModal')">×</button>
+    <h2>Nous contacter</h2>
+    <p>Vous pouvez nous contacter pour obtenir des informations sur les produits et les commandes.</p>
+    <button class="secondary" onclick="contactWhatsApp()">💬 Contacter sur WhatsApp</button>
+  </div>
+</div>
 
 <script>
-const WA=["2290164638429","2290167929269"];
-const defaultProducts=[
-{id:1,name:"Service de Maintenance Pro",category:"Maintenance",price:5000,old:null,image:"produit.jpg",rating:5,reviews:12,desc:"Diagnostic, nettoyage et maintenance informatique.",tag:"Service"},
-{id:2,name:"Installation Windows",category:"Maintenance",price:5000,old:null,image:"windows.jpg",rating:5,reviews:8,desc:"Installation et configuration de Windows.",tag:"Service"},
-{id:3,name:"Formation Informatique",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:15,desc:"Formation pratique en informatique.",tag:"Formation"},
-{id:4,name:"Souris USB",category:"Accessoires",price:3500,old:4500,image:"souris.jpg",rating:4.8,reviews:9,desc:"Souris USB pratique pour ordinateur.",tag:"Promo"},
-{id:5,name:"Clavier USB",category:"Accessoires",price:5000,old:null,image:"clavier.jpg",rating:4.7,reviews:7,desc:"Clavier USB confortable et fiable.",tag:"Top"},
-{id:6,name:"SSD SATA 120 Go",category:"Stockage",price:18000,old:21000,image:"ssd.jpg",rating:5,reviews:11,desc:"SSD SATA pour améliorer la vitesse de votre PC.",tag:"Promo"},
-{id:7,name:"Ordinateur portable",category:"Informatique",price:150000,old:null,image:"ordinateur.jpg",rating:4.9,reviews:6,desc:"Ordinateur portable professionnel.",tag:"Sélection"},
-{id:8,name:"Installation logiciels",category:"Logiciels",price:5000,old:null,image:"logiciels.jpg",rating:5,reviews:10,desc:"Installation et configuration de logiciels.",tag:"Service"},
-{id:9,name:"SSD SATA 240 Go",category:"Stockage",price:25000,old:null,image:"ssd.jpg",rating:4.9,reviews:5,desc:"Capacité supérieure pour système et fichiers.",tag:"Nouveau"},
-{id:10,name:"Optimisation PC",category:"Maintenance",price:7000,old:null,image:"produit.jpg",rating:5,reviews:4,desc:"Réglages pour améliorer la fluidité et les performances.",tag:"Service"},
-{id:11,name:"Formation Excel",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:4,desc:"Apprentissage pratique d'Excel.",tag:"Formation"},
-{id:12,name:"Clé USB 64 Go",category:"Stockage",price:6000,old:null,image:"ssd.jpg",rating:4.8,reviews:3,desc:"Stockage portable pour vos fichiers.",tag:"Top"}
+const products=[
+ {id:1,name:"Ordinateur portable AUBEDE",category:"Informatique",price:250000,oldPrice:290000,tag:"Nouveau",image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80",description:"Ordinateur portable polyvalent pour le travail, les études et la navigation."},
+ {id:2,name:"Smartphone Android",category:"Téléphones",price:85000,oldPrice:100000,tag:"Promo",image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80",description:"Smartphone Android moderne avec écran confortable et bonne autonomie."},
+ {id:3,name:"Casque Bluetooth",category:"Accessoires",price:18000,oldPrice:22000,tag:"Populaire",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80",description:"Casque sans fil confortable pour musique, appels et vidéos."},
+ {id:4,name:"Souris sans fil",category:"Informatique",price:7500,oldPrice:9000,tag:"Nouveau",image:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=80",description:"Souris sans fil pratique pour ordinateur portable et bureau."},
+ {id:5,name:"Clavier USB",category:"Informatique",price:9500,oldPrice:12000,tag:"",image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=80",description:"Clavier confortable pour la bureautique et le travail quotidien."},
+ {id:6,name:"Enceinte Bluetooth",category:"Audio",price:22000,oldPrice:26000,tag:"Promo",image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=80",description:"Enceinte Bluetooth compacte avec un son puissant."}
 ];
-let products=JSON.parse(localStorage.getItem("aubedeProducts")||"null")||defaultProducts;
-localStorage.setItem("aubedeProducts",JSON.stringify(products));
-let cart=JSON.parse(localStorage.getItem("aubedeCart")||"[]");
-let category="Tous",pay="MTN",toastTimer;
 
-function money(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}
-function imgFallback(e){e.target.src="https://placehold.co/800x600/e9edf2/10213F?text=Marche+AUBEDE"}
+let cart=JSON.parse(localStorage.getItem("aubede_cart")||"[]");
+let activeCategory="Toutes";
+
+function money(n){return Number(n).toLocaleString("fr-FR")+" FCFA"}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+
+function renderCategories(){
+ const cats=["Toutes",...new Set(products.map(p=>p.category))];
+ document.getElementById("categoryList").innerHTML=cats.map(c=>`<button class="cat ${c===activeCategory?'active':''}" onclick="setCategory('${esc(c)}')">${esc(c)}</button>`).join("");
+}
+function setCategory(c){activeCategory=c;renderCategories();renderProducts()}
 function renderProducts(){
-let q=document.getElementById("search").value.toLowerCase().trim();
-let arr=products.filter(p=>(category==="Tous"||p.category===category)&&(!q||(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q)));
-let sort=document.getElementById("sort").value;
-if(sort==="priceAsc")arr.sort((a,b)=>a.price-b.price);
-if(sort==="priceDesc")arr.sort((a,b)=>b.price-a.price);
-if(sort==="name")arr.sort((a,b)=>a.name.localeCompare(b.name));
-document.getElementById("resultCount").textContent=arr.length+" produit(s)";
-let box=document.getElementById("products");
-box.innerHTML=arr.length?arr.map(p=>`
-<article class="product">
-<div class="pimg"><img src="${p.image}" alt="${p.name}" onerror="imgFallback(event)"><span class="tag">${p.tag}</span><button class="heart" onclick="favorite(${p.id})">♡</button></div>
-<div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div><span class="stars">★★★★★</span> <span class="reviews">${p.rating} (${p.reviews})</span></div><div class="desc">${p.desc}</div>
-<div class="pbottom"><div class="price">${money(p.price)} ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div>
-<button style="margin-top:9px;width:100%;border:0;background:#f2f5f8;color:#10213F;padding:9px;border-radius:9px;font-size:11px;font-weight:800" onclick="details(${p.id})">Voir le produit</button>
-</div></article>`).join(""):`<div class="empty">🔎<br><br>Aucun produit ne correspond à votre recherche.</div>`;
-}
-function setCategory(c){
-category=c;
-document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x.dataset.cat===c));
-renderProducts();
-document.getElementById("boutique").scrollIntoView({behavior:"smooth"});
-}
-function add(id){
-let p=products.find(x=>x.id===id),i=cart.find(x=>x.id===id);
-if(i)i.qty++;else cart.push({id,qty:1});
-save();toast(p.name+" ajouté au panier 🛒");
-}
-function save(){localStorage.setItem("aubedeCart",JSON.stringify(cart));renderCart()}
-function renderCart(){
-let box=document.getElementById("cartItems");
-if(!cart.length){box.innerHTML='<div class="empty">🛒<br><br>Votre panier est vide.</div>';document.getElementById("subtotal").textContent="0 FCFA";document.getElementById("total").textContent="0 FCFA";document.getElementById("cartCount").textContent="0";return}
-let total=0;
-box.innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;return `<div class="cart-item"><img src="${p.image}" onerror="imgFallback(event)" alt="${p.name}"><div class="ci"><strong>${p.name}</strong><div class="price">${money(p.price)}</div><div class="qty"><button onclick="change(${p.id},-1)">−</button><b>${i.qty}</b><button onclick="change(${p.id},1)">+</button><button class="remove" onclick="removeItem(${p.id})">Supprimer</button></div></div></div>`}).join("");
-document.getElementById("subtotal").textContent=money(total);document.getElementById("total").textContent=money(total);
-document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
-}
-function change(id,n){let i=cart.find(x=>x.id===id);i.qty+=n;if(i.qty<1)removeItem(id);else save()}
-function removeItem(id){cart=cart.filter(x=>x.id!==id);save()}
-function openCart(){document.getElementById("cart").classList.add("open");document.getElementById("overlay").classList.add("show")}
-function closeCart(){document.getElementById("cart").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
-function details(id){
-let p=products.find(x=>x.id===id);
-document.getElementById("productDetail").innerHTML=`<div class="product-modal"><div><img src="${p.image}" onerror="imgFallback(event)" alt="${p.name}"></div><div><div class="pm-cat">${p.category}</div><div class="pm-title">${p.name}</div><div class="stars">★★★★★ <span class="reviews">${p.rating} / 5 • ${p.reviews} avis</span></div><p class="pm-desc">${p.desc}</p><ul class="specs"><li>Disponibilité : à confirmer</li><li>Livraison : selon zone</li><li>Paiement : MTN / Moov</li><li>Assistance Marché AUBEDE disponible</li></ul><div class="price" style="font-size:22px;margin-bottom:13px">${money(p.price)}</div><button class="buy-now" onclick="add(${p.id});closeProduct();openCart()">Ajouter au panier</button></div></div>`;
-document.getElementById("productModal").classList.add("show");
-}
-function closeProduct(){document.getElementById("productModal").classList.remove("show")}
-function openCheckout(){if(!cart.length){toast("Votre panier est vide.");return}document.getElementById("checkoutModal").classList.add("show")}
-function closeCheckout(){document.getElementById("checkoutModal").classList.remove("show")}
-function selectPay(x,e){pay=x;document.querySelectorAll(".pay").forEach(a=>a.classList.remove("selected"));e.classList.add("selected")}
-function confirmOrder(){
- let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),loc=document.getElementById("location").value.trim(),adr=document.getElementById("address").value.trim(),target=document.getElementById("target").value;
- if(!n||!ph||!loc){toast("Veuillez remplir les champs obligatoires.");return}
- let total=0,lines=["🛍️ *COMMANDE — MARCHÉ AUBEDE*","","*Client :* "+n,"*Téléphone :* "+ph,"*Zone :* "+loc,"*Adresse :* "+(adr||"Non précisée"),"*Paiement :* "+pay,"","*ARTICLES :*"];
- const items=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;lines.push("• "+p.name+" × "+i.qty+" = "+money(p.price*i.qty));return {id:p.id,name:p.name,qty:i.qty,price:p.price}});
- lines.push("","*TOTAL : "+money(total)+"*");
- const orders=getOrders();orders.push({id:"CMD-"+Date.now().toString().slice(-8),name:n,phone:ph,location:loc,address:adr,payment:pay,target,total,items,status:"Nouvelle",date:new Date().toISOString()});saveOrders(orders);
- window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("
-")),"_blank");
- toast("Commande enregistrée et prête sur WhatsApp.");
-}
-function serviceRequest(service){
-let text=encodeURIComponent("Bonjour Marché AUBEDE 👋\nJe souhaite demander le service suivant : "+service+"\n\nMerci de me renseigner.");
-window.open("https://wa.me/"+WA[0]+"?text="+text,"_blank");
-}
-function openWhatsApp(){window.open("https://wa.me/"+WA[0]+"?text="+encodeURIComponent("Bonjour Marché AUBEDE 👋 Je souhaite avoir des informations sur vos produits et services."),"_blank")}
-function favorite(id){
-let f=JSON.parse(localStorage.getItem("aubedeFav")||"[]");
-if(f.includes(id))f=f.filter(x=>x!==id);else f.push(id);
-localStorage.setItem("aubedeFav",JSON.stringify(f));toast(f.includes(id)?"Ajouté aux favoris ❤️":"Retiré des favoris");
-}
-function showFavorites(){
-let f=JSON.parse(localStorage.getItem("aubedeFav")||"[]");
-if(!f.length){toast("Aucun favori pour le moment.");return}
-document.getElementById("search").value="";
-category="Tous";
-document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x.dataset.cat==="Tous"));
-let original=products;
-let filtered=original.filter(p=>f.includes(p.id));
-document.getElementById("resultCount").textContent=filtered.length+" favori(s)";
-document.getElementById("products").innerHTML=filtered.map(p=>`<article class="product"><div class="pimg"><img src="${p.image}" onerror="imgFallback(event)"><span class="tag">Favori</span></div><div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div class="desc">${p.desc}</div><div class="pbottom"><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div></div></article>`).join("");
-document.getElementById("boutique").scrollIntoView({behavior:"smooth"});
-}
-
-/* ================= ADMIN JS ================= */
-const ADMIN_NAME="ZOUNTCHEGBE AUBEDE";
-const ADMIN_DEFAULT_PASSWORD="Marina2026";
-let adminAuthed=sessionStorage.getItem("aubedeAdminAuth")==="1";
-let editingProductId=null;
-let adminCurrentPage="dashboard";
-
-function adminOpenModal(id){document.getElementById(id).classList.add("show")}
-function adminCloseModal(id){document.getElementById(id).classList.remove("show")}
-function openAdmin(){
-  if(adminAuthed){adminOpenModal("adminModal");adminPage("dashboard")}
-  else {document.getElementById("adminPassword").value="";adminOpenModal("adminLoginModal");setTimeout(()=>document.getElementById("adminPassword").focus(),100)}
-}
-function closeAdmin(){adminCloseModal("adminModal")}
-function adminLogin(){
-  const pass=document.getElementById("adminPassword").value;
-  const saved=localStorage.getItem("aubedeAdminPassword")||ADMIN_DEFAULT_PASSWORD;
-  if(pass===saved){
-    adminAuthed=true;sessionStorage.setItem("aubedeAdminAuth","1");adminCloseModal("adminLoginModal");adminOpenModal("adminModal");adminPage("dashboard");toast("Connexion administrateur réussie.");
-  }else toast("Mot de passe incorrect.");
-}
-function adminLogout(){adminAuthed=false;sessionStorage.removeItem("aubedeAdminAuth");closeAdmin();toast("Session administrateur fermée.")}
-function saveProducts(){localStorage.setItem("aubedeProducts",JSON.stringify(products))}
-function getOrders(){return JSON.parse(localStorage.getItem("aubedeOrders")||"[]")}
-function saveOrders(a){localStorage.setItem("aubedeOrders",JSON.stringify(a))}
-function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function adminPage(page){
-  if(!adminAuthed)return openAdmin();
-  adminCurrentPage=page;
-  document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
-  const titles={dashboard:"Tableau de bord",products:"Gestion des produits",orders:"Suivi des commandes",stats:"Statistiques",settings:"Paramètres"};
-  document.getElementById("adminTitle").textContent=titles[page]||"Administration";
-  const box=document.getElementById("adminContent");
-  if(page==="dashboard") renderAdminDashboard(box);
-  if(page==="products") renderAdminProducts(box);
-  if(page==="orders") renderAdminOrders(box);
-  if(page==="stats") renderAdminStats(box);
-  if(page==="settings") renderAdminSettings(box);
-}
-function renderAdminDashboard(box){
-  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
-  box.innerHTML=`<div class="admin-page">
-    <div class="admin-grid">
-      <div class="admin-stat"><strong>${products.length}</strong><span>Produits</span></div>
-      <div class="admin-stat"><strong>${orders.length}</strong><span>Commandes enregistrées</span></div>
-      <div class="admin-stat"><strong>${money(revenue)}</strong><span>Chiffre d'affaires suivi</span></div>
-      <div class="admin-stat"><strong>${orders.filter(o=>o.status==="Nouvelle").length}</strong><span>Nouvelles commandes</span></div>
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ const list=products.filter(p=>(activeCategory==="Toutes"||p.category===activeCategory)&&(`${p.name} ${p.category} ${p.description}`).toLowerCase().includes(q));
+ const grid=document.getElementById("productGrid");
+ if(!list.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1">Aucun produit trouvé.</div>';return}
+ grid.innerHTML=list.map(p=>`
+ <article class="card">
+   <img src="${p.image}" alt="${esc(p.name)}">
+   <div class="cardbody">
+    ${p.tag?`<span class="tag">${esc(p.tag)}</span>`:""}
+    <h3>${esc(p.name)}</h3>
+    <div class="muted">${esc(p.category)}</div>
+    <div class="price">${money(p.price)}</div>
+    ${p.oldPrice?`<div class="muted"><s>${money(p.oldPrice)}</s></div>`:""}
+    <div class="actions">
+      <button class="secondary" onclick="showProduct(${p.id})">Détails</button>
+      <button class="primary" onclick="addCart(${p.id})">Ajouter</button>
     </div>
-    <div class="admin-card"><h3>Bienvenue, ${ADMIN_NAME}</h3><p style="font-size:12px;color:#697386">Depuis cet espace, vous pouvez gérer votre catalogue, ajouter des images, modifier ou supprimer des produits, suivre les commandes et consulter les statistiques.</p></div>
-    <div class="admin-card"><h3>Dernières commandes</h3>${adminOrderRows(orders.slice(-5).reverse())}</div>
-  </div>`;
-}
-function adminOrderRows(orders){
-  if(!orders.length)return '<div class="admin-empty">Aucune commande enregistrée pour le moment.</div>';
-  return `<div style="overflow:auto"><table class="admin-table"><thead><tr><th>Commande</th><th>Client</th><th>Total</th><th>Date</th><th>Statut</th></tr></thead><tbody>${
-    orders.map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br><small>${esc(o.phone)}</small></td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td>${adminStatus(o.status)}</td></tr>`).join("")
-  }</tbody></table></div>`;
-}
-function adminStatus(status){
-  const cls={"Nouvelle":"new","En préparation":"processing","Expédiée":"shipped","Livrée":"done","Annulée":"cancel"}[status]||"new";
-  return `<span class="status ${cls}">${esc(status)}</span>`;
-}
-function renderAdminProducts(box){
-  box.innerHTML=`<div class="admin-page">
-    <div class="admin-toolbar"><button class="admin-btn admin-orange" onclick="adminProductForm()">＋ Ajouter un produit</button><button class="admin-btn admin-light" onclick="exportProducts()">Exporter le catalogue</button></div>
-    <div class="admin-card"><div style="overflow:auto"><table class="admin-table"><thead><tr><th>Image</th><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Tag</th><th>Actions</th></tr></thead><tbody>${
-      products.map(p=>`<tr><td><img class="admin-thumb" src="${esc(p.image)}" onerror="imgFallback(event)"></td><td><strong>${esc(p.name)}</strong><br><small>${esc(p.desc)}</small></td><td>${esc(p.category)}</td><td>${money(p.price)}</td><td>${esc(p.tag||"")}</td><td><div class="admin-actions"><button class="admin-btn admin-light" onclick="adminProductForm(${p.id})">Modifier</button><button class="admin-btn admin-danger" onclick="deleteProduct(${p.id})">Supprimer</button></div></td></tr>`).join("")
-    }</tbody></table></div></div>
-  </div>`;
-}
-function adminProductForm(id){
-  editingProductId=id||null;
-  const p=id?products.find(x=>x.id===id):{name:"",category:"Informatique",price:"",old:"",image:"",rating:5,reviews:0,desc:"",tag:"Nouveau"};
-  const box=document.getElementById("adminContent");
-  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('products')">← Retour au catalogue</button></div>
-  <div class="admin-card"><h3>${id?"Modifier le produit":"Ajouter un produit"}</h3>
-  <div class="admin-form">
-    <div class="admin-field"><label>Nom du produit *</label><input id="apName" value="${esc(p.name)}"></div>
-    <div class="admin-field"><label>Catégorie *</label><select id="apCat">${["Informatique","Accessoires","Stockage","Maintenance","Formation","Logiciels"].map(c=>`<option ${p.category===c?"selected":""}>${c}</option>`).join("")}</select></div>
-    <div class="admin-field"><label>Prix (FCFA) *</label><input id="apPrice" type="number" min="0" value="${p.price??""}"></div>
-    <div class="admin-field"><label>Ancien prix (optionnel)</label><input id="apOld" type="number" min="0" value="${p.old??""}"></div>
-    <div class="admin-field"><label>Tag</label><input id="apTag" value="${esc(p.tag||"Nouveau")}"></div>
-    <div class="admin-field"><label>Note / 5</label><input id="apRating" type="number" min="0" max="5" step="0.1" value="${p.rating??5}"></div>
-    <div class="admin-field"><label>Nombre d'avis</label><input id="apReviews" type="number" min="0" value="${p.reviews??0}"></div>
-    <div class="admin-field"><label>Image du produit</label><input id="apImageFile" type="file" accept="image/*" onchange="previewAdminImage(event)"><input id="apImage" value="${esc(p.image||"")}" placeholder="ou URL / chemin de l'image" style="margin-top:7px"><img id="apPreview" class="admin-image-preview" src="${esc(p.image||"https://placehold.co/800x600/e9edf2/10213F?text=Produit")}" onerror="imgFallback(event)"></div>
-    <div class="admin-field full"><label>Description *</label><textarea id="apDesc">${esc(p.desc||"")}</textarea></div>
-  </div>
-  <button class="admin-btn admin-primary" style="margin-top:14px" onclick="saveAdminProduct()">💾 Enregistrer le produit</button>
-  </div></div>`;
-}
-function previewAdminImage(e){
-  const f=e.target.files[0]; if(!f)return;
-  const reader=new FileReader(); reader.onload=()=>{document.getElementById("apImage").value=reader.result;document.getElementById("apPreview").src=reader.result}; reader.readAsDataURL(f);
-}
-function saveAdminProduct(){
-  const name=document.getElementById("apName").value.trim(), price=Number(document.getElementById("apPrice").value), desc=document.getElementById("apDesc").value.trim();
-  if(!name||!price||!desc){toast("Nom, prix et description sont obligatoires.");return}
-  let p={id:editingProductId||Date.now(),name,category:document.getElementById("apCat").value,price,old:Number(document.getElementById("apOld").value)||null,image:document.getElementById("apImage").value.trim()||"https://placehold.co/800x600/e9edf2/10213F?text=Produit",rating:Number(document.getElementById("apRating").value)||5,reviews:Number(document.getElementById("apReviews").value)||0,desc,tag:document.getElementById("apTag").value.trim()||"Nouveau"};
-  if(editingProductId){const i=products.findIndex(x=>x.id===editingProductId);products[i]=p}else products.push(p);
-  saveProducts();renderProducts();adminPage("products");toast(editingProductId?"Produit modifié.":"Produit ajouté.");
-}
-function deleteProduct(id){
-  const p=products.find(x=>x.id===id); if(!p)return;
-  if(!confirm(`Supprimer « ${p.name} » ?`))return;
-  products=products.filter(x=>x.id!==id);saveProducts();renderProducts();adminPage("products");toast("Produit supprimé.");
-}
-function exportProducts(){
-  const blob=new Blob([JSON.stringify(products,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="catalogue-aubede.json";a.click();URL.revokeObjectURL(url);
-}
-function renderAdminOrders(box){
-  const orders=getOrders();
-  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('dashboard')">Actualiser</button><button class="admin-btn admin-danger" onclick="clearOrders()">Effacer les commandes</button></div>
-  <div class="admin-card">${!orders.length?'<div class="admin-empty">Aucune commande enregistrée.</div>':`<div style="overflow:auto"><table class="admin-table"><thead><tr><th>N°</th><th>Client</th><th>Articles</th><th>Total</th><th>Date</th><th>Statut</th><th>Action</th></tr></thead><tbody>${
-  orders.slice().reverse().map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br>${esc(o.phone)}<br>${esc(o.location)}</td><td>${o.items.map(i=>`${esc(i.name)} × ${i.qty}`).join("<br>")}</td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td><select onchange="updateOrderStatus('${esc(o.id)}',this.value)">${["Nouvelle","En préparation","Expédiée","Livrée","Annulée"].map(st=>`<option ${o.status===st?"selected":""}>${st}</option>`).join("")}</select></td><td><button class="admin-btn admin-danger" onclick="deleteOrder('${esc(o.id)}')">Supprimer</button></td></tr>`).join("")
-  }</tbody></table></div>`}</div></div>`;
-}
-function updateOrderStatus(id,status){const o=getOrders();const x=o.find(a=>a.id===id);if(x){x.status=status;saveOrders(o);toast("Statut mis à jour.")}}
-function deleteOrder(id){if(!confirm("Supprimer cette commande ?"))return;saveOrders(getOrders().filter(o=>o.id!==id));adminPage("orders");toast("Commande supprimée.")}
-function clearOrders(){if(!getOrders().length)return;if(confirm("Effacer toutes les commandes enregistrées dans ce navigateur ?")){saveOrders([]);adminPage("orders");toast("Historique effacé.")}}
-function renderAdminStats(box){
-  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
-  const counts={};orders.forEach(o=>{const d=o.date.slice(0,10);counts[d]=(counts[d]||0)+o.total});
-  const days=Object.keys(counts).sort().slice(-10);const max=Math.max(1,...days.map(d=>counts[d]));
-  box.innerHTML=`<div class="admin-page"><div class="admin-grid"><div class="admin-stat"><strong>${orders.length}</strong><span>Total commandes</span></div><div class="admin-stat"><strong>${money(revenue)}</strong><span>CA suivi</span></div><div class="admin-stat"><strong>${orders.filter(o=>o.status==="Livrée").length}</strong><span>Commandes livrées</span></div><div class="admin-stat"><strong>${products.length}</strong><span>Produits actifs</span></div></div>
-  <div class="admin-card"><h3>Évolution du chiffre d'affaires</h3><div class="admin-chart">${days.length?days.map(d=>`<div class="bar" style="height:${Math.max(5,(counts[d]/max)*175)}px"><b>${Math.round(counts[d]/1000)}k</b><span>${d.slice(5)}</span></div>`).join(""):'<div class="admin-empty" style="width:100%">Pas encore assez de données.</div>'}</div></div></div>`;
-}
-function renderAdminSettings(box){
-  box.innerHTML=`<div class="admin-page"><div class="admin-card"><h3>Compte administrateur</h3><p style="font-size:12px;color:#697386;margin-bottom:15px"><strong>${ADMIN_NAME}</strong></p>
-  <div class="admin-field" style="max-width:480px"><label>Nouveau mot de passe</label><input id="newAdminPass" type="password" placeholder="Minimum conseillé : 10 caractères"></div>
-  <button class="admin-btn admin-primary" style="margin-top:9px" onclick="changeAdminPassword()">Modifier le mot de passe</button>
-  <div class="admin-note">Le nouveau mot de passe sera mémorisé dans le navigateur actuel. Cette solution est adaptée à une démo/site statique, mais pas à une protection serveur contre un utilisateur technique.</div></div>
-  <div class="admin-card"><h3>Outils de données</h3><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="exportProducts()">Exporter les produits</button><button class="admin-btn admin-light" onclick="exportOrders()">Exporter les commandes</button></div></div></div>`;
-}
-function changeAdminPassword(){
-  const p=document.getElementById("newAdminPass").value;
-  if(p.length<6){toast("Choisissez au moins 6 caractères.");return}
-  localStorage.setItem("aubedeAdminPassword",p);document.getElementById("newAdminPass").value="";toast("Mot de passe administrateur modifié.");
-}
-function exportOrders(){
-  const blob=new Blob([JSON.stringify(getOrders(),null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="commandes-aubede.json";a.click();URL.revokeObjectURL(url);
+   </div>
+ </article>`).join("");
 }
 
-function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("aubedeDark",document.body.classList.contains("dark"))}
-function toast(m){let t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2400)}
-window.addEventListener("scroll",()=>document.getElementById("top").style.display=scrollY>500?"block":"none");
-if(localStorage.getItem("aubedeDark")==="true")document.body.classList.add("dark");
-renderProducts();renderCart();
+function saveCart(){localStorage.setItem("aubede_cart",JSON.stringify(cart));updateCartCount()}
+function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function addCart(id){let x=cart.find(i=>i.id===id);if(x)x.qty++;else cart.push({id,qty:1});saveCart();openCart()}
+function removeCart(id){cart=cart.filter(i=>i.id!==id);saveCart();renderCart()}
+function changeQty(id,d){let x=cart.find(i=>i.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)removeCart(id);else{saveCart();renderCart()}}
+function openCart(){renderCart();openModal("cartModal")}
+function renderCart(){
+ const box=document.getElementById("cartContent");
+ if(!cart.length){box.innerHTML='<div class="empty">Votre panier est vide.<br><br><button class="primary" onclick="closeModal(\'cartModal\');document.getElementById(\'produits\').scrollIntoView()">Voir les produits</button></div>';return}
+ let total=0;
+ box.innerHTML=cart.map(x=>{const p=products.find(p=>p.id===x.id);const t=p.price*x.qty;total+=t;return `<div class="cartrow"><div><b>${esc(p.name)}</b><div class="muted">${money(p.price)}</div></div><div class="qty"><button onclick="changeQty(${p.id},-1)">−</button> ${x.qty} <button onclick="changeQty(${p.id},1)">+</button></div><b>${money(t)}</b></div>`}).join("");
+ box.innerHTML+=`<hr><h3>Total : ${money(total)}</h3><button class="primary" style="width:100%" onclick="openCheckout()">Passer la commande</button>`;
+}
+function openCheckout(){closeModal("cartModal");openModal("checkoutModal")}
+function submitOrder(e){
+ e.preventDefault();
+ const order={number:"CMD-"+Date.now(),name:document.getElementById("customerName").value,phone:document.getElementById("customerPhone").value,location:document.getElementById("customerLocation").value,payment:document.getElementById("payment").value,items:cart,date:new Date().toLocaleString("fr-FR")};
+ localStorage.setItem("aubede_last_order",JSON.stringify(order));
+ cart=[];saveCart();closeModal("checkoutModal");
+ alert("Commande enregistrée avec succès. Numéro : "+order.number);
+}
+function showProduct(id){
+ const p=products.find(x=>x.id===id);
+ document.getElementById("productDetail").innerHTML=`<div class="detail"><img src="${p.image}" alt="${esc(p.name)}"><div><span class="tag">${esc(p.tag||"Produit")}</span><h2>${esc(p.name)}</h2><p class="muted">${esc(p.category)}</p><h2>${money(p.price)}</h2><p>${esc(p.description)}</p><button class="primary" onclick="addCart(${p.id});closeModal('productModal')">Ajouter au panier</button></div></div>`;
+ openModal("productModal");
+}
+function openContact(){openModal("contactModal")}
+function contactWhatsApp(){window.open("https://wa.me/?text="+encodeURIComponent("Bonjour Marché AUBEDE, je souhaite avoir des informations sur vos produits."),"_blank")}
+function openModal(id){document.getElementById(id).classList.add("open")}
+function closeModal(id){document.getElementById(id).classList.remove("open")}
+function outsideClose(e,id){if(e.target.id===id)closeModal(id)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".modal.open").forEach(x=>x.classList.remove("open"))});
+renderCategories();renderProducts();updateCartCount();
 </script>
 </body>
 </html>
