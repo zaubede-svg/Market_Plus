@@ -1,23 +1,12 @@
 <?php
 declare(strict_types=1);
-require_once __DIR__.'/config/database.php';
+require_once __DIR__.'/../config/auth.php';
+require_admin();
+$pdo=db();
+$products=(int)$pdo->query("SELECT COUNT(*) FROM products WHERE active=1")->fetchColumn();
+$orders=(int)$pdo->query("SELECT COUNT(*) FROM orders")->fetchColumn();
+$revenue=(float)$pdo->query("SELECT COALESCE(SUM(total),0) FROM orders WHERE status<>'Annulée'")->fetchColumn();
+$new=(int)$pdo->query("SELECT COUNT(*) FROM orders WHERE status='Nouvelle'")->fetchColumn();
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Marché AUBEDE</title>
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-<div class="wrap">
-  <section class="hero">
-    <h1>Marché AUBEDE</h1>
-    <p>Votre boutique — ZOUNTCHEGBE AUBEDE</p>
-  </section>
-  <input id="search" class="search" placeholder="Rechercher un produit...">
-  <section id="products" class="products"></section>
-</div>
-<script src="assets/js/app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard AUBEDE</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial;background:#f5f7fb;color:#18202d}.layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.side{background:#10213f;color:white;padding:20px}.brand{font-size:19px;font-weight:800;margin-bottom:25px}.brand span{color:#e9823b}.nav a{display:block;color:#dbe5f4;padding:11px;border-radius:8px;text-decoration:none;font-size:13px;margin:4px 0}.nav a:hover{background:#19335d}.main{padding:25px;max-width:1300px}.top{display:flex;justify-content:space-between;align-items:center}.panel,.card{background:white;border:1px solid #e3e8ef;border-radius:15px;padding:18px;margin-top:18px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card b{font-size:23px;color:#10213f;display:block}.card span{font-size:11px;color:#697386}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px;border-bottom:1px solid #edf0f3;text-align:left}input,textarea,select,button{padding:10px;border:1px solid #dce1e7;border-radius:8px}button,.btn{background:#10213f;color:#fff;border:0;font-weight:800;padding:9px 12px;border-radius:8px;text-decoration:none}.danger{background:#d94a4a!important}@media(max-width:800px){.layout{grid-template-columns:1fr}.side{display:none}.cards{grid-template-columns:1fr 1fr}.main{padding:14px}.panel{overflow:auto}}
+</style></head><body><div class="layout"><aside class="side"><div class="brand">Marché <span>AUBEDE</span></div><p style="font-size:12px">ZOUNTCHEGBE AUBEDE</p><nav class="nav"><a href="index.php">📊 Tableau de bord</a><a href="products.php">📦 Produits</a><a href="orders.php">🛒 Commandes</a><a href="stats.php">📈 Statistiques</a><a href="settings.php">⚙️ Paramètres</a><a href="logout.php">↪ Déconnexion</a></nav></aside><main class="main"><div class="top"><h1>Tableau de bord</h1><a href="../" target="_blank">Voir la boutique ↗</a></div><div class="cards"><div class="card"><b><?=$products?></b><span>Produits actifs</span></div><div class="card"><b><?=$orders?></b><span>Commandes</span></div><div class="card"><b><?=number_format($revenue,0,' ',' ')?> FCFA</b><span>Chiffre d'affaires</span></div><div class="card"><b><?=$new?></b><span>Nouvelles commandes</span></div></div><div class="panel"><h3>Bienvenue dans l'administration</h3><p>Utilisez le menu pour gérer le catalogue, les commandes, les statistiques et le mot de passe.</p></div></main></div></body></html>
