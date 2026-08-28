@@ -550,8 +550,8 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
    Tant que SUPABASE_URL n'est pas renseignée, le site fonctionne
    normalement en mode local (comme avant) sur cet appareil uniquement.
 ================================================================ */
-const SUPABASE_URL="https://drtibocixmjznyfrqugu.supabase.co";
-const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
+const SUPABASE_URL="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
+const SUPABASE_ANON_KEY="https://drtibocixmjznyfrqugu.supabase.co";
 const ADMIN_EMAIL="zaubede@gmail.com"; // l'email utilisé pour créer le compte admin dans Supabase
 const BACKEND_ENABLED=!!(SUPABASE_URL&&SUPABASE_ANON_KEY&&ADMIN_EMAIL);
 const sb=BACKEND_ENABLED?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
@@ -563,7 +563,12 @@ const defaultSettings={whatsapp1:"01 64 63 84 29",whatsapp2:"01 67 92 92 69",del
 let settings=Object.assign({},defaultSettings,JSON.parse(localStorage.getItem("aubedeSettings")||"null")||{});
 if(!settings.deliveryZones||!settings.deliveryZones.length)settings.deliveryZones=defaultSettings.deliveryZones.slice();
 function saveSettingsToStorage(){localStorage.setItem("aubedeSettings",JSON.stringify(settings))}
-function waId(phone){return "229"+String(phone||"").replace(/\D/g,"")}
+function waId(phone){
+let digits=String(phone||"").replace(/\D/g,"");
+if(!digits)return "";
+if(digits.startsWith("229"))return digits;
+return "229"+digits;
+}
 const defaultProducts=[
 {id:1,name:"Service de Maintenance Pro",category:"Maintenance",price:5000,old:null,images:["produit.jpg"],rating:5,reviews:12,desc:"Diagnostic, nettoyage et maintenance informatique.",tag:"Service"},
 {id:2,name:"Installation Windows",category:"Maintenance",price:5000,old:null,images:["windows.jpg"],rating:5,reviews:8,desc:"Installation et configuration de Windows.",tag:"Service"},
@@ -598,7 +603,9 @@ products=data.map(rowToProduct);
 async function loadSettingsBackend(){
 let {data,error}=await sb.from("settings").select("*").eq("id",1).single();
 if(error||!data)return;
-settings.whatsapp1=data.whatsapp1;settings.whatsapp2=data.whatsapp2;settings.delivery=data.delivery;
+if(data.whatsapp1)settings.whatsapp1=data.whatsapp1;
+if(data.whatsapp2)settings.whatsapp2=data.whatsapp2;
+if(data.delivery)settings.delivery=data.delivery;
 settings.deliveryZones=data.delivery_zones&&data.delivery_zones.length?data.delivery_zones:defaultSettings.deliveryZones.slice();
 }
 async function loadOrdersBackend(){
@@ -751,10 +758,16 @@ window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("\n")
 toast("Facture générée et commande envoyée ✅");
 }
 function serviceRequest(service){
+let id=waId(settings.whatsapp1);
+if(id.length<10){toast("Numéro WhatsApp non configuré — vérifie Administration → Paramètres.");return}
 let text=encodeURIComponent("Bonjour Marché AUBEDE 👋\nJe souhaite demander le service suivant : "+service+"\n\nMerci de me renseigner.");
-window.open("https://wa.me/"+waId(settings.whatsapp1)+"?text="+text,"_blank");
+window.open("https://wa.me/"+id+"?text="+text,"_blank");
 }
-function openWhatsApp(){window.open("https://wa.me/"+waId(settings.whatsapp1)+"?text="+encodeURIComponent("Bonjour Marché AUBEDE 👋 Je souhaite avoir des informations sur vos produits et services."),"_blank")}
+function openWhatsApp(){
+let id=waId(settings.whatsapp1);
+if(id.length<10){toast("Numéro WhatsApp non configuré — vérifie Administration → Paramètres.");return}
+window.open("https://wa.me/"+id+"?text="+encodeURIComponent("Bonjour Marché AUBEDE 👋 Je souhaite avoir des informations sur vos produits et services."),"_blank");
+}
 function favorite(id){
 let f=JSON.parse(localStorage.getItem("aubedeFav")||"[]");
 if(f.includes(id))f=f.filter(x=>x!==id);else f.push(id);
@@ -848,7 +861,10 @@ toast("Déconnecté de l'administration.");
 }
 async function openAdminPanel(){
 if(!(await isAdminSession())){openAdminLogin();return}
-if(BACKEND_ENABLED)await Promise.all([loadProductsBackend(),loadSettingsBackend(),loadOrdersBackend()]);
+if(BACKEND_ENABLED){
+await Promise.all([loadProductsBackend(),loadSettingsBackend(),loadOrdersBackend()]);
+applySettingsToUI();
+}
 document.getElementById("adminPanelModal").classList.add("show");
 switchAdminTab("products");
 newProductForm();
@@ -1240,31 +1256,4 @@ toast("Historique des commandes vidé 🗑️");
 }
 </script>
 </body>
-</html>
-<html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
-</html><html>
-
 </html>
