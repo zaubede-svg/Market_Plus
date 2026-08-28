@@ -537,7 +537,7 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* ================================================================
    ☁️ CONFIGURATION SERVEUR EN LIGNE (Supabase) — À REMPLIR
@@ -550,11 +550,21 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
    Tant que SUPABASE_URL n'est pas renseignée, le site fonctionne
    normalement en mode local (comme avant) sur cet appareil uniquement.
 ================================================================ */
-const SUPABASE_URL="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
-const SUPABASE_ANON_KEY="https://drtibocixmjznyfrqugu.supabase.co";
-const ADMIN_EMAIL="zaubede@gmail.com"; // l'email utilisé pour créer le compte admin dans Supabase
-const BACKEND_ENABLED=!!(SUPABASE_URL&&SUPABASE_ANON_KEY&&ADMIN_EMAIL);
-const sb=BACKEND_ENABLED?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+const SUPABASE_URL="https://drtibocixmjznyfrqugu.supabase.co";
+const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
+const ADMIN_EMAIL="zaubede@gmail.co"; // l'email utilisé pour créer le compte admin dans Supabase
+let BACKEND_ENABLED=!!(SUPABASE_URL&&SUPABASE_ANON_KEY&&ADMIN_EMAIL);
+let sb=null;
+if(BACKEND_ENABLED){
+try{
+if(!window.supabase)throw new Error("Librairie Supabase non chargée");
+sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+}catch(e){
+console.error("Supabase indisponible, passage en mode local :",e);
+BACKEND_ENABLED=false;
+sb=null;
+}
+}
 
 // 🔐 Mot de passe administrateur par défaut (modifiable depuis le panneau Paramètres)
 const DEFAULT_ADMIN_PASSWORD="aubede2026";
@@ -615,7 +625,12 @@ orders=data.map(r=>({id:r.id,orderNum:r.order_num,date:r.order_date,time:r.order
 }
 async function initBackendData(){
 if(!BACKEND_ENABLED)return;
+try{
 await Promise.all([loadProductsBackend(),loadSettingsBackend()]);
+}catch(e){
+console.error("Erreur de connexion au serveur en ligne :",e);
+toast("Connexion au serveur impossible — mode local utilisé temporairement.");
+}
 renderProducts();
 applySettingsToUI();
 }
@@ -862,7 +877,12 @@ toast("Déconnecté de l'administration.");
 async function openAdminPanel(){
 if(!(await isAdminSession())){openAdminLogin();return}
 if(BACKEND_ENABLED){
+try{
 await Promise.all([loadProductsBackend(),loadSettingsBackend(),loadOrdersBackend()]);
+}catch(e){
+console.error("Erreur de synchronisation admin :",e);
+toast("Connexion au serveur impossible — données non actualisées.");
+}
 applySettingsToUI();
 }
 document.getElementById("adminPanelModal").classList.add("show");
