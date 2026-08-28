@@ -133,6 +133,7 @@ footer{background:var(--navy);color:#fff;padding:50px 0 20px;margin-top:20px}.fo
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:20px;width:min(650px,100%);max-height:92vh;overflow:auto;padding:25px}.modal-head{display:flex;justify-content:space-between;margin-bottom:20px}.modal-head h2{font-family:Sora;color:var(--navy)}.field{margin-bottom:14px}.field label{font-size:12px;font-weight:800;display:block;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;outline:0}.field textarea{min-height:75px}.paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pay{border:1px solid var(--line);border-radius:11px;padding:13px;text-align:center;font-size:12px;font-weight:800}.pay.selected{border:2px solid var(--orange);background:#fff6ee}.confirm{width:100%;border:0;background:var(--navy);color:#fff;border-radius:11px;padding:14px;font-weight:800;margin-top:4px}
 .product-modal{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.product-modal img{width:100%;height:280px;object-fit:cover;border-radius:15px}.pm-cat{color:var(--green);font-size:11px;font-weight:800}.pm-title{font-family:Sora;font-size:25px;color:var(--navy);margin:6px 0}.pm-desc{font-size:13px;color:var(--muted);margin:10px 0}.specs{margin:15px 0;padding-left:18px;font-size:12px;color:#4b5563}.buy-now{width:100%;background:var(--orange);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800}
+.pm-thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.pm-thumbs img{width:58px;height:58px;object-fit:cover;border-radius:9px;cursor:pointer;border:2px solid transparent;opacity:.75}.pm-thumbs img.active{border-color:var(--orange);opacity:1}
 
 /* TOAST / WHATSAPP / TOP */
 .toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,120px);background:var(--navy);color:#fff;padding:12px 18px;border-radius:11px;z-index:1000;opacity:0;transition:.3s;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
@@ -146,25 +147,48 @@ body.dark header,body.dark .search input,body.dark .hbtn,body.dark .cat,body.dar
 body.dark .hero-side{background:#172033;border-color:#2d384c}body.dark .section-head h2,body.dark .hero-side h2,body.dark .product .price,body.dark .pm-title{color:#eef3fb}
 body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.dark .service p,body.dark .review p{color:#aeb9c9}
 
-
-/* ================= ADMINISTRATION AUBEDE ================= */
-.admin-launch{border:0;background:#10213F;color:#fff;border-radius:10px;padding:10px 13px;font-size:11px;font-weight:800}
-.admin-modal{position:fixed;inset:0;background:rgba(6,14,28,.72);z-index:900;display:none;align-items:center;justify-content:center;padding:14px}
-.admin-modal.show{display:flex}
-.admin-shell{width:min(1180px,100%);height:min(92vh,900px);background:#f6f8fb;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:245px 1fr;box-shadow:0 25px 80px rgba(0,0,0,.3)}
-.admin-side{background:#10213F;color:#fff;padding:22px 15px;display:flex;flex-direction:column}
-.admin-brand{font-family:Sora;font-size:17px;margin-bottom:25px;padding:0 8px}.admin-brand span{color:#FFB16F}
-.admin-user{font-size:11px;color:#cbd5e1;padding:10px 8px 18px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:12px}
-.admin-nav{display:grid;gap:6px}.admin-nav button{border:0;background:transparent;color:#dce6f5;text-align:left;padding:11px 12px;border-radius:9px;font-size:12px;font-weight:700}.admin-nav button.active,.admin-nav button:hover{background:#19335D;color:#fff}
-.admin-logout{margin-top:auto;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;padding:10px;border-radius:9px;font-weight:700}
-.admin-main{overflow:auto}.admin-top{background:#fff;border-bottom:1px solid #e5e7eb;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;z-index:3}.admin-top h2{font-family:Sora;color:#10213F;font-size:20px}.admin-close{border:0;background:#eef2f6;border-radius:9px;padding:9px 12px;font-weight:800}
-.admin-page{padding:22px}.admin-page h3{font-family:Sora;color:#10213F;margin-bottom:14px}.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:20px}.admin-stat{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:17px}.admin-stat strong{display:block;font-family:Sora;font-size:23px;color:#10213F}.admin-stat span{font-size:11px;color:#697386}
-.admin-card{background:#fff;border:1px solid #e5e7eb;border-radius:15px;padding:17px;margin-bottom:15px}.admin-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}.admin-btn{border:0;border-radius:9px;padding:10px 13px;font-size:11px;font-weight:800}.admin-primary{background:#10213F;color:#fff}.admin-orange{background:#E9823B;color:#fff}.admin-danger{background:#D94A4A;color:#fff}.admin-light{background:#eef2f6;color:#10213F}
-.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:11px 8px;border-bottom:1px solid #edf0f3;text-align:left;vertical-align:middle}.admin-table th{color:#697386;font-size:10px;text-transform:uppercase}.admin-thumb{width:45px;height:40px;object-fit:cover;border-radius:7px;background:#eef1f5}.admin-actions{display:flex;gap:5px;flex-wrap:wrap}.status{display:inline-block;padding:5px 8px;border-radius:20px;font-size:9px;font-weight:800}.status.new{background:#fff1dc;color:#a85d0b}.status.processing{background:#e7f0ff;color:#245a9c}.status.shipped{background:#e9f8f1;color:#147653}.status.done{background:#e8f5eb;color:#28733b}.status.cancel{background:#fdeaea;color:#a93636}
-.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-field label{display:block;font-size:10px;font-weight:800;margin-bottom:5px}.admin-field input,.admin-field textarea,.admin-field select{width:100%;padding:10px;border:1px solid #dfe4ea;border-radius:9px;outline:0;background:#fff}.admin-field textarea{min-height:85px}.admin-field.full{grid-column:1/-1}.admin-image-preview{width:100%;height:160px;object-fit:cover;border-radius:10px;background:#eef1f5;margin-top:7px}.admin-login{width:min(430px,100%);background:#fff;border-radius:20px;padding:28px}.admin-login h2{font-family:Sora;color:#10213F;margin-bottom:7px}.admin-login p{font-size:12px;color:#697386;margin-bottom:18px}.admin-login .admin-field{margin-bottom:12px}.admin-login button{width:100%;margin-top:4px}
-.admin-empty{padding:30px;text-align:center;color:#697386;font-size:12px}.admin-note{font-size:10px;color:#697386;background:#f5f7fa;padding:10px;border-radius:9px;margin-top:12px}
-.admin-chart{height:230px;display:flex;align-items:flex-end;gap:10px;padding:20px 5px 5px;border-bottom:1px solid #dfe4ea}.bar{flex:1;min-width:12px;background:#19335D;border-radius:7px 7px 0 0;position:relative}.bar span{position:absolute;bottom:-19px;left:50%;transform:translateX(-50%);font-size:9px;color:#697386}.bar b{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:9px;color:#10213F}
-@media(max-width:850px){.admin-shell{grid-template-columns:1fr;height:96vh}.admin-side{display:none}.admin-grid{grid-template-columns:repeat(2,1fr)}.admin-form{grid-template-columns:1fr}.admin-table{min-width:720px}.admin-card{overflow:auto}.admin-top{padding:14px}.admin-page{padding:14px}}
+/* ADMIN */
+.admin-access{background:none;border:0;color:#64748b;font-size:11px;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px}
+.admin-modal .modal-box{width:min(1140px,100%)}
+.admin-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.admin-tab{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;font-size:12.5px;font-weight:800}
+.admin-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.thumb-item{position:relative;width:60px;height:60px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+.thumb-item img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb-main{position:absolute;left:0;bottom:0;right:0;background:rgba(20,148,107,.9);color:#fff;font-size:8px;font-weight:800;text-align:center;padding:1px 0}
+.thumb-actions{position:absolute;top:2px;right:2px;display:flex;gap:2px}
+.thumb-actions button{width:18px;height:18px;border:0;border-radius:5px;background:rgba(16,33,63,.85);color:#fff;font-size:9px;line-height:1;padding:0}
+body.dark .thumb-item{border-color:#2d384c}
+.admin-login{max-width:360px;margin:0 auto}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px}
+.admin-toolbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.admin-toolbar-actions button,.admin-toolbar-actions label{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;font-size:11.5px;font-weight:800;display:inline-flex;align-items:center;gap:6px}
+.admin-toolbar-actions .a-new{background:var(--orange);color:#fff;border-color:var(--orange)}
+.admin-toolbar-actions .a-logout{background:#fdeaea;color:var(--red);border-color:#f6d3d3}
+.admin-stats{font-size:13px;color:var(--muted)}
+.admin-stats b{color:var(--navy)}
+.admin-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:22px}
+.admin-search{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;margin-bottom:12px;outline:0}
+.admin-search:focus{border-color:var(--orange)}
+.admin-list{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:16px}
+.admin-row{display:flex;gap:12px;align-items:center;padding:12px;border-bottom:1px solid var(--line)}
+.admin-row:last-child{border-bottom:0}
+.admin-row img{width:54px;height:54px;object-fit:cover;border-radius:10px;background:#eef1f5;flex-shrink:0}
+.admin-row .info{flex:1;min-width:0}
+.admin-row .info strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-row .info small{color:var(--muted);font-size:11px;display:block;margin-top:2px}
+.admin-actions.col{flex-direction:column;align-items:stretch}
+.admin-actions{display:flex;gap:6px;flex-shrink:0}
+.admin-actions button{border:0;border-radius:8px;padding:8px 10px;font-size:11px;font-weight:800}
+.a-edit{background:#eef3f9;color:var(--navy)}
+.a-del{background:#fdeaea;color:var(--red)}
+.admin-form-box{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fbfbfa}
+.imgpreview{width:100%;height:160px;border-radius:12px;background:#eef1f5;object-fit:cover;margin-bottom:12px;border:1px solid var(--line)}
+.field-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+body.dark .admin-form-box{background:#101828;border-color:#2d384c}
+body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{background:#172033;color:#eef3fb;border-color:#2d384c}
+@media(max-width:800px){.admin-grid{grid-template-columns:1fr}}
 
 /* RESPONSIVE */
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.cat-grid{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}}
@@ -179,7 +203,7 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <div class="topbar">
 <div class="container">
 <span>🇧🇯 Boutique & services numériques au Bénin</span>
-<span>WhatsApp : 01 64 63 84 29 • 01 67 92 92 69</span>
+<span id="topbarWA">WhatsApp : 01 64 63 84 29 • 01 67 92 92 69</span>
 </div>
 </div>
 
@@ -193,7 +217,7 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <div class="header-actions">
 <button class="hbtn" onclick="toggleDark()" title="Mode sombre">🌙</button>
 <button class="hbtn" onclick="showFavorites()">♡</button>
-<button class="hbtn cart" onclick="openCart()">🛒 Panier <span class="badge" id="cartCount">0</span></button><button class="admin-launch" onclick="openAdmin()">ADMIN</button>
+<button class="hbtn cart" onclick="openCart()">🛒 Panier <span class="badge" id="cartCount">0</span></button>
 </div>
 </div>
 <div class="navlinks">
@@ -223,7 +247,7 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <p>Commandez en ligne et recevez votre confirmation directement sur WhatsApp.</p>
 </div>
 <div class="hero-stat">
-<div class="stat"><strong>24–48h</strong><small>Délai indicatif de livraison</small></div>
+<div class="stat"><strong id="deliveryStat">24–48h</strong><small>Délai indicatif de livraison</small></div>
 <div class="stat"><strong>2</strong><small>Contacts WhatsApp disponibles</small></div>
 <div class="stat"><strong>+100</strong><small>Possibilités de produits/services</small></div>
 <div class="stat"><strong>🇧🇯</strong><small>Service au Bénin</small></div>
@@ -338,9 +362,9 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <div><div class="footer-logo">Marché <span>AUBEDE</span></div><p style="margin-top:12px;max-width:330px">Informatique, accessoires, formations, maintenance et services numériques. Une boutique pensée pour vous.</p></div>
 <div><div class="footer-title">Boutique</div><a href="#boutique">Informatique</a><br><a href="#boutique">Accessoires</a><br><a href="#boutique">Stockage</a><br><a href="#boutique">Logiciels</a></div>
 <div><div class="footer-title">Services</div><a href="#services">Maintenance</a><br><a href="#services">Installation Windows</a><br><a href="#services">Optimisation</a><br><a href="#formations">Formations</a></div>
-<div><div class="footer-title">Contact</div><p>WhatsApp 1 : 01 64 63 84 29</p><p>WhatsApp 2 : 01 67 92 92 69</p><p>🇧🇯 Bénin</p></div>
+<div><div class="footer-title">Contact</div><p id="footerWA1">WhatsApp 1 : 01 64 63 84 29</p><p id="footerWA2">WhatsApp 2 : 01 67 92 92 69</p><p>🇧🇯 Bénin</p></div>
 </div>
-<div class="copyright">© 2026 Marché AUBEDE — Tous droits réservés.</div>
+<div class="copyright">© 2026 Marché AUBEDE — Tous droits réservés. <button class="admin-access" onclick="accessAdmin()">Administration</button></div>
 </div>
 </footer>
 
@@ -369,11 +393,142 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <div class="modal-head"><h2>Finaliser la commande</h2><button class="close" onclick="closeCheckout()">×</button></div>
 <div class="field"><label>Nom complet *</label><input id="name" placeholder="Votre nom"></div>
 <div class="field"><label>Téléphone *</label><input id="phone" placeholder="Ex : 97 XX XX XX"></div>
-<div class="field"><label>Ville / zone *</label><input id="location" placeholder="Ex : Abomey-Calavi"></div>
+<div class="field"><label>Ville / zone de livraison *</label><select id="location" onchange="updateDeliveryDisplay()"></select></div>
+<div class="field" id="customZoneField" style="display:none"><label>Précisez votre zone</label><input id="customZone" placeholder="Nom de la ville / du quartier"></div>
 <div class="field"><label>Adresse / indication</label><textarea id="address" placeholder="Point de repère, quartier..."></textarea></div>
+<div class="field" style="background:#f8f9fb;border-radius:12px;padding:14px">
+<div class="row"><span>Sous-total</span><span id="sumSubtotal">0 FCFA</span></div>
+<div class="row"><span>Frais de livraison</span><span id="sumDelivery">—</span></div>
+<div class="row grand"><span>Total à payer</span><span id="sumGrandTotal">0 FCFA</span></div>
+</div>
 <div class="field"><label>Mode de paiement</label><div class="paygrid"><div class="pay selected" onclick="selectPay('MTN',this)">🟡 MTN Mobile Money</div><div class="pay" onclick="selectPay('Moov',this)">🟢 Moov Money</div></div></div>
 <div class="field"><label>Envoyer la commande à</label><select id="target"><option value="2290164638429">WhatsApp 1 — 01 64 63 84 29</option><option value="2290167929269">WhatsApp 2 — 01 67 92 92 69</option></select></div>
-<button class="confirm" onclick="confirmOrder()">📱 Confirmer sur WhatsApp</button>
+<button class="confirm" onclick="confirmOrder()">📱 Confirmer sur WhatsApp + générer la facture</button>
+</div>
+</div>
+
+<div class="modal" id="adminLoginModal">
+<div class="modal-box admin-login">
+<div class="modal-head"><h2>🔐 Accès administrateur</h2><button class="close" onclick="closeAdminLogin()">×</button></div>
+<div class="field"><label>Mot de passe</label><input type="password" id="adminPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+<button class="confirm" onclick="adminLogin()">Se connecter</button>
+<p style="font-size:11px;color:var(--muted);margin-top:12px">Accès réservé au gestionnaire de Marché AUBEDE.</p>
+</div>
+</div>
+
+<div class="modal admin-modal" id="adminPanelModal">
+<div class="modal-box">
+<div class="modal-head"><h2>⚙️ Administration — Marché AUBEDE</h2><button class="close" onclick="closeAdminPanel()">×</button></div>
+
+<div class="admin-tabs">
+<button class="admin-tab active" id="tabBtnProducts" onclick="switchAdminTab('products')">🛍️ Produits</button>
+<button class="admin-tab" id="tabBtnSettings" onclick="switchAdminTab('settings')">⚙️ Paramètres</button>
+<button class="admin-tab" id="tabBtnOrders" onclick="switchAdminTab('orders')">📋 Commandes</button>
+</div>
+
+<div id="adminTabProducts">
+<div class="admin-toolbar">
+<div class="admin-stats" id="adminStats"></div>
+<div class="admin-toolbar-actions">
+<button onclick="exportProducts()">⬇️ Exporter</button>
+<label>⬆️ Importer<input type="file" accept="application/json" style="display:none" onchange="importProducts(event)"></label>
+<button class="a-new" onclick="newProductForm()">+ Nouveau produit</button>
+<button class="a-logout" onclick="adminLogout()">🔒 Déconnexion</button>
+</div>
+</div>
+
+<div class="admin-grid">
+<div>
+<input class="admin-search" id="adminSearch" placeholder="Rechercher un produit..." oninput="renderAdminList()">
+<div class="admin-list" id="adminList"></div>
+</div>
+
+<div class="admin-form-box">
+<h3 id="formTitle" style="font-family:Sora;color:var(--navy);margin-bottom:14px;font-size:16px">Nouveau produit</h3>
+<img id="imgPreview" class="imgpreview" src="https://placehold.co/400x300/eef1f5/10213F?text=Aper%C3%A7u" alt="Aperçu">
+<div class="thumbs" id="imgThumbs"></div>
+<div class="field"><label>Ajouter des images (plusieurs possibles)</label><input type="file" accept="image/*" multiple id="prodImgFile" onchange="handleImageUpload(event)"></div>
+<div class="field"><label>Ou coller une URL d'image</label>
+<div style="display:flex;gap:8px">
+<input id="prodImgUrl" placeholder="https://..." style="flex:1">
+<button type="button" onclick="addImageUrl()" style="border:0;background:var(--navy);color:#fff;border-radius:9px;padding:0 16px;font-size:12px;font-weight:800">Ajouter</button>
+</div>
+</div>
+<div class="field"><label>Nom du produit *</label><input id="prodName" placeholder="Ex : Souris USB"></div>
+<div class="field"><label>Catégorie *</label>
+<select id="prodCategory">
+<option>Informatique</option><option>Accessoires</option><option>Stockage</option><option>Maintenance</option><option>Formation</option><option>Logiciels</option>
+</select>
+</div>
+<div class="field field-row2">
+<div><label>Prix (FCFA) *</label><input type="number" id="prodPrice" placeholder="5000"></div>
+<div><label>Ancien prix (promo)</label><input type="number" id="prodOld" placeholder="Optionnel"></div>
+</div>
+<div class="field field-row2">
+<div><label>Note (sur 5)</label><input type="number" step="0.1" min="0" max="5" id="prodRating" placeholder="5"></div>
+<div><label>Nombre d'avis</label><input type="number" id="prodReviews" placeholder="0"></div>
+</div>
+<div class="field"><label>Étiquette</label><input id="prodTag" placeholder="Ex : Nouveau, Promo, Top, Service..."></div>
+<div class="field"><label>Description</label><textarea id="prodDesc" placeholder="Description courte du produit"></textarea></div>
+<input type="hidden" id="prodId">
+<button class="confirm" onclick="saveProduct()">💾 Enregistrer le produit</button>
+<button class="hbtn" style="width:100%;margin-top:8px" onclick="newProductForm()">Annuler / Nouveau produit</button>
+</div>
+</div>
+</div>
+
+<div id="adminTabSettings" style="display:none">
+<div class="admin-grid">
+<div class="admin-form-box">
+<h3 style="font-family:Sora;color:var(--navy);margin-bottom:14px;font-size:16px">🔑 Mot de passe administrateur</h3>
+<div class="field"><label>Mot de passe actuel</label><input type="password" id="curPass"></div>
+<div class="field"><label>Nouveau mot de passe</label><input type="password" id="newPass"></div>
+<div class="field"><label>Confirmer le nouveau mot de passe</label><input type="password" id="confirmPass"></div>
+<button class="confirm" onclick="changePassword()">Mettre à jour le mot de passe</button>
+</div>
+
+<div class="admin-form-box">
+<h3 style="font-family:Sora;color:var(--navy);margin-bottom:14px;font-size:16px">📞 Contacts & livraison</h3>
+<div class="field"><label>Numéro WhatsApp 1 (affiché)</label><input id="setWa1" placeholder="01 64 63 84 29"></div>
+<div class="field"><label>Numéro WhatsApp 2 (affiché)</label><input id="setWa2" placeholder="01 67 92 92 69"></div>
+<div class="field"><label>Délai de livraison indicatif</label><input id="setDelivery" placeholder="24–48h"></div>
+<button class="confirm" onclick="saveSettings()">Enregistrer les paramètres</button>
+</div>
+</div>
+
+<div class="admin-form-box" style="margin-top:18px">
+<h3 style="font-family:Sora;color:var(--navy);margin-bottom:14px;font-size:16px">🚚 Zones de livraison & frais</h3>
+<div id="zoneList" style="margin-bottom:14px"></div>
+<div class="field-row2">
+<div><label>Nom de la zone</label><input id="newZoneName" placeholder="Ex : Porto-Novo"></div>
+<div><label>Frais (FCFA)</label><input type="number" id="newZoneFee" placeholder="1500"></div>
+</div>
+<button class="confirm" onclick="addDeliveryZone()">+ Ajouter la zone</button>
+<p style="font-size:11px;color:var(--muted);margin-top:10px">Une zone "Autre (à préciser)" est toujours proposée au client automatiquement pour les localités non listées ; ses frais seront à confirmer manuellement.</p>
+</div>
+
+<div class="admin-form-box" style="margin-top:18px">
+<h3 style="font-family:Sora;color:var(--navy);margin-bottom:14px;font-size:16px">💾 Sauvegarde & réinitialisation</h3>
+<div class="admin-toolbar-actions">
+<button onclick="exportAllData()">⬇️ Sauvegarde complète</button>
+<label>⬆️ Restaurer une sauvegarde<input type="file" accept="application/json" style="display:none" onchange="importAllData(event)"></label>
+<button class="a-logout" onclick="resetAllData()">♻️ Réinitialiser tout</button>
+</div>
+<p style="font-size:11px;color:var(--muted);margin-top:10px">La sauvegarde complète inclut les produits (avec leurs images), les paramètres et l'historique des commandes. La réinitialisation restaure les produits, les contacts et le mot de passe par défaut (l'historique des commandes n'est pas affecté).</p>
+</div>
+</div>
+
+<div id="adminTabOrders" style="display:none">
+<div class="admin-toolbar">
+<div class="admin-stats" id="ordersStats"></div>
+<div class="admin-toolbar-actions">
+<button class="a-logout" onclick="clearOrdersHistory()">🗑️ Vider l'historique</button>
+</div>
+</div>
+<input class="admin-search" id="orderSearch" placeholder="Rechercher par nom, téléphone ou n° de commande..." oninput="renderOrdersList()">
+<div class="admin-list" id="ordersList"></div>
+</div>
+
 </div>
 </div>
 
@@ -381,60 +536,83 @@ body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.da
 <button class="top" id="top" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
 <div class="toast" id="toast"></div>
 
-<!-- ADMINISTRATION -->
-<div class="admin-modal" id="adminModal">
-  <div class="admin-shell" id="adminShell">
-    <aside class="admin-side">
-      <div class="admin-brand">Marché <span>AUBEDE</span></div>
-      <div class="admin-user">Administrateur<br><strong>ZOUNTCHEGBE AUBEDE</strong></div>
-      <div class="admin-nav">
-        <button data-page="dashboard" onclick="adminPage('dashboard')">📊 Tableau de bord</button>
-        <button data-page="products" onclick="adminPage('products')">📦 Produits</button>
-        <button data-page="orders" onclick="adminPage('orders')">🛒 Commandes</button>
-        <button data-page="stats" onclick="adminPage('stats')">📈 Statistiques</button>
-        <button data-page="settings" onclick="adminPage('settings')">⚙️ Paramètres</button>
-      </div>
-      <button class="admin-logout" onclick="adminLogout()">Se déconnecter</button>
-    </aside>
-    <section class="admin-main">
-      <div class="admin-top"><h2 id="adminTitle">Tableau de bord</h2><button class="admin-close" onclick="closeAdmin()">✕ Fermer</button></div>
-      <div id="adminContent"></div>
-    </section>
-  </div>
-</div>
-
-<div class="admin-modal" id="adminLoginModal">
-  <div class="admin-login">
-    <div style="font-size:28px">🔐</div>
-    <h2>Espace administrateur</h2>
-    <p>ZOUNTCHEGBE AUBEDE • Gestion de Marché AUBEDE</p>
-    <div class="admin-field"><label>Mot de passe</label><input id="adminPassword" type="password" placeholder="Entrez votre mot de passe" onkeydown="if(event.key==='Enter')adminLogin()"></div>
-    <button class="admin-btn admin-primary" onclick="adminLogin()">Accéder au tableau de bord</button>
-    <div class="admin-note">Le mot de passe de cette version HTML est stocké dans le navigateur. Pour une vraie sécurité professionnelle, il faudra connecter cet espace à un serveur avec authentification.</div>
-  </div>
-</div>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const WA=["2290164638429","2290167929269"];
+/* ================================================================
+   ☁️ CONFIGURATION SERVEUR EN LIGNE (Supabase) — À REMPLIR
+   ================================================================
+   1. Crée un projet gratuit sur https://supabase.com
+   2. Exécute le fichier supabase-configuration.sql fourni (SQL Editor)
+   3. Crée ton compte admin dans Authentication > Users > Add user
+   4. Remplace les 3 valeurs ci-dessous par les tiennes
+      (Project Settings > API : "Project URL" et "anon public" key)
+   Tant que SUPABASE_URL n'est pas renseignée, le site fonctionne
+   normalement en mode local (comme avant) sur cet appareil uniquement.
+================================================================ */
+const SUPABASE_URL="https://drtibocixmjznyfrqugu.supabase.co";
+const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
+const ADMIN_EMAIL="zaubede@gmail.com"; // l'email utilisé pour créer le compte admin dans Supabase
+const BACKEND_ENABLED=!!(SUPABASE_URL&&SUPABASE_ANON_KEY&&ADMIN_EMAIL);
+const sb=BACKEND_ENABLED?window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY):null;
+
+// 🔐 Mot de passe administrateur par défaut (modifiable depuis le panneau Paramètres)
+const DEFAULT_ADMIN_PASSWORD="aubede2026";
+let adminPassword=localStorage.getItem("aubedeAdminPass")||DEFAULT_ADMIN_PASSWORD;
+const defaultSettings={whatsapp1:"01 64 63 84 29",whatsapp2:"01 67 92 92 69",delivery:"24–48h",deliveryZones:[{name:"Cotonou",fee:1000},{name:"Abomey-Calavi",fee:1000}]};
+let settings=Object.assign({},defaultSettings,JSON.parse(localStorage.getItem("aubedeSettings")||"null")||{});
+if(!settings.deliveryZones||!settings.deliveryZones.length)settings.deliveryZones=defaultSettings.deliveryZones.slice();
+function saveSettingsToStorage(){localStorage.setItem("aubedeSettings",JSON.stringify(settings))}
+function waId(phone){return "229"+String(phone||"").replace(/\D/g,"")}
 const defaultProducts=[
-{id:1,name:"Service de Maintenance Pro",category:"Maintenance",price:5000,old:null,image:"produit.jpg",rating:5,reviews:12,desc:"Diagnostic, nettoyage et maintenance informatique.",tag:"Service"},
-{id:2,name:"Installation Windows",category:"Maintenance",price:5000,old:null,image:"windows.jpg",rating:5,reviews:8,desc:"Installation et configuration de Windows.",tag:"Service"},
-{id:3,name:"Formation Informatique",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:15,desc:"Formation pratique en informatique.",tag:"Formation"},
-{id:4,name:"Souris USB",category:"Accessoires",price:3500,old:4500,image:"souris.jpg",rating:4.8,reviews:9,desc:"Souris USB pratique pour ordinateur.",tag:"Promo"},
-{id:5,name:"Clavier USB",category:"Accessoires",price:5000,old:null,image:"clavier.jpg",rating:4.7,reviews:7,desc:"Clavier USB confortable et fiable.",tag:"Top"},
-{id:6,name:"SSD SATA 120 Go",category:"Stockage",price:18000,old:21000,image:"ssd.jpg",rating:5,reviews:11,desc:"SSD SATA pour améliorer la vitesse de votre PC.",tag:"Promo"},
-{id:7,name:"Ordinateur portable",category:"Informatique",price:150000,old:null,image:"ordinateur.jpg",rating:4.9,reviews:6,desc:"Ordinateur portable professionnel.",tag:"Sélection"},
-{id:8,name:"Installation logiciels",category:"Logiciels",price:5000,old:null,image:"logiciels.jpg",rating:5,reviews:10,desc:"Installation et configuration de logiciels.",tag:"Service"},
-{id:9,name:"SSD SATA 240 Go",category:"Stockage",price:25000,old:null,image:"ssd.jpg",rating:4.9,reviews:5,desc:"Capacité supérieure pour système et fichiers.",tag:"Nouveau"},
-{id:10,name:"Optimisation PC",category:"Maintenance",price:7000,old:null,image:"produit.jpg",rating:5,reviews:4,desc:"Réglages pour améliorer la fluidité et les performances.",tag:"Service"},
-{id:11,name:"Formation Excel",category:"Formation",price:10000,old:null,image:"formation.jpg",rating:5,reviews:4,desc:"Apprentissage pratique d'Excel.",tag:"Formation"},
-{id:12,name:"Clé USB 64 Go",category:"Stockage",price:6000,old:null,image:"ssd.jpg",rating:4.8,reviews:3,desc:"Stockage portable pour vos fichiers.",tag:"Top"}
+{id:1,name:"Service de Maintenance Pro",category:"Maintenance",price:5000,old:null,images:["produit.jpg"],rating:5,reviews:12,desc:"Diagnostic, nettoyage et maintenance informatique.",tag:"Service"},
+{id:2,name:"Installation Windows",category:"Maintenance",price:5000,old:null,images:["windows.jpg"],rating:5,reviews:8,desc:"Installation et configuration de Windows.",tag:"Service"},
+{id:3,name:"Formation Informatique",category:"Formation",price:10000,old:null,images:["formation.jpg"],rating:5,reviews:15,desc:"Formation pratique en informatique.",tag:"Formation"},
+{id:4,name:"Souris USB",category:"Accessoires",price:3500,old:4500,images:["souris.jpg"],rating:4.8,reviews:9,desc:"Souris USB pratique pour ordinateur.",tag:"Promo"},
+{id:5,name:"Clavier USB",category:"Accessoires",price:5000,old:null,images:["clavier.jpg"],rating:4.7,reviews:7,desc:"Clavier USB confortable et fiable.",tag:"Top"},
+{id:6,name:"SSD SATA 120 Go",category:"Stockage",price:18000,old:21000,images:["ssd.jpg"],rating:5,reviews:11,desc:"SSD SATA pour améliorer la vitesse de votre PC.",tag:"Promo"},
+{id:7,name:"Ordinateur portable",category:"Informatique",price:150000,old:null,images:["ordinateur.jpg"],rating:4.9,reviews:6,desc:"Ordinateur portable professionnel.",tag:"Sélection"},
+{id:8,name:"Installation logiciels",category:"Logiciels",price:5000,old:null,images:["logiciels.jpg"],rating:5,reviews:10,desc:"Installation et configuration de logiciels.",tag:"Service"},
+{id:9,name:"SSD SATA 240 Go",category:"Stockage",price:25000,old:null,images:["ssd.jpg"],rating:4.9,reviews:5,desc:"Capacité supérieure pour système et fichiers.",tag:"Nouveau"},
+{id:10,name:"Optimisation PC",category:"Maintenance",price:7000,old:null,images:["produit.jpg"],rating:5,reviews:4,desc:"Réglages pour améliorer la fluidité et les performances.",tag:"Service"},
+{id:11,name:"Formation Excel",category:"Formation",price:10000,old:null,images:["formation.jpg"],rating:5,reviews:4,desc:"Apprentissage pratique d'Excel.",tag:"Formation"},
+{id:12,name:"Clé USB 64 Go",category:"Stockage",price:6000,old:null,images:["ssd.jpg"],rating:4.8,reviews:3,desc:"Stockage portable pour vos fichiers.",tag:"Top"}
 ];
-let products=JSON.parse(localStorage.getItem("aubedeProducts")||"null")||defaultProducts;
-localStorage.setItem("aubedeProducts",JSON.stringify(products));
+let products=JSON.parse(localStorage.getItem("aubedeProducts")||"null")||defaultProducts.slice();
+function migrateProductImages(arr){arr.forEach(p=>{if(!p.images||!p.images.length){p.images=p.image?[p.image]:["produit.jpg"]}delete p.image});return arr}
+products=migrateProductImages(products);
+function saveProductsToStorage(){localStorage.setItem("aubedeProducts",JSON.stringify(products))}
 let cart=JSON.parse(localStorage.getItem("aubedeCart")||"[]");
+let orders=JSON.parse(localStorage.getItem("aubedeOrders")||"[]");
+function saveOrdersToStorage(){localStorage.setItem("aubedeOrders",JSON.stringify(orders))}
 let category="Tous",pay="MTN",toastTimer;
+
+/* ================= SERVEUR EN LIGNE (Supabase) ================= */
+function rowToProduct(r){return {id:r.id,name:r.name,category:r.category,price:r.price,old:r.old,images:r.images||["produit.jpg"],rating:r.rating,reviews:r.reviews,desc:r.description,tag:r.tag}}
+function productToRow(p){return {name:p.name,category:p.category,price:p.price,old:p.old,images:p.images,rating:p.rating,reviews:p.reviews,description:p.desc,tag:p.tag}}
+async function loadProductsBackend(){
+let {data,error}=await sb.from("products").select("*").order("id");
+if(error){toast("Erreur de chargement des produits (serveur).");return}
+products=data.map(rowToProduct);
+}
+async function loadSettingsBackend(){
+let {data,error}=await sb.from("settings").select("*").eq("id",1).single();
+if(error||!data)return;
+settings.whatsapp1=data.whatsapp1;settings.whatsapp2=data.whatsapp2;settings.delivery=data.delivery;
+settings.deliveryZones=data.delivery_zones&&data.delivery_zones.length?data.delivery_zones:defaultSettings.deliveryZones.slice();
+}
+async function loadOrdersBackend(){
+let {data,error}=await sb.from("orders").select("*").order("created_at",{ascending:false});
+if(error){toast("Erreur de chargement des commandes (serveur).");return}
+orders=data.map(r=>({id:r.id,orderNum:r.order_num,date:r.order_date,time:r.order_time,name:r.customer_name,phone:r.phone,zone:r.zone,address:r.address,pay:r.pay,items:r.items,subtotal:r.subtotal,deliveryFeeText:r.delivery_fee_text,grandTotal:r.grand_total}));
+}
+async function initBackendData(){
+if(!BACKEND_ENABLED)return;
+await Promise.all([loadProductsBackend(),loadSettingsBackend()]);
+renderProducts();
+applySettingsToUI();
+}
+
 
 function money(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}
 function imgFallback(e){e.target.src="https://placehold.co/800x600/e9edf2/10213F?text=Marche+AUBEDE"}
@@ -449,7 +627,7 @@ document.getElementById("resultCount").textContent=arr.length+" produit(s)";
 let box=document.getElementById("products");
 box.innerHTML=arr.length?arr.map(p=>`
 <article class="product">
-<div class="pimg"><img src="${p.image}" alt="${p.name}" onerror="imgFallback(event)"><span class="tag">${p.tag}</span><button class="heart" onclick="favorite(${p.id})">♡</button></div>
+<div class="pimg"><img src="${p.images[0]}" alt="${p.name}" onerror="imgFallback(event)"><span class="tag">${p.tag}</span><button class="heart" onclick="favorite(${p.id})">♡</button></div>
 <div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div><span class="stars">★★★★★</span> <span class="reviews">${p.rating} (${p.reviews})</span></div><div class="desc">${p.desc}</div>
 <div class="pbottom"><div class="price">${money(p.price)} ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div>
 <button style="margin-top:9px;width:100%;border:0;background:#f2f5f8;color:#10213F;padding:9px;border-radius:9px;font-size:11px;font-weight:800" onclick="details(${p.id})">Voir le produit</button>
@@ -471,7 +649,7 @@ function renderCart(){
 let box=document.getElementById("cartItems");
 if(!cart.length){box.innerHTML='<div class="empty">🛒<br><br>Votre panier est vide.</div>';document.getElementById("subtotal").textContent="0 FCFA";document.getElementById("total").textContent="0 FCFA";document.getElementById("cartCount").textContent="0";return}
 let total=0;
-box.innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;return `<div class="cart-item"><img src="${p.image}" onerror="imgFallback(event)" alt="${p.name}"><div class="ci"><strong>${p.name}</strong><div class="price">${money(p.price)}</div><div class="qty"><button onclick="change(${p.id},-1)">−</button><b>${i.qty}</b><button onclick="change(${p.id},1)">+</button><button class="remove" onclick="removeItem(${p.id})">Supprimer</button></div></div></div>`}).join("");
+box.innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;return `<div class="cart-item"><img src="${p.images[0]}" onerror="imgFallback(event)" alt="${p.name}"><div class="ci"><strong>${p.name}</strong><div class="price">${money(p.price)}</div><div class="qty"><button onclick="change(${p.id},-1)">−</button><b>${i.qty}</b><button onclick="change(${p.id},1)">+</button><button class="remove" onclick="removeItem(${p.id})">Supprimer</button></div></div></div>`}).join("");
 document.getElementById("subtotal").textContent=money(total);document.getElementById("total").textContent=money(total);
 document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0);
 }
@@ -481,29 +659,102 @@ function openCart(){document.getElementById("cart").classList.add("open");docume
 function closeCart(){document.getElementById("cart").classList.remove("open");document.getElementById("overlay").classList.remove("show")}
 function details(id){
 let p=products.find(x=>x.id===id);
-document.getElementById("productDetail").innerHTML=`<div class="product-modal"><div><img src="${p.image}" onerror="imgFallback(event)" alt="${p.name}"></div><div><div class="pm-cat">${p.category}</div><div class="pm-title">${p.name}</div><div class="stars">★★★★★ <span class="reviews">${p.rating} / 5 • ${p.reviews} avis</span></div><p class="pm-desc">${p.desc}</p><ul class="specs"><li>Disponibilité : à confirmer</li><li>Livraison : selon zone</li><li>Paiement : MTN / Moov</li><li>Assistance Marché AUBEDE disponible</li></ul><div class="price" style="font-size:22px;margin-bottom:13px">${money(p.price)}</div><button class="buy-now" onclick="add(${p.id});closeProduct();openCart()">Ajouter au panier</button></div></div>`;
+let imgs=(p.images&&p.images.length)?p.images:["produit.jpg"];
+window.detailImages=imgs;
+let thumbsHtml=imgs.length>1?`<div class="pm-thumbs">${imgs.map((src,i)=>`<img src="${src}" onerror="imgFallback(event)" class="${i===0?'active':''}" onclick="setDetailImage(${i})">`).join("")}</div>`:"";
+document.getElementById("productDetail").innerHTML=`<div class="product-modal"><div><img id="pmMainImg" src="${imgs[0]}" onerror="imgFallback(event)" alt="${p.name}">${thumbsHtml}</div><div><div class="pm-cat">${p.category}</div><div class="pm-title">${p.name}</div><div class="stars">★★★★★ <span class="reviews">${p.rating} / 5 • ${p.reviews} avis</span></div><p class="pm-desc">${p.desc}</p><ul class="specs"><li>Disponibilité : à confirmer</li><li>Livraison : selon zone</li><li>Paiement : MTN / Moov</li><li>Assistance Marché AUBEDE disponible</li></ul><div class="price" style="font-size:22px;margin-bottom:13px">${money(p.price)}</div><button class="buy-now" onclick="add(${p.id});closeProduct();openCart()">Ajouter au panier</button></div></div>`;
 document.getElementById("productModal").classList.add("show");
 }
+function setDetailImage(i){
+document.getElementById("pmMainImg").src=window.detailImages[i];
+document.querySelectorAll(".pm-thumbs img").forEach((el,idx)=>el.classList.toggle("active",idx===i));
+}
 function closeProduct(){document.getElementById("productModal").classList.remove("show")}
-function openCheckout(){if(!cart.length){toast("Votre panier est vide.");return}document.getElementById("checkoutModal").classList.add("show")}
+function openCheckout(){if(!cart.length){toast("Votre panier est vide.");return}renderDeliveryZoneOptions();updateDeliveryDisplay();document.getElementById("checkoutModal").classList.add("show")}
 function closeCheckout(){document.getElementById("checkoutModal").classList.remove("show")}
 function selectPay(x,e){pay=x;document.querySelectorAll(".pay").forEach(a=>a.classList.remove("selected"));e.classList.add("selected")}
-function confirmOrder(){
- let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),loc=document.getElementById("location").value.trim(),adr=document.getElementById("address").value.trim(),target=document.getElementById("target").value;
- if(!n||!ph||!loc){toast("Veuillez remplir les champs obligatoires.");return}
- let total=0,lines=["🛍️ *COMMANDE — MARCHÉ AUBEDE*","","*Client :* "+n,"*Téléphone :* "+ph,"*Zone :* "+loc,"*Adresse :* "+(adr||"Non précisée"),"*Paiement :* "+pay,"","*ARTICLES :*"];
- const items=cart.map(i=>{let p=products.find(x=>x.id===i.id);total+=p.price*i.qty;lines.push("• "+p.name+" × "+i.qty+" = "+money(p.price*i.qty));return {id:p.id,name:p.name,qty:i.qty,price:p.price}});
- lines.push("","*TOTAL : "+money(total)+"*");
- const orders=getOrders();orders.push({id:"CMD-"+Date.now().toString().slice(-8),name:n,phone:ph,location:loc,address:adr,payment:pay,target,total,items,status:"Nouvelle",date:new Date().toISOString()});saveOrders(orders);
- window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("
-")),"_blank");
- toast("Commande enregistrée et prête sur WhatsApp.");
+function moneyPDF(n){return new Intl.NumberFormat("fr-FR").format(n).replace(/\u202F|\u00A0/g," ")+" FCFA"}
+function nextOrderNumber(){
+let n=parseInt(localStorage.getItem("aubedeOrderCounter")||"0")+1;
+localStorage.setItem("aubedeOrderCounter",String(n));
+return "AUBEDE-"+String(n).padStart(5,"0");
+}
+function generateInvoicePDF(o){
+if(!window.jspdf){toast("Génération PDF indisponible (bibliothèque non chargée).");return}
+const {jsPDF}=window.jspdf;
+let doc=new jsPDF();
+doc.setFontSize(18);doc.setTextColor(16,33,63);doc.text("Marché AUBEDE",14,18);
+doc.setFontSize(10);doc.setTextColor(100);
+doc.text("Boutique & services numériques — Abomey-Calavi, Bénin",14,24);
+doc.text("WhatsApp : "+settings.whatsapp1+" / "+settings.whatsapp2,14,29);
+doc.setDrawColor(230);doc.line(14,33,196,33);
+doc.setFontSize(13);doc.setTextColor(16,33,63);doc.text("FACTURE N° "+o.orderNum,14,42);
+doc.setFontSize(10);doc.setTextColor(80);doc.text("Date : "+o.date,14,48);
+doc.text("Client : "+o.name,14,58);
+doc.text("Téléphone : "+o.phone,14,64);
+doc.text("Zone de livraison : "+o.zone,14,70);
+doc.text("Adresse : "+(o.address||"Non précisée"),14,76);
+doc.text("Mode de paiement : "+o.pay,14,82);
+let y=95;
+doc.setFillColor(16,33,63);doc.setTextColor(255);doc.rect(14,y-6,182,8,'F');
+doc.setFontSize(10);doc.text("Produit",16,y);doc.text("Qté",130,y);doc.text("Prix unit.",148,y);doc.text("Total",175,y);
+y+=10;doc.setTextColor(30);
+o.items.forEach(it=>{
+doc.text(String(it.name).substring(0,42),16,y);
+doc.text(String(it.qty),130,y);
+doc.text(moneyPDF(it.price),148,y);
+doc.text(moneyPDF(it.price*it.qty),175,y);
+y+=7;
+if(y>270){doc.addPage();y=20}
+});
+y+=6;doc.setDrawColor(220);doc.line(14,y,196,y);y+=8;
+doc.setTextColor(80);
+doc.text("Sous-total :",140,y);doc.text(moneyPDF(o.subtotal),175,y);y+=7;
+doc.text("Frais de livraison :",140,y);doc.text(o.deliveryFeeText,175,y);y+=9;
+doc.setFontSize(12);doc.setTextColor(16,33,63);
+doc.text("TOTAL À PAYER :",140,y);doc.text(moneyPDF(o.grandTotal),175,y);
+y+=20;doc.setFontSize(9);doc.setTextColor(120);
+doc.text("Merci pour votre confiance — Marché AUBEDE",14,y);
+doc.save("facture-"+o.orderNum+".pdf");
+}
+async function confirmOrder(){
+let n=document.getElementById("name").value.trim(),ph=document.getElementById("phone").value.trim(),locSel=document.getElementById("location").value,adr=document.getElementById("address").value.trim(),target=document.getElementById("target").value;
+if(!n||!ph||!locSel){toast("Veuillez remplir les champs obligatoires.");return}
+let zoneName,deliveryFee,deliveryFeeText;
+if(locSel==="__other__"){
+zoneName=document.getElementById("customZone").value.trim();
+if(!zoneName){toast("Veuillez préciser votre zone de livraison.");return}
+deliveryFee=0;deliveryFeeText="À confirmer";
+}else{
+let z=settings.deliveryZones.find(x=>x.name===locSel);
+zoneName=locSel;deliveryFee=z?z.fee:0;deliveryFeeText=money(deliveryFee);
+}
+let subtotal=0,items=[];
+cart.forEach(i=>{let p=products.find(x=>x.id===i.id);if(!p)return;subtotal+=p.price*i.qty;items.push({name:p.name,qty:i.qty,price:p.price})});
+let grandTotal=subtotal+(deliveryFee||0);
+let lines=["🛍️ *COMMANDE — MARCHÉ AUBEDE*","","*Client :* "+n,"*Téléphone :* "+ph,"*Zone :* "+zoneName,"*Adresse :* "+(adr||"Non précisée"),"*Paiement :* "+pay,"","*ARTICLES :*"];
+items.forEach(it=>lines.push("• "+it.name+" × "+it.qty+" = "+money(it.price*it.qty)));
+lines.push("","Sous-total : "+money(subtotal));
+lines.push("Frais de livraison : "+deliveryFeeText);
+lines.push("*TOTAL : "+money(grandTotal)+"*");
+let orderNum=nextOrderNumber();
+let orderRecord={orderNum,date:new Date().toLocaleDateString("fr-FR"),time:new Date().toLocaleTimeString("fr-FR",{hour:'2-digit',minute:'2-digit'}),name:n,phone:ph,zone:zoneName,address:adr,pay,items,subtotal,deliveryFeeText,grandTotal};
+if(BACKEND_ENABLED){
+let {error}=await sb.from("orders").insert({order_num:orderRecord.orderNum,order_date:orderRecord.date,order_time:orderRecord.time,customer_name:orderRecord.name,phone:orderRecord.phone,zone:orderRecord.zone,address:orderRecord.address,pay:orderRecord.pay,items:orderRecord.items,subtotal:orderRecord.subtotal,delivery_fee_text:orderRecord.deliveryFeeText,grand_total:orderRecord.grandTotal});
+if(error){toast("La commande n'a pas pu être enregistrée sur le serveur, mais votre message WhatsApp sera bien envoyé.")}
+}else{
+orders.unshift(orderRecord);
+saveOrdersToStorage();
+}
+generateInvoicePDF(orderRecord);
+window.open("https://wa.me/"+target+"?text="+encodeURIComponent(lines.join("\n")),"_blank");
+toast("Facture générée et commande envoyée ✅");
 }
 function serviceRequest(service){
 let text=encodeURIComponent("Bonjour Marché AUBEDE 👋\nJe souhaite demander le service suivant : "+service+"\n\nMerci de me renseigner.");
-window.open("https://wa.me/"+WA[0]+"?text="+text,"_blank");
+window.open("https://wa.me/"+waId(settings.whatsapp1)+"?text="+text,"_blank");
 }
-function openWhatsApp(){window.open("https://wa.me/"+WA[0]+"?text="+encodeURIComponent("Bonjour Marché AUBEDE 👋 Je souhaite avoir des informations sur vos produits et services."),"_blank")}
+function openWhatsApp(){window.open("https://wa.me/"+waId(settings.whatsapp1)+"?text="+encodeURIComponent("Bonjour Marché AUBEDE 👋 Je souhaite avoir des informations sur vos produits et services."),"_blank")}
 function favorite(id){
 let f=JSON.parse(localStorage.getItem("aubedeFav")||"[]");
 if(f.includes(id))f=f.filter(x=>x!==id);else f.push(id);
@@ -518,157 +769,502 @@ document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x.data
 let original=products;
 let filtered=original.filter(p=>f.includes(p.id));
 document.getElementById("resultCount").textContent=filtered.length+" favori(s)";
-document.getElementById("products").innerHTML=filtered.map(p=>`<article class="product"><div class="pimg"><img src="${p.image}" onerror="imgFallback(event)"><span class="tag">Favori</span></div><div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div class="desc">${p.desc}</div><div class="pbottom"><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div></div></article>`).join("");
+document.getElementById("products").innerHTML=filtered.map(p=>`<article class="product"><div class="pimg"><img src="${p.images[0]}" onerror="imgFallback(event)"><span class="tag">Favori</span></div><div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div class="desc">${p.desc}</div><div class="pbottom"><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div></div></article>`).join("");
 document.getElementById("boutique").scrollIntoView({behavior:"smooth"});
 }
-
-/* ================= ADMIN JS ================= */
-const ADMIN_NAME="ZOUNTCHEGBE AUBEDE";
-const ADMIN_DEFAULT_PASSWORD="Marina2026";
-let adminAuthed=sessionStorage.getItem("aubedeAdminAuth")==="1";
-let editingProductId=null;
-let adminCurrentPage="dashboard";
-
-function adminOpenModal(id){document.getElementById(id).classList.add("show")}
-function adminCloseModal(id){document.getElementById(id).classList.remove("show")}
-function openAdmin(){
-  if(adminAuthed){adminOpenModal("adminModal");adminPage("dashboard")}
-  else {document.getElementById("adminPassword").value="";adminOpenModal("adminLoginModal");setTimeout(()=>document.getElementById("adminPassword").focus(),100)}
-}
-function closeAdmin(){adminCloseModal("adminModal")}
-function adminLogin(){
-  const pass=document.getElementById("adminPassword").value;
-  const saved=localStorage.getItem("aubedeAdminPassword")||ADMIN_DEFAULT_PASSWORD;
-  if(pass===saved){
-    adminAuthed=true;sessionStorage.setItem("aubedeAdminAuth","1");adminCloseModal("adminLoginModal");adminOpenModal("adminModal");adminPage("dashboard");toast("Connexion administrateur réussie.");
-  }else toast("Mot de passe incorrect.");
-}
-function adminLogout(){adminAuthed=false;sessionStorage.removeItem("aubedeAdminAuth");closeAdmin();toast("Session administrateur fermée.")}
-function saveProducts(){localStorage.setItem("aubedeProducts",JSON.stringify(products))}
-function getOrders(){return JSON.parse(localStorage.getItem("aubedeOrders")||"[]")}
-function saveOrders(a){localStorage.setItem("aubedeOrders",JSON.stringify(a))}
-function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
-function adminPage(page){
-  if(!adminAuthed)return openAdmin();
-  adminCurrentPage=page;
-  document.querySelectorAll(".admin-nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
-  const titles={dashboard:"Tableau de bord",products:"Gestion des produits",orders:"Suivi des commandes",stats:"Statistiques",settings:"Paramètres"};
-  document.getElementById("adminTitle").textContent=titles[page]||"Administration";
-  const box=document.getElementById("adminContent");
-  if(page==="dashboard") renderAdminDashboard(box);
-  if(page==="products") renderAdminProducts(box);
-  if(page==="orders") renderAdminOrders(box);
-  if(page==="stats") renderAdminStats(box);
-  if(page==="settings") renderAdminSettings(box);
-}
-function renderAdminDashboard(box){
-  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
-  box.innerHTML=`<div class="admin-page">
-    <div class="admin-grid">
-      <div class="admin-stat"><strong>${products.length}</strong><span>Produits</span></div>
-      <div class="admin-stat"><strong>${orders.length}</strong><span>Commandes enregistrées</span></div>
-      <div class="admin-stat"><strong>${money(revenue)}</strong><span>Chiffre d'affaires suivi</span></div>
-      <div class="admin-stat"><strong>${orders.filter(o=>o.status==="Nouvelle").length}</strong><span>Nouvelles commandes</span></div>
-    </div>
-    <div class="admin-card"><h3>Bienvenue, ${ADMIN_NAME}</h3><p style="font-size:12px;color:#697386">Depuis cet espace, vous pouvez gérer votre catalogue, ajouter des images, modifier ou supprimer des produits, suivre les commandes et consulter les statistiques.</p></div>
-    <div class="admin-card"><h3>Dernières commandes</h3>${adminOrderRows(orders.slice(-5).reverse())}</div>
-  </div>`;
-}
-function adminOrderRows(orders){
-  if(!orders.length)return '<div class="admin-empty">Aucune commande enregistrée pour le moment.</div>';
-  return `<div style="overflow:auto"><table class="admin-table"><thead><tr><th>Commande</th><th>Client</th><th>Total</th><th>Date</th><th>Statut</th></tr></thead><tbody>${
-    orders.map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br><small>${esc(o.phone)}</small></td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td>${adminStatus(o.status)}</td></tr>`).join("")
-  }</tbody></table></div>`;
-}
-function adminStatus(status){
-  const cls={"Nouvelle":"new","En préparation":"processing","Expédiée":"shipped","Livrée":"done","Annulée":"cancel"}[status]||"new";
-  return `<span class="status ${cls}">${esc(status)}</span>`;
-}
-function renderAdminProducts(box){
-  box.innerHTML=`<div class="admin-page">
-    <div class="admin-toolbar"><button class="admin-btn admin-orange" onclick="adminProductForm()">＋ Ajouter un produit</button><button class="admin-btn admin-light" onclick="exportProducts()">Exporter le catalogue</button></div>
-    <div class="admin-card"><div style="overflow:auto"><table class="admin-table"><thead><tr><th>Image</th><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Tag</th><th>Actions</th></tr></thead><tbody>${
-      products.map(p=>`<tr><td><img class="admin-thumb" src="${esc(p.image)}" onerror="imgFallback(event)"></td><td><strong>${esc(p.name)}</strong><br><small>${esc(p.desc)}</small></td><td>${esc(p.category)}</td><td>${money(p.price)}</td><td>${esc(p.tag||"")}</td><td><div class="admin-actions"><button class="admin-btn admin-light" onclick="adminProductForm(${p.id})">Modifier</button><button class="admin-btn admin-danger" onclick="deleteProduct(${p.id})">Supprimer</button></div></td></tr>`).join("")
-    }</tbody></table></div></div>
-  </div>`;
-}
-function adminProductForm(id){
-  editingProductId=id||null;
-  const p=id?products.find(x=>x.id===id):{name:"",category:"Informatique",price:"",old:"",image:"",rating:5,reviews:0,desc:"",tag:"Nouveau"};
-  const box=document.getElementById("adminContent");
-  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('products')">← Retour au catalogue</button></div>
-  <div class="admin-card"><h3>${id?"Modifier le produit":"Ajouter un produit"}</h3>
-  <div class="admin-form">
-    <div class="admin-field"><label>Nom du produit *</label><input id="apName" value="${esc(p.name)}"></div>
-    <div class="admin-field"><label>Catégorie *</label><select id="apCat">${["Informatique","Accessoires","Stockage","Maintenance","Formation","Logiciels"].map(c=>`<option ${p.category===c?"selected":""}>${c}</option>`).join("")}</select></div>
-    <div class="admin-field"><label>Prix (FCFA) *</label><input id="apPrice" type="number" min="0" value="${p.price??""}"></div>
-    <div class="admin-field"><label>Ancien prix (optionnel)</label><input id="apOld" type="number" min="0" value="${p.old??""}"></div>
-    <div class="admin-field"><label>Tag</label><input id="apTag" value="${esc(p.tag||"Nouveau")}"></div>
-    <div class="admin-field"><label>Note / 5</label><input id="apRating" type="number" min="0" max="5" step="0.1" value="${p.rating??5}"></div>
-    <div class="admin-field"><label>Nombre d'avis</label><input id="apReviews" type="number" min="0" value="${p.reviews??0}"></div>
-    <div class="admin-field"><label>Image du produit</label><input id="apImageFile" type="file" accept="image/*" onchange="previewAdminImage(event)"><input id="apImage" value="${esc(p.image||"")}" placeholder="ou URL / chemin de l'image" style="margin-top:7px"><img id="apPreview" class="admin-image-preview" src="${esc(p.image||"https://placehold.co/800x600/e9edf2/10213F?text=Produit")}" onerror="imgFallback(event)"></div>
-    <div class="admin-field full"><label>Description *</label><textarea id="apDesc">${esc(p.desc||"")}</textarea></div>
-  </div>
-  <button class="admin-btn admin-primary" style="margin-top:14px" onclick="saveAdminProduct()">💾 Enregistrer le produit</button>
-  </div></div>`;
-}
-function previewAdminImage(e){
-  const f=e.target.files[0]; if(!f)return;
-  const reader=new FileReader(); reader.onload=()=>{document.getElementById("apImage").value=reader.result;document.getElementById("apPreview").src=reader.result}; reader.readAsDataURL(f);
-}
-function saveAdminProduct(){
-  const name=document.getElementById("apName").value.trim(), price=Number(document.getElementById("apPrice").value), desc=document.getElementById("apDesc").value.trim();
-  if(!name||!price||!desc){toast("Nom, prix et description sont obligatoires.");return}
-  let p={id:editingProductId||Date.now(),name,category:document.getElementById("apCat").value,price,old:Number(document.getElementById("apOld").value)||null,image:document.getElementById("apImage").value.trim()||"https://placehold.co/800x600/e9edf2/10213F?text=Produit",rating:Number(document.getElementById("apRating").value)||5,reviews:Number(document.getElementById("apReviews").value)||0,desc,tag:document.getElementById("apTag").value.trim()||"Nouveau"};
-  if(editingProductId){const i=products.findIndex(x=>x.id===editingProductId);products[i]=p}else products.push(p);
-  saveProducts();renderProducts();adminPage("products");toast(editingProductId?"Produit modifié.":"Produit ajouté.");
-}
-function deleteProduct(id){
-  const p=products.find(x=>x.id===id); if(!p)return;
-  if(!confirm(`Supprimer « ${p.name} » ?`))return;
-  products=products.filter(x=>x.id!==id);saveProducts();renderProducts();adminPage("products");toast("Produit supprimé.");
-}
-function exportProducts(){
-  const blob=new Blob([JSON.stringify(products,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="catalogue-aubede.json";a.click();URL.revokeObjectURL(url);
-}
-function renderAdminOrders(box){
-  const orders=getOrders();
-  box.innerHTML=`<div class="admin-page"><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="adminPage('dashboard')">Actualiser</button><button class="admin-btn admin-danger" onclick="clearOrders()">Effacer les commandes</button></div>
-  <div class="admin-card">${!orders.length?'<div class="admin-empty">Aucune commande enregistrée.</div>':`<div style="overflow:auto"><table class="admin-table"><thead><tr><th>N°</th><th>Client</th><th>Articles</th><th>Total</th><th>Date</th><th>Statut</th><th>Action</th></tr></thead><tbody>${
-  orders.slice().reverse().map(o=>`<tr><td><strong>${esc(o.id)}</strong></td><td>${esc(o.name)}<br>${esc(o.phone)}<br>${esc(o.location)}</td><td>${o.items.map(i=>`${esc(i.name)} × ${i.qty}`).join("<br>")}</td><td>${money(o.total)}</td><td>${esc(o.date)}</td><td><select onchange="updateOrderStatus('${esc(o.id)}',this.value)">${["Nouvelle","En préparation","Expédiée","Livrée","Annulée"].map(st=>`<option ${o.status===st?"selected":""}>${st}</option>`).join("")}</select></td><td><button class="admin-btn admin-danger" onclick="deleteOrder('${esc(o.id)}')">Supprimer</button></td></tr>`).join("")
-  }</tbody></table></div>`}</div></div>`;
-}
-function updateOrderStatus(id,status){const o=getOrders();const x=o.find(a=>a.id===id);if(x){x.status=status;saveOrders(o);toast("Statut mis à jour.")}}
-function deleteOrder(id){if(!confirm("Supprimer cette commande ?"))return;saveOrders(getOrders().filter(o=>o.id!==id));adminPage("orders");toast("Commande supprimée.")}
-function clearOrders(){if(!getOrders().length)return;if(confirm("Effacer toutes les commandes enregistrées dans ce navigateur ?")){saveOrders([]);adminPage("orders");toast("Historique effacé.")}}
-function renderAdminStats(box){
-  const orders=getOrders(), revenue=orders.filter(o=>o.status!=="Annulée").reduce((s,o)=>s+o.total,0);
-  const counts={};orders.forEach(o=>{const d=o.date.slice(0,10);counts[d]=(counts[d]||0)+o.total});
-  const days=Object.keys(counts).sort().slice(-10);const max=Math.max(1,...days.map(d=>counts[d]));
-  box.innerHTML=`<div class="admin-page"><div class="admin-grid"><div class="admin-stat"><strong>${orders.length}</strong><span>Total commandes</span></div><div class="admin-stat"><strong>${money(revenue)}</strong><span>CA suivi</span></div><div class="admin-stat"><strong>${orders.filter(o=>o.status==="Livrée").length}</strong><span>Commandes livrées</span></div><div class="admin-stat"><strong>${products.length}</strong><span>Produits actifs</span></div></div>
-  <div class="admin-card"><h3>Évolution du chiffre d'affaires</h3><div class="admin-chart">${days.length?days.map(d=>`<div class="bar" style="height:${Math.max(5,(counts[d]/max)*175)}px"><b>${Math.round(counts[d]/1000)}k</b><span>${d.slice(5)}</span></div>`).join(""):'<div class="admin-empty" style="width:100%">Pas encore assez de données.</div>'}</div></div></div>`;
-}
-function renderAdminSettings(box){
-  box.innerHTML=`<div class="admin-page"><div class="admin-card"><h3>Compte administrateur</h3><p style="font-size:12px;color:#697386;margin-bottom:15px"><strong>${ADMIN_NAME}</strong></p>
-  <div class="admin-field" style="max-width:480px"><label>Nouveau mot de passe</label><input id="newAdminPass" type="password" placeholder="Minimum conseillé : 10 caractères"></div>
-  <button class="admin-btn admin-primary" style="margin-top:9px" onclick="changeAdminPassword()">Modifier le mot de passe</button>
-  <div class="admin-note">Le nouveau mot de passe sera mémorisé dans le navigateur actuel. Cette solution est adaptée à une démo/site statique, mais pas à une protection serveur contre un utilisateur technique.</div></div>
-  <div class="admin-card"><h3>Outils de données</h3><div class="admin-toolbar"><button class="admin-btn admin-light" onclick="exportProducts()">Exporter les produits</button><button class="admin-btn admin-light" onclick="exportOrders()">Exporter les commandes</button></div></div></div>`;
-}
-function changeAdminPassword(){
-  const p=document.getElementById("newAdminPass").value;
-  if(p.length<6){toast("Choisissez au moins 6 caractères.");return}
-  localStorage.setItem("aubedeAdminPassword",p);document.getElementById("newAdminPass").value="";toast("Mot de passe administrateur modifié.");
-}
-function exportOrders(){
-  const blob=new Blob([JSON.stringify(getOrders(),null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="commandes-aubede.json";a.click();URL.revokeObjectURL(url);
-}
-
 function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("aubedeDark",document.body.classList.contains("dark"))}
 function toast(m){let t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2400)}
 window.addEventListener("scroll",()=>document.getElementById("top").style.display=scrollY>500?"block":"none");
 if(localStorage.getItem("aubedeDark")==="true")document.body.classList.add("dark");
+function applySettingsToUI(){
+let wa1=document.getElementById("topbarWA");if(wa1)wa1.textContent="WhatsApp : "+settings.whatsapp1+" • "+settings.whatsapp2;
+let f1=document.getElementById("footerWA1");if(f1)f1.textContent="WhatsApp 1 : "+settings.whatsapp1;
+let f2=document.getElementById("footerWA2");if(f2)f2.textContent="WhatsApp 2 : "+settings.whatsapp2;
+let del=document.getElementById("deliveryStat");if(del)del.textContent=settings.delivery;
+let target=document.getElementById("target");
+if(target)target.innerHTML=`<option value="${waId(settings.whatsapp1)}">WhatsApp 1 — ${settings.whatsapp1}</option><option value="${waId(settings.whatsapp2)}">WhatsApp 2 — ${settings.whatsapp2}</option>`;
+renderDeliveryZoneOptions();
+}
+function renderDeliveryZoneOptions(){
+let sel=document.getElementById("location");
+if(!sel)return;
+sel.innerHTML=settings.deliveryZones.map(z=>`<option value="${z.name}">${z.name} — ${money(z.fee)}</option>`).join("")+`<option value="__other__">Autre zone (à préciser)</option>`;
+}
+function updateDeliveryDisplay(){
+let locSel=document.getElementById("location").value;
+let customField=document.getElementById("customZoneField");
+let subtotal=cart.reduce((s,i)=>{let p=products.find(x=>x.id===i.id);return p?s+p.price*i.qty:s},0);
+let deliveryFee=0,deliveryText="—";
+if(locSel==="__other__"){
+customField.style.display="";
+deliveryText="À confirmer";
+}else{
+customField.style.display="none";
+let z=settings.deliveryZones.find(x=>x.name===locSel);
+deliveryFee=z?z.fee:0;
+deliveryText=money(deliveryFee);
+}
+document.getElementById("sumSubtotal").textContent=money(subtotal);
+document.getElementById("sumDelivery").textContent=deliveryText;
+document.getElementById("sumGrandTotal").textContent=money(subtotal+deliveryFee);
+}
+applySettingsToUI();
 renderProducts();renderCart();
+initBackendData();
+
+/* ================= ADMINISTRATION ================= */
+let currentImages=[];
+async function isAdminSession(){
+if(BACKEND_ENABLED){let {data}=await sb.auth.getSession();return !!(data&&data.session)}
+return sessionStorage.getItem("aubedeAdmin")==="1";
+}
+async function accessAdmin(){
+if(await isAdminSession()){openAdminPanel()}else{openAdminLogin()}
+}
+function openAdminLogin(){document.getElementById("adminLoginModal").classList.add("show");document.getElementById("adminPass").focus()}
+function closeAdminLogin(){document.getElementById("adminLoginModal").classList.remove("show");document.getElementById("adminPass").value=""}
+async function adminLogin(){
+let p=document.getElementById("adminPass").value;
+if(BACKEND_ENABLED){
+let {error}=await sb.auth.signInWithPassword({email:ADMIN_EMAIL,password:p});
+if(error){toast("Mot de passe incorrect ❌");return}
+closeAdminLogin();openAdminPanel();toast("Connecté à l'administration ✅");
+return;
+}
+if(p===adminPassword){
+sessionStorage.setItem("aubedeAdmin","1");
+closeAdminLogin();
+openAdminPanel();
+toast("Connecté à l'administration ✅");
+}else{
+toast("Mot de passe incorrect ❌");
+}
+}
+async function adminLogout(){
+if(BACKEND_ENABLED)await sb.auth.signOut();
+sessionStorage.removeItem("aubedeAdmin");
+closeAdminPanel();
+toast("Déconnecté de l'administration.");
+}
+async function openAdminPanel(){
+if(!(await isAdminSession())){openAdminLogin();return}
+if(BACKEND_ENABLED)await Promise.all([loadProductsBackend(),loadSettingsBackend(),loadOrdersBackend()]);
+document.getElementById("adminPanelModal").classList.add("show");
+switchAdminTab("products");
+newProductForm();
+renderAdminList();
+}
+function closeAdminPanel(){document.getElementById("adminPanelModal").classList.remove("show")}
+
+
+function switchAdminTab(tab){
+document.getElementById("adminTabProducts").style.display=tab==="products"?"":"none";
+document.getElementById("adminTabSettings").style.display=tab==="settings"?"":"none";
+document.getElementById("adminTabOrders").style.display=tab==="orders"?"":"none";
+document.getElementById("tabBtnProducts").classList.toggle("active",tab==="products");
+document.getElementById("tabBtnSettings").classList.toggle("active",tab==="settings");
+document.getElementById("tabBtnOrders").classList.toggle("active",tab==="orders");
+if(tab==="settings")loadSettingsForm();
+if(tab==="orders")renderOrdersList();
+}
+
+function renderAdminList(){
+let q=(document.getElementById("adminSearch").value||"").toLowerCase().trim();
+let arr=products.filter(p=>!q||(p.name+" "+p.category).toLowerCase().includes(q));
+let totalValue=products.reduce((s,p)=>s+p.price,0);
+document.getElementById("adminStats").innerHTML="<b>"+products.length+"</b> produit(s) • valeur totale : <b>"+money(totalValue)+"</b>";
+let box=document.getElementById("adminList");
+box.innerHTML=arr.length?arr.map(p=>`
+<div class="admin-row">
+<img src="${p.images[0]}" onerror="imgFallback(event)" alt="${p.name}">
+<div class="info"><strong>${p.name}</strong><small>${p.category} • ${money(p.price)}${p.old?" (avant "+money(p.old)+")":""}${p.images.length>1?" • "+p.images.length+" photos":""}</small></div>
+<div class="admin-actions">
+<button class="a-edit" onclick="editProductAdmin(${p.id})">✏️ Modifier</button>
+<button class="a-del" onclick="deleteProductAdmin(${p.id})">🗑️ Supprimer</button>
+</div>
+</div>`).join(""):`<div class="empty">Aucun produit trouvé.</div>`;
+}
+
+function renderImageThumbs(){
+document.getElementById("imgPreview").src=currentImages[0]||"https://placehold.co/400x300/eef1f5/10213F?text=Aper%C3%A7u";
+let box=document.getElementById("imgThumbs");
+box.innerHTML=currentImages.map((src,i)=>`
+<div class="thumb-item">
+<img src="${src}" onerror="imgFallback(event)">
+${i===0?'<span class="thumb-main">Principale</span>':''}
+<div class="thumb-actions">
+${i!==0?`<button type="button" onclick="makeMainImage(${i})" title="Définir comme principale">⭐</button>`:''}
+<button type="button" onclick="removeImage(${i})" title="Retirer">✕</button>
+</div>
+</div>`).join("");
+}
+function makeMainImage(i){let x=currentImages.splice(i,1)[0];currentImages.unshift(x);renderImageThumbs();}
+function removeImage(i){currentImages.splice(i,1);renderImageThumbs();}
+function addImageUrl(){
+let inp=document.getElementById("prodImgUrl");
+let url=inp.value.trim();
+if(!url){toast("Veuillez saisir une URL d'image.");return}
+currentImages.push(url);
+inp.value="";
+renderImageThumbs();
+}
+function handleImageUpload(e){
+let files=Array.from(e.target.files||[]);
+if(!files.length)return;
+let remaining=files.length;
+files.forEach(file=>{
+if(file.size>1500000){toast("Une image dépasse ~1,5 Mo — cela peut ralentir le site.")}
+let reader=new FileReader();
+reader.onload=function(ev){
+currentImages.push(ev.target.result);
+remaining--;
+if(remaining===0){renderImageThumbs();e.target.value=""}
+};
+reader.readAsDataURL(file);
+});
+}
+
+function newProductForm(){
+document.getElementById("formTitle").textContent="Nouveau produit";
+document.getElementById("prodId").value="";
+document.getElementById("prodName").value="";
+document.getElementById("prodCategory").value="Informatique";
+document.getElementById("prodPrice").value="";
+document.getElementById("prodOld").value="";
+document.getElementById("prodRating").value="5";
+document.getElementById("prodReviews").value="0";
+document.getElementById("prodTag").value="Nouveau";
+document.getElementById("prodDesc").value="";
+document.getElementById("prodImgUrl").value="";
+document.getElementById("prodImgFile").value="";
+currentImages=[];
+renderImageThumbs();
+}
+
+function editProductAdmin(id){
+let p=products.find(x=>x.id===id);
+if(!p)return;
+document.getElementById("formTitle").textContent="Modifier : "+p.name;
+document.getElementById("prodId").value=p.id;
+document.getElementById("prodName").value=p.name;
+document.getElementById("prodCategory").value=p.category;
+document.getElementById("prodPrice").value=p.price;
+document.getElementById("prodOld").value=p.old||"";
+document.getElementById("prodRating").value=p.rating;
+document.getElementById("prodReviews").value=p.reviews;
+document.getElementById("prodTag").value=p.tag||"";
+document.getElementById("prodDesc").value=p.desc||"";
+document.getElementById("prodImgUrl").value="";
+document.getElementById("prodImgFile").value="";
+currentImages=(p.images||[]).slice();
+renderImageThumbs();
+switchAdminTab("products");
+}
+
+async function saveProduct(){
+let id=document.getElementById("prodId").value;
+let name=document.getElementById("prodName").value.trim();
+let category=document.getElementById("prodCategory").value;
+let price=parseInt(document.getElementById("prodPrice").value);
+let oldRaw=document.getElementById("prodOld").value;
+let old=oldRaw?parseInt(oldRaw):null;
+let rating=parseFloat(document.getElementById("prodRating").value)||5;
+let reviews=parseInt(document.getElementById("prodReviews").value)||0;
+let tag=document.getElementById("prodTag").value.trim()||"Nouveau";
+let desc=document.getElementById("prodDesc").value.trim();
+let images=currentImages.length?currentImages.slice():["produit.jpg"];
+
+if(!name||!category||!price){toast("Veuillez remplir les champs obligatoires (*).");return}
+
+if(BACKEND_ENABLED){
+if(id){
+let {error}=await sb.from("products").update(productToRow({name,category,price,old,rating,reviews,tag,desc,images})).eq("id",parseInt(id));
+if(error){toast("Erreur lors de la modification (serveur).");return}
+toast("Produit modifié ✅");
+}else{
+let {error}=await sb.from("products").insert(productToRow({name,category,price,old,rating,reviews,tag,desc,images}));
+if(error){toast("Erreur lors de l'ajout (serveur).");return}
+toast("Produit ajouté ✅");
+}
+await loadProductsBackend();
+renderProducts();renderAdminList();newProductForm();
+return;
+}
+
+if(id){
+let p=products.find(x=>x.id===parseInt(id));
+if(p)Object.assign(p,{name,category,price,old,rating,reviews,tag,desc,images});
+toast("Produit modifié ✅");
+}else{
+let newId=products.length?Math.max(...products.map(x=>x.id))+1:1;
+products.push({id:newId,name,category,price,old,images,rating,reviews,desc,tag});
+toast("Produit ajouté ✅");
+}
+saveProductsToStorage();
+renderProducts();
+renderAdminList();
+newProductForm();
+}
+
+async function deleteProductAdmin(id){
+let p=products.find(x=>x.id===id);
+if(!p)return;
+if(!confirm("Supprimer définitivement « "+p.name+" » ?"))return;
+if(BACKEND_ENABLED){
+let {error}=await sb.from("products").delete().eq("id",id);
+if(error){toast("Erreur lors de la suppression (serveur).");return}
+await loadProductsBackend();
+renderProducts();renderAdminList();
+toast("Produit supprimé 🗑️");
+return;
+}
+products=products.filter(x=>x.id!==id);
+saveProductsToStorage();
+renderProducts();
+renderAdminList();
+toast("Produit supprimé 🗑️");
+}
+
+
+function exportProducts(){
+let blob=new Blob([JSON.stringify(products,null,2)],{type:"application/json"});
+let url=URL.createObjectURL(blob);
+let a=document.createElement("a");
+a.href=url;a.download="marche-aubede-produits.json";a.click();
+URL.revokeObjectURL(url);
+toast("Export terminé ⬇️");
+}
+function importProducts(e){
+let file=e.target.files[0];
+if(!file)return;
+let reader=new FileReader();
+reader.onload=function(ev){
+try{
+let data=JSON.parse(ev.target.result);
+if(!Array.isArray(data))throw new Error("format invalide");
+products=migrateProductImages(data);
+saveProductsToStorage();
+renderProducts();
+renderAdminList();
+toast("Produits importés avec succès ✅");
+}catch(err){
+toast("Fichier invalide ❌");
+}
+};
+reader.readAsText(file);
+e.target.value="";
+}
+
+/* ---- Paramètres ---- */
+function loadSettingsForm(){
+document.getElementById("setWa1").value=settings.whatsapp1;
+document.getElementById("setWa2").value=settings.whatsapp2;
+document.getElementById("setDelivery").value=settings.delivery;
+document.getElementById("curPass").value="";
+document.getElementById("newPass").value="";
+document.getElementById("confirmPass").value="";
+renderZoneList();
+}
+function renderZoneList(){
+let box=document.getElementById("zoneList");
+box.innerHTML=settings.deliveryZones.length?settings.deliveryZones.map((z,i)=>`
+<div class="admin-row" style="padding:8px 0">
+<div class="info"><strong>${z.name}</strong><small>${money(z.fee)}</small></div>
+<div class="admin-actions"><button class="a-del" onclick="removeDeliveryZone(${i})">✕ Retirer</button></div>
+</div>`).join(""):`<div class="empty">Aucune zone définie — seule l'option "Autre" sera proposée.</div>`;
+}
+async function persistSettings(){
+if(BACKEND_ENABLED){
+let {error}=await sb.from("settings").update({whatsapp1:settings.whatsapp1,whatsapp2:settings.whatsapp2,delivery:settings.delivery,delivery_zones:settings.deliveryZones}).eq("id",1);
+if(error){toast("Erreur d'enregistrement des paramètres (serveur).");return false}
+return true;
+}
+saveSettingsToStorage();
+return true;
+}
+async function addDeliveryZone(){
+let name=document.getElementById("newZoneName").value.trim();
+let fee=parseInt(document.getElementById("newZoneFee").value);
+if(!name||isNaN(fee)||fee<0){toast("Veuillez indiquer un nom de zone et des frais valides.");return}
+settings.deliveryZones.push({name,fee});
+await persistSettings();
+renderZoneList();
+renderDeliveryZoneOptions();
+document.getElementById("newZoneName").value="";
+document.getElementById("newZoneFee").value="";
+toast("Zone de livraison ajoutée ✅");
+}
+async function removeDeliveryZone(i){
+if(!confirm("Supprimer cette zone de livraison ?"))return;
+settings.deliveryZones.splice(i,1);
+await persistSettings();
+renderZoneList();
+renderDeliveryZoneOptions();
+toast("Zone supprimée 🗑️");
+}
+async function changePassword(){
+let cur=document.getElementById("curPass").value;
+let n1=document.getElementById("newPass").value;
+let n2=document.getElementById("confirmPass").value;
+if(!n1||n1.length<4){toast("Le nouveau mot de passe doit contenir au moins 4 caractères.");return}
+if(n1!==n2){toast("Les deux mots de passe ne correspondent pas.");return}
+if(BACKEND_ENABLED){
+let {error:signInErr}=await sb.auth.signInWithPassword({email:ADMIN_EMAIL,password:cur});
+if(signInErr){toast("Mot de passe actuel incorrect ❌");return}
+let {error}=await sb.auth.updateUser({password:n1});
+if(error){toast("Erreur lors de la mise à jour du mot de passe (serveur).");return}
+toast("Mot de passe mis à jour ✅");
+loadSettingsForm();
+return;
+}
+if(cur!==adminPassword){toast("Mot de passe actuel incorrect ❌");return}
+adminPassword=n1;
+localStorage.setItem("aubedeAdminPass",adminPassword);
+toast("Mot de passe mis à jour ✅");
+loadSettingsForm();
+}
+async function saveSettings(){
+settings.whatsapp1=document.getElementById("setWa1").value.trim()||settings.whatsapp1;
+settings.whatsapp2=document.getElementById("setWa2").value.trim()||settings.whatsapp2;
+settings.delivery=document.getElementById("setDelivery").value.trim()||settings.delivery;
+await persistSettings();
+applySettingsToUI();
+toast("Paramètres enregistrés ✅");
+}
+
+function exportAllData(){
+let data={products,settings,orders};
+let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+let url=URL.createObjectURL(blob);
+let a=document.createElement("a");
+a.href=url;a.download="marche-aubede-sauvegarde.json";a.click();
+URL.revokeObjectURL(url);
+toast("Sauvegarde complète exportée ⬇️");
+}
+function importAllData(e){
+if(BACKEND_ENABLED){toast("En mode serveur en ligne, la restauration se fait directement dans Supabase (SQL Editor) pour éviter tout conflit de données.");e.target.value="";return}
+let file=e.target.files[0];
+if(!file)return;
+let reader=new FileReader();
+reader.onload=function(ev){
+try{
+let data=JSON.parse(ev.target.result);
+let ok=false;
+if(data.products&&Array.isArray(data.products)){products=migrateProductImages(data.products);saveProductsToStorage();ok=true}
+if(data.settings){settings=Object.assign({},settings,data.settings);saveSettingsToStorage();applySettingsToUI();ok=true}
+if(data.orders&&Array.isArray(data.orders)){orders=data.orders;saveOrdersToStorage();ok=true}
+if(!ok)throw new Error("format invalide");
+renderProducts();renderAdminList();loadSettingsForm();renderOrdersList();
+toast("Sauvegarde restaurée avec succès ✅");
+}catch(err){
+toast("Fichier de sauvegarde invalide ❌");
+}
+};
+reader.readAsText(file);
+e.target.value="";
+}
+function resetAllData(){
+if(BACKEND_ENABLED){toast("En mode serveur en ligne, la réinitialisation se fait directement dans Supabase (SQL Editor) pour éviter tout conflit de données.");return}
+if(!confirm("Réinitialiser tous les produits, contacts et le mot de passe aux valeurs par défaut ? Cette action est irréversible."))return;
+products=migrateProductImages(defaultProducts.map(p=>Object.assign({},p,{images:p.images.slice()})));
+settings=Object.assign({},defaultSettings,{deliveryZones:defaultSettings.deliveryZones.map(z=>Object.assign({},z))});
+adminPassword=DEFAULT_ADMIN_PASSWORD;
+localStorage.setItem("aubedeAdminPass",adminPassword);
+saveProductsToStorage();
+saveSettingsToStorage();
+applySettingsToUI();
+renderDeliveryZoneOptions();
+renderProducts();
+renderAdminList();
+loadSettingsForm();
+toast("Toutes les données ont été réinitialisées ♻️");
+}
+
+/* ---- Historique des commandes ---- */
+function renderOrdersList(){
+let q=(document.getElementById("orderSearch").value||"").toLowerCase().trim();
+let totalRevenue=orders.reduce((s,o)=>s+o.grandTotal,0);
+document.getElementById("ordersStats").innerHTML="<b>"+orders.length+"</b> commande(s) • chiffre d'affaires total : <b>"+money(totalRevenue)+"</b>";
+let arr=orders.map((o,i)=>({o,i})).filter(x=>!q||(x.o.name+" "+x.o.phone+" "+x.o.orderNum).toLowerCase().includes(q));
+let box=document.getElementById("ordersList");
+box.innerHTML=arr.length?arr.map(x=>{let o=x.o;return`
+<div class="admin-row">
+<div class="info">
+<strong>${o.orderNum} — ${o.name}</strong>
+<small>${o.date} ${o.time||""} • ${o.phone} • ${o.zone}</small>
+<small>${o.items.length} article(s) • Total : ${money(o.grandTotal)} • ${o.pay}</small>
+</div>
+<div class="admin-actions col">
+<button class="a-edit" onclick="redownloadInvoice(${x.i})">🧾 Facture</button>
+<button class="a-del" onclick="deleteOrder(${x.i})">✕ Retirer</button>
+</div>
+</div>`}).join(""):`<div class="empty">Aucune commande enregistrée pour l'instant.</div>`;
+}
+function redownloadInvoice(i){
+let o=orders[i];
+if(!o)return;
+generateInvoicePDF(o);
+toast("Facture régénérée ⬇️");
+}
+async function deleteOrder(i){
+if(!confirm("Retirer cette commande de l'historique ?"))return;
+let o=orders[i];
+if(BACKEND_ENABLED&&o){
+let {error}=await sb.from("orders").delete().eq("id",o.id);
+if(error){toast("Erreur lors de la suppression (serveur).");return}
+await loadOrdersBackend();
+renderOrdersList();
+toast("Commande retirée de l'historique 🗑️");
+return;
+}
+orders.splice(i,1);
+saveOrdersToStorage();
+renderOrdersList();
+toast("Commande retirée de l'historique 🗑️");
+}
+async function clearOrdersHistory(){
+if(!orders.length){toast("Aucune commande à vider.");return}
+if(!confirm("Vider tout l'historique des commandes ? Cette action est irréversible."))return;
+if(BACKEND_ENABLED){
+let {error}=await sb.from("orders").delete().gte("id",0);
+if(error){toast("Erreur lors du vidage (serveur).");return}
+await loadOrdersBackend();
+renderOrdersList();
+toast("Historique des commandes vidé 🗑️");
+return;
+}
+orders=[];
+saveOrdersToStorage();
+renderOrdersList();
+toast("Historique des commandes vidé 🗑️");
+}
 </script>
 </body>
+</html>
+<html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
+</html><html>
+
 </html>
