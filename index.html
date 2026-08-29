@@ -14,7 +14,13 @@
 --navy:#10213F;--navy2:#19335D;--orange:#E9823B;--orange2:#FFB16F;
 --cream:#F7F4EE;--white:#fff;--ink:#18202D;--muted:#697386;--line:#E5E7EB;
 --green:#14946B;--red:#D94A4A;--shadow:0 18px 50px rgba(16,33,63,.11);
+--shadow-soft:0 2px 10px rgba(16,33,63,.05);
+--shadow-lift:0 24px 48px -12px rgba(16,33,63,.22);
+--ease:cubic-bezier(.22,1,.36,1);
 }
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Inter,Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
@@ -53,7 +59,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdr
 .hero-main:before,.hero-main:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.06)}
 .hero-main:before{width:360px;height:360px;right:-130px;top:-100px}
 .hero-main:after{width:190px;height:190px;right:100px;bottom:-100px}
-.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:30px;font-size:12px;font-weight:700;margin-bottom:20px}
+.eyebrow{display:inline-flex;padding:7px 13px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);border-radius:30px;font-size:11.5px;font-weight:700;letter-spacing:.06em;margin-bottom:20px}
 .hero h1{font-family:Sora;font-size:clamp(34px,5vw,62px);line-height:1.04;max-width:720px;position:relative;z-index:2}
 .hero h1 span{color:var(--orange2)}
 .hero-main p{color:#dbe5f4;max-width:620px;margin:22px 0;position:relative;z-index:2}
@@ -71,9 +77,9 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdr
 
 /* SECTIONS */
 .section{padding:52px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:20px}
-.section-head h2{font-family:Sora;font-size:28px;color:var(--navy)}
-.section-head p{color:var(--muted);font-size:14px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:24px}
+.section-head h2{font-family:Sora;font-size:29px;color:var(--navy);letter-spacing:-.02em;line-height:1.15}
+.section-head p{color:var(--muted);font-size:14px;margin-top:4px}
 
 /* CATEGORIES */
 .cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
@@ -88,17 +94,22 @@ header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdr
 .select{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;font-size:13px;margin-left:auto}
 
 /* PRODUCTS */
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.product{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.25s;position:relative}
-.product:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.pimg{height:205px;background:#eef1f5;position:relative;overflow:hidden}
-.pimg img{width:100%;height:100%;object-fit:cover;transition:.4s}
-.product:hover .pimg img{transform:scale(1.04)}
-.tag{position:absolute;left:10px;top:10px;background:var(--orange);color:#fff;padding:6px 9px;border-radius:8px;font-size:10px;font-weight:800}
-.heart{position:absolute;right:10px;top:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.92);font-size:18px}
-.pbody{padding:15px}.pcat{color:var(--green);font-size:10px;text-transform:uppercase;font-weight:800}.pname{font-family:Sora;font-size:14px;margin:6px 0}.stars{font-size:11px;color:#F0A23C}.reviews{color:var(--muted);font-size:10px}.desc{font-size:12px;color:var(--muted);min-height:38px;margin-top:5px}
-.pbottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}.price{font-family:Sora;font-size:15px;color:var(--navy)}.old{font-size:10px;color:#9CA3AF;text-decoration:line-through;margin-left:4px}
-.add{border:0;background:var(--navy);color:#fff;border-radius:10px;padding:9px 11px;font-size:11px;font-weight:800}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);position:relative;box-shadow:var(--shadow-soft)}
+.product:hover{transform:translateY(-7px);box-shadow:var(--shadow-lift);border-color:transparent}
+.pimg{height:245px;background:linear-gradient(135deg,#eef1f5,#e6eaf1);position:relative;overflow:hidden}
+.pimg img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.product:hover .pimg img{transform:scale(1.09)}
+.pimg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.16) 100%);pointer-events:none}
+.tag{position:absolute;left:12px;top:12px;background:var(--orange);color:#fff;padding:6px 10px;border-radius:8px;font-size:10px;font-weight:800;letter-spacing:.02em;z-index:2}
+.heart{position:absolute;right:12px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);font-size:18px;transition:transform .3s var(--ease),background .3s;z-index:2}
+.heart:hover{transform:scale(1.1);background:#fff}
+.pbody{padding:18px}.pcat{color:var(--green);font-size:10px;text-transform:uppercase;font-weight:800;letter-spacing:.09em}.pname{font-family:Sora;font-size:15px;margin:7px 0;letter-spacing:-.01em;line-height:1.3}.stars{font-size:11px;color:#F0A23C}.reviews{color:var(--muted);font-size:10px}.desc{font-size:12px;color:var(--muted);min-height:38px;margin-top:6px;line-height:1.55}
+.pbottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:15px}.price{font-family:Sora;font-size:16px;color:var(--navy);letter-spacing:-.01em}.old{font-size:10px;color:#9CA3AF;text-decoration:line-through;margin-left:4px}
+.add{border:0;background:var(--navy);color:#fff;border-radius:10px;padding:9px 12px;font-size:11px;font-weight:800;transition:transform .25s var(--ease),background .25s}
+.add:hover{background:var(--navy2);transform:translateY(-2px)}
+.add:active{transform:translateY(0) scale(.96)}
+
 
 /* PROMO */
 .promo{background:linear-gradient(120deg,#FFF2E8,#fff);border:1px solid #f4d8c2;border-radius:24px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:25px}
@@ -125,14 +136,14 @@ footer{background:var(--navy);color:#fff;padding:50px 0 20px;margin-top:20px}.fo
 
 /* CART */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:none}.overlay.show{display:block}
-.cart{position:fixed;right:-480px;top:0;width:min(460px,94%);height:100vh;background:#fff;z-index:400;transition:.35s;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.18)}.cart.open{right:0}
+#cart{position:fixed;right:-480px;top:0;width:min(460px,94%);height:100vh;background:#fff;z-index:400;transition:.35s;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.18)}#cart.open{right:0}
 .cart-head{padding:20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.cart-head h2{font-family:Sora;color:var(--navy)}.close{border:0;background:0;font-size:27px}
 .cart-items{flex:1;overflow:auto;padding:18px}.cart-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}.cart-item img{width:70px;height:70px;border-radius:11px;object-fit:cover}.ci{flex:1}.ci strong{font-size:13px}.ci .price{font-size:12px;margin-top:4px}.qty{display:flex;align-items:center;gap:7px;margin-top:9px}.qty button{width:27px;height:27px;border:1px solid var(--line);background:#fff;border-radius:7px}.remove{border:0;background:0;color:var(--red);font-size:11px}
 .cart-foot{border-top:1px solid var(--line);padding:18px}.row{display:flex;justify-content:space-between;font-size:13px;margin:6px 0}.grand{font-family:Sora;font-size:18px;margin:12px 0}.checkout{width:100%;border:0;background:var(--orange);color:#fff;padding:14px;border-radius:11px;font-weight:800}
 
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:20px;width:min(650px,100%);max-height:92vh;overflow:auto;padding:25px}.modal-head{display:flex;justify-content:space-between;margin-bottom:20px}.modal-head h2{font-family:Sora;color:var(--navy)}.field{margin-bottom:14px}.field label{font-size:12px;font-weight:800;display:block;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;outline:0}.field textarea{min-height:75px}.paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pay{border:1px solid var(--line);border-radius:11px;padding:13px;text-align:center;font-size:12px;font-weight:800}.pay.selected{border:2px solid var(--orange);background:#fff6ee}.confirm{width:100%;border:0;background:var(--navy);color:#fff;border-radius:11px;padding:14px;font-weight:800;margin-top:4px}
-.product-modal{display:grid;grid-template-columns:.9fr 1.1fr;gap:22px}.product-modal img{width:100%;height:280px;object-fit:cover;border-radius:15px}.pm-cat{color:var(--green);font-size:11px;font-weight:800}.pm-title{font-family:Sora;font-size:25px;color:var(--navy);margin:6px 0}.pm-desc{font-size:13px;color:var(--muted);margin:10px 0}.specs{margin:15px 0;padding-left:18px;font-size:12px;color:#4b5563}.buy-now{width:100%;background:var(--orange);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:800}
+.product-modal{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px}.product-modal>div:first-child{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft)}.product-modal img{width:100%;height:320px;object-fit:cover;border-radius:18px;transition:transform .6s var(--ease);cursor:zoom-in;display:block}.product-modal img:hover{transform:scale(1.06)}.pm-cat{color:var(--green);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.pm-title{font-family:Sora;font-size:27px;color:var(--navy);margin:8px 0;letter-spacing:-.015em;line-height:1.15}.pm-desc{font-size:13.5px;color:var(--muted);margin:12px 0;line-height:1.6}.specs{margin:15px 0;padding-left:18px;font-size:12.5px;color:#4b5563;line-height:1.9}.buy-now{width:100%;background:var(--orange);color:#fff;border:0;border-radius:11px;padding:14px;font-weight:800;transition:transform .25s var(--ease),background .25s}.buy-now:hover{background:#d9702a;transform:translateY(-2px)}.buy-now:active{transform:translateY(0) scale(.97)}
 .pm-thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}.pm-thumbs img{width:58px;height:58px;object-fit:cover;border-radius:9px;cursor:pointer;border:2px solid transparent;opacity:.75}.pm-thumbs img.active{border-color:var(--orange);opacity:1}
 
 /* TOAST / WHATSAPP / TOP */
@@ -143,7 +154,7 @@ footer{background:var(--navy);color:#fff;padding:50px 0 20px;margin-top:20px}.fo
 
 /* DARK */
 body.dark{--cream:#0d1422;--white:#172033;--ink:#eef3fb;--muted:#aeb9c9;--line:#2d384c;background:#0d1422;color:#eef3fb}
-body.dark header,body.dark .search input,body.dark .hbtn,body.dark .cat,body.dark .chip,body.dark .select,body.dark .product,body.dark .promo,body.dark .service,body.dark .review,body.dark .faq details,body.dark .cart,body.dark .modal-box,body.dark .pay{background:#172033;color:#eef3fb}
+body.dark header,body.dark .search input,body.dark .hbtn,body.dark .cat,body.dark .chip,body.dark .select,body.dark .product,body.dark .promo,body.dark .service,body.dark .review,body.dark .faq details,body.dark #cart,body.dark .modal-box,body.dark .pay{background:#172033;color:#eef3fb}
 body.dark .hero-side{background:#172033;border-color:#2d384c}body.dark .section-head h2,body.dark .hero-side h2,body.dark .product .price,body.dark .pm-title{color:#eef3fb}
 body.dark .stat{border-color:#2d384c}body.dark .cat span,body.dark .desc,body.dark .service p,body.dark .review p{color:#aeb9c9}
 
@@ -193,7 +204,7 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 /* RESPONSIVE */
 @media(max-width:1000px){.hero-grid{grid-template-columns:1fr}.cat-grid{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.service-grid{grid-template-columns:repeat(2,1fr)}.benefits{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:2fr 1fr 1fr}}
 @media(max-width:700px){
-.container{padding:0 15px}.topbar .container{display:none}.header-main{height:auto;padding:12px 0;flex-wrap:wrap;gap:10px}.logo{font-size:19px}.search{order:3;flex-basis:100%;max-width:none}.navlinks .container{gap:19px}.hero{padding-top:18px}.hero-main{padding:38px 25px;min-height:430px}.hero-side{min-height:330px}.hero h1{font-size:38px}.cat-grid{grid-template-columns:repeat(3,1fr);gap:8px}.cat{padding:15px 7px}.products{grid-template-columns:repeat(2,1fr);gap:10px}.pimg{height:145px}.pbody{padding:12px}.pname{font-size:12px}.desc{font-size:11px}.pbottom{align-items:flex-start;flex-direction:column}.add{width:100%}.promo{display:block}.promo .btn{margin-top:15px}.testimonials{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.product-modal{grid-template-columns:1fr}.product-modal img{height:220px}}
+.container{padding:0 15px}.topbar .container{display:none}.header-main{height:auto;padding:12px 0;flex-wrap:wrap;gap:10px}.logo{font-size:19px}.search{order:3;flex-basis:100%;max-width:none}.navlinks .container{gap:19px}.hero{padding-top:18px}.hero-main{padding:38px 25px;min-height:430px}.hero-side{min-height:330px}.hero h1{font-size:38px}.cat-grid{grid-template-columns:repeat(3,1fr);gap:8px}.cat{padding:15px 7px}.products{grid-template-columns:repeat(2,1fr);gap:13px}.pimg{height:175px}.pbody{padding:13px}.pname{font-size:12.5px}.desc{font-size:11px}.pbottom{align-items:flex-start;flex-direction:column}.add{width:100%}.promo{display:block}.promo .btn{margin-top:15px}.testimonials{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.product-modal{grid-template-columns:1fr}.product-modal img{height:220px}}
 @media(max-width:430px){.header-actions .hbtn:not(.cart){display:none}.cat-grid{grid-template-columns:repeat(2,1fr)}.service-grid,.benefits{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
 </style>
 </head>
@@ -260,12 +271,12 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="container">
 <div class="section-head"><div><h2>Explorez par catégorie</h2><p>Trouvez rapidement ce dont vous avez besoin.</p></div></div>
 <div class="cat-grid">
-<a class="cat" href="#boutique" onclick="setCategory('Informatique')"><div class="cat-icon">💻</div><strong>Informatique</strong><span>PC & composants</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Accessoires')"><div class="cat-icon">⌨️</div><strong>Accessoires</strong><span>Claviers, souris...</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Stockage')"><div class="cat-icon">💾</div><strong>Stockage</strong><span>SSD, HDD, USB</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Maintenance')"><div class="cat-icon">🛠️</div><strong>Maintenance</strong><span>Installation & dépannage</span></a>
-<a class="cat" href="#formations" onclick="return false"><div class="cat-icon">🎓</div><strong>Formations</strong><span>Apprendre en pratique</span></a>
-<a class="cat" href="#boutique" onclick="setCategory('Logiciels')"><div class="cat-icon">⚙️</div><strong>Logiciels</strong><span>Solutions numériques</span></a>
+<a class="cat reveal" href="#boutique" onclick="setCategory('Informatique')"><div class="cat-icon">💻</div><strong>Informatique</strong><span>PC & composants</span></a>
+<a class="cat reveal" href="#boutique" onclick="setCategory('Accessoires')"><div class="cat-icon">⌨️</div><strong>Accessoires</strong><span>Claviers, souris...</span></a>
+<a class="cat reveal" href="#boutique" onclick="setCategory('Stockage')"><div class="cat-icon">💾</div><strong>Stockage</strong><span>SSD, HDD, USB</span></a>
+<a class="cat reveal" href="#boutique" onclick="setCategory('Maintenance')"><div class="cat-icon">🛠️</div><strong>Maintenance</strong><span>Installation & dépannage</span></a>
+<a class="cat reveal" href="#formations" onclick="return false"><div class="cat-icon">🎓</div><strong>Formations</strong><span>Apprendre en pratique</span></a>
+<a class="cat reveal" href="#boutique" onclick="setCategory('Logiciels')"><div class="cat-icon">⚙️</div><strong>Logiciels</strong><span>Solutions numériques</span></a>
 </div>
 </div>
 </section>
@@ -305,10 +316,10 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="container">
 <div class="section-head"><div><h2>Nos services</h2><p>Des solutions informatiques adaptées à vos besoins.</p></div></div>
 <div class="service-grid">
-<div class="service"><div class="icon">🛠️</div><h3>Maintenance informatique</h3><p>Diagnostic, nettoyage, optimisation et dépannage de votre ordinateur.</p><button onclick="serviceRequest('Maintenance informatique')">Demander →</button></div>
-<div class="service"><div class="icon">💿</div><h3>Installation Windows</h3><p>Installation et configuration de Windows et des pilotes essentiels.</p><button onclick="serviceRequest('Installation Windows')">Demander →</button></div>
-<div class="service"><div class="icon">⚙️</div><h3>Installation logiciels</h3><p>Configuration des logiciels nécessaires à votre activité ou vos études.</p><button onclick="serviceRequest('Installation logiciels')">Demander →</button></div>
-<div class="service"><div class="icon">🚀</div><h3>Optimisation PC</h3><p>Amélioration des performances, démarrage, stockage et réglages système.</p><button onclick="serviceRequest('Optimisation PC')">Demander →</button></div>
+<div class="service reveal"><div class="icon">🛠️</div><h3>Maintenance informatique</h3><p>Diagnostic, nettoyage, optimisation et dépannage de votre ordinateur.</p><button onclick="serviceRequest('Maintenance informatique')">Demander →</button></div>
+<div class="service reveal"><div class="icon">💿</div><h3>Installation Windows</h3><p>Installation et configuration de Windows et des pilotes essentiels.</p><button onclick="serviceRequest('Installation Windows')">Demander →</button></div>
+<div class="service reveal"><div class="icon">⚙️</div><h3>Installation logiciels</h3><p>Configuration des logiciels nécessaires à votre activité ou vos études.</p><button onclick="serviceRequest('Installation logiciels')">Demander →</button></div>
+<div class="service reveal"><div class="icon">🚀</div><h3>Optimisation PC</h3><p>Amélioration des performances, démarrage, stockage et réglages système.</p><button onclick="serviceRequest('Optimisation PC')">Demander →</button></div>
 </div>
 </div>
 </section>
@@ -326,10 +337,10 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <section class="section">
 <div class="container">
 <div class="benefits">
-<div class="benefit"><b>⚡</b><h3>Réponse rapide</h3><p>Contact direct avec Marché AUBEDE via WhatsApp.</p></div>
-<div class="benefit"><b>💳</b><h3>Paiement local</h3><p>Préparation pour MTN Mobile Money et Moov Money.</p></div>
-<div class="benefit"><b>🛡️</b><h3>Accompagnement</h3><p>Conseils avant et après l'achat ou la prestation.</p></div>
-<div class="benefit"><b>🇧🇯</b><h3>Service au Bénin</h3><p>Une solution pensée pour les besoins locaux.</p></div>
+<div class="benefit reveal"><b>⚡</b><h3>Réponse rapide</h3><p>Contact direct avec Marché AUBEDE via WhatsApp.</p></div>
+<div class="benefit reveal"><b>💳</b><h3>Paiement local</h3><p>Préparation pour MTN Mobile Money et Moov Money.</p></div>
+<div class="benefit reveal"><b>🛡️</b><h3>Accompagnement</h3><p>Conseils avant et après l'achat ou la prestation.</p></div>
+<div class="benefit reveal"><b>🇧🇯</b><h3>Service au Bénin</h3><p>Une solution pensée pour les besoins locaux.</p></div>
 </div>
 </div>
 </section>
@@ -338,9 +349,9 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="container">
 <div class="section-head"><div><h2>Avis clients</h2><p>Quelques exemples de témoignages à remplacer par vos vrais avis.</p></div></div>
 <div class="testimonials">
-<div class="review"><div class="stars">★★★★★</div><p>« Service rapide et explications très claires. »</p><strong>Client Marché AUBEDE</strong><small>Service informatique</small></div>
-<div class="review"><div class="stars">★★★★★</div><p>« Commande simple et communication efficace sur WhatsApp. »</p><strong>Client Marché AUBEDE</strong><small>Commande en ligne</small></div>
-<div class="review"><div class="stars">★★★★★</div><p>« Très bon accompagnement pour l'installation de mon ordinateur. »</p><strong>Client Marché AUBEDE</strong><small>Maintenance</small></div>
+<div class="review reveal"><div class="stars">★★★★★</div><p>« Service rapide et explications très claires. »</p><strong>Client Marché AUBEDE</strong><small>Service informatique</small></div>
+<div class="review reveal"><div class="stars">★★★★★</div><p>« Commande simple et communication efficace sur WhatsApp. »</p><strong>Client Marché AUBEDE</strong><small>Commande en ligne</small></div>
+<div class="review reveal"><div class="stars">★★★★★</div><p>« Très bon accompagnement pour l'installation de mon ordinateur. »</p><strong>Client Marché AUBEDE</strong><small>Maintenance</small></div>
 </div>
 </div>
 </section>
@@ -412,9 +423,31 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="modal-head"><h2>🔐 Accès administrateur</h2><button class="close" onclick="closeAdminLogin()">×</button></div>
 <div class="field"><label>Mot de passe</label><input type="password" id="adminPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')adminLogin()"></div>
 <button class="confirm" onclick="adminLogin()">Se connecter</button>
-<p style="font-size:11px;color:var(--muted);margin-top:12px">Accès réservé au gestionnaire de Marché AUBEDE.</p>
+<p style="text-align:center;margin-top:12px"><button class="admin-access" onclick="forgotPassword()">Mot de passe oublié ?</button></p>
+<p style="font-size:11px;color:var(--muted);margin-top:6px">Accès réservé au gestionnaire de Marché AUBEDE.</p>
 </div>
 </div>
+
+<div class="modal" id="resetPasswordModal">
+<div class="modal-box admin-login">
+<div class="modal-head"><h2>🔑 Nouveau mot de passe</h2><button class="close" onclick="document.getElementById('resetPasswordModal').classList.remove('show')">×</button></div>
+<div class="field"><label>Nouveau mot de passe</label><input type="password" id="resetNewPass" placeholder="••••••••"></div>
+<div class="field"><label>Confirmer le nouveau mot de passe</label><input type="password" id="resetConfirmPass" placeholder="••••••••"></div>
+<button class="confirm" onclick="submitNewPassword()">Valider le nouveau mot de passe</button>
+</div>
+</div>
+
+<div class="modal" id="bulkAddModal">
+<div class="modal-box" style="width:min(720px,100%)">
+<div class="modal-head"><h2>📋 Ajout en masse de produits</h2><button class="close" onclick="closeBulkAdd()">×</button></div>
+<p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Colle une liste de produits, <strong>un par ligne</strong>, au format suivant (séparé par des barres verticales <code>|</code>) :</p>
+<p style="font-size:11.5px;background:#f8f9fb;border-radius:9px;padding:10px;font-family:monospace;margin-bottom:14px;line-height:1.7">Nom du produit | Catégorie | Prix | Ancien prix (ou vide) | Description | Étiquette (ou vide)</p>
+<div class="field"><textarea id="bulkAddText" style="min-height:220px;font-family:monospace;font-size:12px" placeholder="Souris sans fil|Accessoires|6000||Souris sans fil confortable pour un usage quotidien.|Nouveau"></textarea></div>
+<button class="confirm" onclick="submitBulkAdd()">Importer ces produits</button>
+<p style="font-size:11px;color:var(--muted);margin-top:10px">Les catégories valides sont : Informatique, Accessoires, Stockage, Maintenance, Formation, Logiciels. Une image par défaut sera utilisée — modifie chaque produit ensuite pour ajouter tes propres photos.</p>
+</div>
+</div>
+
 
 <div class="modal admin-modal" id="adminPanelModal">
 <div class="modal-box">
@@ -432,6 +465,7 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
 <div class="admin-toolbar-actions">
 <button onclick="exportProducts()">⬇️ Exporter</button>
 <label>⬆️ Importer<input type="file" accept="application/json" style="display:none" onchange="importProducts(event)"></label>
+<button class="a-new" onclick="openBulkAdd()">📋 Ajout en masse</button>
 <button class="a-new" onclick="newProductForm()">+ Nouveau produit</button>
 <button class="a-logout" onclick="adminLogout()">🔒 Déconnexion</button>
 </div>
@@ -550,9 +584,9 @@ body.dark .admin-toolbar-actions button,body.dark .admin-toolbar-actions label{b
    Tant que SUPABASE_URL n'est pas renseignée, le site fonctionne
    normalement en mode local (comme avant) sur cet appareil uniquement.
 ================================================================ */
-const SUPABASE_URL="https://drtibocixmjznyfrqugu.supabase.co";
-const SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRydGlib2NpeG1qem55ZnJxdWd1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNDI2MzcsImV4cCI6MjEwMDgxODYzN30.mxKI9C3h5ga29l02BfT07GnqaMkyy91GthHM0NF8dXY";
-const ADMIN_EMAIL="zaubede@gmail.co"; // l'email utilisé pour créer le compte admin dans Supabase
+const SUPABASE_URL="";
+const SUPABASE_ANON_KEY="";
+const ADMIN_EMAIL=""; // l'email utilisé pour créer le compte admin dans Supabase
 let BACKEND_ENABLED=!!(SUPABASE_URL&&SUPABASE_ANON_KEY&&ADMIN_EMAIL);
 let sb=null;
 if(BACKEND_ENABLED){
@@ -638,6 +672,13 @@ applySettingsToUI();
 
 function money(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}
 function imgFallback(e){e.target.src="https://placehold.co/800x600/e9edf2/10213F?text=Marche+AUBEDE"}
+let revealObserver=window.IntersectionObserver?new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");revealObserver.unobserve(e.target)}});
+},{threshold:.12,rootMargin:"0px 0px -40px 0px"}):null;
+function observeReveals(){
+if(!revealObserver)return;
+document.querySelectorAll(".reveal:not(.in)").forEach(el=>revealObserver.observe(el));
+}
 function renderProducts(){
 let q=document.getElementById("search").value.toLowerCase().trim();
 let arr=products.filter(p=>(category==="Tous"||p.category===category)&&(!q||(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q)));
@@ -647,13 +688,14 @@ if(sort==="priceDesc")arr.sort((a,b)=>b.price-a.price);
 if(sort==="name")arr.sort((a,b)=>a.name.localeCompare(b.name));
 document.getElementById("resultCount").textContent=arr.length+" produit(s)";
 let box=document.getElementById("products");
-box.innerHTML=arr.length?arr.map(p=>`
-<article class="product">
+box.innerHTML=arr.length?arr.map((p,i)=>`
+<article class="product reveal" style="transition-delay:${Math.min(i%8*40,240)}ms">
 <div class="pimg"><img src="${p.images[0]}" alt="${p.name}" onerror="imgFallback(event)"><span class="tag">${p.tag}</span><button class="heart" onclick="favorite(${p.id})">♡</button></div>
 <div class="pbody"><div class="pcat">${p.category}</div><div class="pname">${p.name}</div><div><span class="stars">★★★★★</span> <span class="reviews">${p.rating} (${p.reviews})</span></div><div class="desc">${p.desc}</div>
 <div class="pbottom"><div class="price">${money(p.price)} ${p.old?`<span class="old">${money(p.old)}</span>`:""}</div><button class="add" onclick="add(${p.id})">+ Panier</button></div>
 <button style="margin-top:9px;width:100%;border:0;background:#f2f5f8;color:#10213F;padding:9px;border-radius:9px;font-size:11px;font-weight:800" onclick="details(${p.id})">Voir le produit</button>
 </div></article>`).join(""):`<div class="empty">🔎<br><br>Aucun produit ne correspond à votre recherche.</div>`;
+observeReveals();
 }
 function setCategory(c){
 category=c;
@@ -838,7 +880,9 @@ document.getElementById("sumGrandTotal").textContent=money(subtotal+deliveryFee)
 }
 applySettingsToUI();
 renderProducts();renderCart();
+observeReveals();
 initBackendData();
+checkPasswordRecoveryFlow();
 
 /* ================= ADMINISTRATION ================= */
 let currentImages=[];
@@ -851,6 +895,30 @@ if(await isAdminSession()){openAdminPanel()}else{openAdminLogin()}
 }
 function openAdminLogin(){document.getElementById("adminLoginModal").classList.add("show");document.getElementById("adminPass").focus()}
 function closeAdminLogin(){document.getElementById("adminLoginModal").classList.remove("show");document.getElementById("adminPass").value=""}
+async function forgotPassword(){
+if(!BACKEND_ENABLED){toast("Cette fonction nécessite le mode serveur en ligne (Supabase) configuré.");return}
+let {error}=await sb.auth.resetPasswordForEmail(ADMIN_EMAIL,{redirectTo:window.location.href.split("#")[0]});
+if(error){toast("Erreur lors de l'envoi de l'email ❌");return}
+closeAdminLogin();
+toast("Email de réinitialisation envoyé à "+ADMIN_EMAIL+" — vérifie ta boîte mail (et les spams).");
+}
+async function submitNewPassword(){
+let n1=document.getElementById("resetNewPass").value;
+let n2=document.getElementById("resetConfirmPass").value;
+if(!n1||n1.length<4){toast("Le mot de passe doit contenir au moins 4 caractères.");return}
+if(n1!==n2){toast("Les deux mots de passe ne correspondent pas.");return}
+let {error}=await sb.auth.updateUser({password:n1});
+if(error){toast("Erreur : le lien a peut-être expiré, redemande une réinitialisation.");return}
+document.getElementById("resetPasswordModal").classList.remove("show");
+history.replaceState(null,"",window.location.pathname+window.location.search);
+toast("Mot de passe mis à jour ✅ Tu peux maintenant te connecter.");
+}
+async function checkPasswordRecoveryFlow(){
+if(!BACKEND_ENABLED)return;
+if(window.location.hash.includes("type=recovery")){
+document.getElementById("resetPasswordModal").classList.add("show");
+}
+}
 async function adminLogin(){
 let p=document.getElementById("adminPass").value;
 if(BACKEND_ENABLED){
@@ -960,6 +1028,33 @@ reader.readAsDataURL(file);
 });
 }
 
+function openBulkAdd(){document.getElementById("bulkAddModal").classList.add("show")}
+function closeBulkAdd(){document.getElementById("bulkAddModal").classList.remove("show")}
+function submitBulkAdd(){
+if(BACKEND_ENABLED){toast("En mode serveur en ligne, ajoute tes produits un par un ou directement dans Supabase pour éviter tout conflit.");return}
+let text=document.getElementById("bulkAddText").value.trim();
+if(!text){toast("Le champ est vide.");return}
+let validCategories=["Informatique","Accessoires","Stockage","Maintenance","Formation","Logiciels"];
+let lines=text.split("\n").map(l=>l.trim()).filter(Boolean);
+let added=0,errors=0;
+lines.forEach(line=>{
+let parts=line.split("|").map(p=>p.trim());
+let name=parts[0],category=parts[1],priceRaw=parts[2],oldRaw=parts[3],desc=parts[4],tag=parts[5];
+let price=parseInt(priceRaw);
+if(!name||!validCategories.includes(category)||!price||isNaN(price)){errors++;return}
+let newId=products.length?Math.max(...products.map(x=>x.id))+1:1;
+products.push({id:newId,name,category,price,old:oldRaw?parseInt(oldRaw)||null:null,images:["produit.jpg"],rating:5,reviews:0,desc:desc||"",tag:tag||"Nouveau"});
+added++;
+});
+if(added>0){
+saveProductsToStorage();
+renderProducts();
+renderAdminList();
+}
+document.getElementById("bulkAddText").value="";
+closeBulkAdd();
+toast(added+" produit(s) ajouté(s)"+(errors?", "+errors+" ligne(s) ignorée(s) (format ou catégorie invalide)":"")+" ✅");
+}
 function newProductForm(){
 document.getElementById("formTitle").textContent="Nouveau produit";
 document.getElementById("prodId").value="";
